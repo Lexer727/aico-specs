@@ -35,7 +35,7 @@
 
 ### Phase 2: In-Process MCP Server & Dispatch Hub
 
-- [ ] **TASK-CORE-005-2**: In-Process MCP Server & Protocol Dispatcher
+- [x] **TASK-CORE-005-2**: In-Process MCP Server & Protocol Dispatcher
   - **Addresses**: `REQ-001`, `REQ-008`, `REQ-009`
   - **Blocked by**: `TASK-CORE-001-1` (Axum Server / Tokio Runtime)
   - **What it delivers**:

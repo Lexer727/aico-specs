@@ -49,7 +49,7 @@
 
 ### Phase 3: REST API Endpoints
 
-- [ ] **TASK-CORE-004-3**: Project Management REST API
+- [x] **TASK-CORE-004-3**: Project Management REST API
   - **Addresses**: `REQ-008`
   - **Blocked by**: `TASK-CORE-004-2`, `TASK-CORE-001-1` (Axum Server)
   - **What it delivers**:

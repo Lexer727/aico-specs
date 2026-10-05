@@ -78,7 +78,7 @@
 
 ### Phase 5: Graceful Shutdown & Drain
 
-- [ ] **TASK-CORE-001-5**: Graceful Shutdown Handler & Drain Loop
+- [x] **TASK-CORE-001-5**: Graceful Shutdown Handler & Drain Loop
   - **Addresses**: `REQ-005`
   - **Blocked by**: `TASK-CORE-001-3`
   - **What it delivers**:
