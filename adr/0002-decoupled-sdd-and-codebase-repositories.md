@@ -13,15 +13,15 @@ Spec-Driven Development involves numerous artifacts: brainstorms, deep dives, EA
 - Simplified UI hierarchy without redundant project wrapper nodes in the tree view.
 
 ## Considered Options
-1. **Option A (Chosen)**: Dedicated per-project specs repositories (`<project>-specs`, e.g. `d:/dev/project-a-specs`), paired 1:1 with each codebase repository (`codebase/<project>`).
+1. **Option A (Chosen)**: Dedicated per-project specs repositories located under a configured Specs Root (`d:/aico/<project>-specs`), paired 1:1 with each codebase repository (`codebase/<project>`).
 2. **Option B**: Single monolithic `aico-specs` repository holding all projects' specifications in subfolders.
 3. **Option C**: In-tree `specs/` directory inside each target code repository.
 
 ## Decision Outcome
 Chosen option: **Option A**.
 Each Project is tracked as a decoupled pair of independent Git repositories:
-1. **Codebase Implementation Repo**: `d:/dev/codebase/<project>/`
-2. **Dedicated Specs Repo**: `d:/dev/<project>-specs/`
+1. **Codebase Implementation Repo**: `d:/dev/codebase/<project>/` (or `d:/dev/aico/` for the engine)
+2. **Dedicated Specs Repo**: `d:/aico/<project>-specs/` (e.g. `d:/aico/aico-specs/`, `d:/aico/project-a-specs/`)
 
 ### Domain Hierarchy Inside `<project>-specs`:
 ```
@@ -30,8 +30,8 @@ Each Project is tracked as a decoupled pair of independent Git repositories:
 ├── adr/
 │   ├── ADR-0001-...md
 │   └── ADR-0002-...md
-└── initiatives/
-    ├── 001-<initiative-slug>/
+└── epics/
+    ├── 001-<epic-slug>/
     │   ├── BRAIN-<slug>.md
     │   ├── adr/
     │   └── specs/
@@ -49,5 +49,5 @@ Each Project is tracked as a decoupled pair of independent Git repositories:
 
 ### Positive Consequences
 - **Complete Project Isolation**: Repositories can be shared, transferred, or archived independently without exposing unrelated projects.
-- **Simplified UI Tree View**: The sidebar tree view is scoped directly to the active project, displaying Initiatives and Specs without an unnecessary top-level Project folder wrapper.
+- **Simplified UI Tree View**: The sidebar tree view is scoped directly to the active project, displaying Epics and Specs without an unnecessary top-level Project folder wrapper.
 - **Independent Git Lifecycles**: Commits to `project-a-specs` are completely decoupled from `project-b-specs`.

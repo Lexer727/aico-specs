@@ -35,7 +35,7 @@ Every generated SDD artifact (Brainstorms, Deep Dives, Specs, Plans) must includ
 id: SPEC-API-001
 type: spec
 aico_version: "0.1.0"
-initiative: "001-web-platform"
+epic: "001-web-platform"
 created_at: "2026-10-05T17:45:00Z"
 ---
 ```

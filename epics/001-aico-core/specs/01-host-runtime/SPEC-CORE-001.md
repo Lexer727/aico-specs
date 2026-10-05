@@ -2,7 +2,7 @@
 id: SPEC-CORE-001
 type: spec
 aico_version: "0.1.0"
-initiative: "001-aico-core"
+epic: "001-aico-core"
 title: "Host Runtime & Local HTTP/WebSocket Server"
 status: "Approved"
 derives_from: ["ADR-0001", "ADR-0003", "ADR-0005"]
@@ -55,7 +55,7 @@ This specification defines the core Host Runtime: an embedded Rust Axum HTTP/Web
 - **REQ-007**: When a client establishes a WebSocket connection with an existing session cookie, the SessionManager shall synchronize the active workspace state to that client within 100 milliseconds.
 
 ### State-Driven Requirements
-- **REQ-008**: While a background agent task is executing, the EventStreamer shall broadcast task progress events to all connected WebSocket clients subscribed to the active initiative.
+- **REQ-008**: While a background agent task is executing, the EventStreamer shall broadcast task progress events to all connected WebSocket clients subscribed to the active epic.
 - **REQ-009**: While multiple client windows are connected simultaneously, the SessionManager shall maintain isolated tab, navigation, and view states per client connection.
 
 ### Unwanted Behavior & Error Handling
