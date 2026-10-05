@@ -2,7 +2,7 @@
 
 - **ID**: PLAN-CORE-002
 - **Spec Reference**: [SPEC-CORE-002.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/02-security-auto-mode/SPEC-CORE-002.md)
-- **Status**: Ready
+- **Status**: Completed
 
 ---
 
@@ -50,7 +50,7 @@
 
 ### Phase 3: Audit Trail & Persistence
 
-- [ ] **TASK-CORE-002-3**: Synchronous Audit Logger & Event Recording
+- [x] **TASK-CORE-002-3**: Synchronous Audit Logger & Event Recording
   - **Addresses**: `REQ-003`, `REQ-005`
   - **Blocked by**: `TASK-CORE-002-2`
   - **What it delivers**:
@@ -63,7 +63,7 @@
 
 ### Phase 4: Interactive WebSocket Gating & Auto-Mode Control
 
-- [ ] **TASK-CORE-002-4**: Interactive WebSocket Gating & Auto-Mode Toggle
+- [x] **TASK-CORE-002-4**: Interactive WebSocket Gating & Auto-Mode Toggle
   - **Addresses**: `REQ-004`, `REQ-006`
   - **Blocked by**: `TASK-CORE-002-2`, `TASK-CORE-001-3` (WebSocket Hub)
   - **What it delivers**:
@@ -77,7 +77,7 @@
 
 ### Phase 5: Emergency Kill Switch
 
-- [ ] **TASK-CORE-002-5**: Emergency Kill Switch & Global Subprocess Abort
+- [x] **TASK-CORE-002-5**: Emergency Kill Switch & Global Subprocess Abort
   - **Addresses**: `REQ-010`
   - **Blocked by**: `TASK-CORE-002-2`
   - **What it delivers**:

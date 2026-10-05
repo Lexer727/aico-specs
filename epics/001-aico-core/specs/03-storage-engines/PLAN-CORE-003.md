@@ -23,7 +23,7 @@
 
 ### Phase 1: In-Process Storage Drivers & Concurrency (Unblocked Frontier)
 
-- [ ] **TASK-CORE-003-1**: Embedded LanceDB & Kùzu In-Process Connection Managers
+- [x] **TASK-CORE-003-1**: Embedded LanceDB & Kùzu In-Process Connection Managers
   - **Addresses**: `REQ-001`, `REQ-002`, `REQ-003`, `REQ-009`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -37,7 +37,7 @@
 
 ### Phase 2: Schema Migrations & Traceability Graph
 
-- [ ] **TASK-CORE-003-2**: Graph Schema Initializer, Versioning & Traceability Schema
+- [x] **TASK-CORE-003-2**: Graph Schema Initializer, Versioning & Traceability Schema
   - **Addresses**: `REQ-006`, `REQ-008`
   - **Blocked by**: `TASK-CORE-003-1`
   - **What it delivers**:

@@ -2,7 +2,7 @@
 
 - **ID**: PLAN-CORE-005
 - **Spec Reference**: [SPEC-CORE-005.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/05-mcp-tool-gates/SPEC-CORE-005.md)
-- **Status**: Ready
+- **Status**: Completed
 
 ---
 
@@ -49,7 +49,7 @@
 
 ### Phase 3: SDD Artifact Gate & File Atomicity
 
-- [ ] **TASK-CORE-005-3**: Deterministic SDD Artifact Creation Gate
+- [x] **TASK-CORE-005-3**: Deterministic SDD Artifact Creation Gate
   - **Addresses**: `REQ-002`
   - **Blocked by**: `TASK-CORE-005-1`, `TASK-CORE-005-2`
   - **What it delivers**:
@@ -63,7 +63,7 @@
 
 ### Phase 4: Traceability Graph & Test-Before-Code Enforcement
 
-- [ ] **TASK-CORE-005-4**: Traceability Graph Verification & Test-Before-Code Gate
+- [x] **TASK-CORE-005-4**: Traceability Graph Verification & Test-Before-Code Gate
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-005-1`, `TASK-CORE-003-2` (Storage Schema)
   - **What it delivers**:
