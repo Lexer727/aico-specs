@@ -65,7 +65,7 @@
 
 ### Phase 4: LAN Authentication & Pairing
 
-- [ ] **TASK-CORE-001-4**: LAN Token Authentication & Terminal QR Code Generator
+- [x] **TASK-CORE-001-4**: LAN Token Authentication & Terminal QR Code Generator
   - **Addresses**: `REQ-004`, `REQ-008`
   - **Blocked by**: `TASK-CORE-001-3`
   - **What it delivers**:

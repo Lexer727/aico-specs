@@ -22,7 +22,7 @@
 
 ### Phase 1: Annotation Scanner & EARS Syntax Validator (Unblocked Frontier)
 
-- [ ] **TASK-CORE-005-1**: Source Code Annotation Scanner & EARS Validator
+- [x] **TASK-CORE-005-1**: Source Code Annotation Scanner & EARS Validator
   - **Addresses**: `REQ-003`, `REQ-004`, `REQ-005`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
