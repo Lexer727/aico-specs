@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-004
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Project Discovery, Manifest Management & Workspace Pairing"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0002", "ADR-0008"]
 created_at: "2026-10-05T19:15:00Z"
 ---
 
 # Feature Specification: Project Discovery & Workspace Manifests
 
-- **ID**: SPEC-CORE-004
-- **Domain**: core-project
-- **Status**: Approved
-- **Derives From**: [ADR-0002](file:///d:/aico/aico-specs/adr/0002-decoupled-sdd-and-codebase-repositories.md), [ADR-0008](file:///d:/aico/aico-specs/adr/0008-unified-root-discovery-and-project-manifest.md)
 
 ---
 
@@ -90,4 +86,4 @@ This specification defines the Project Discovery and Manifest Engine: an automat
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0002](file:///d:/aico/aico-specs/adr/0002-decoupled-sdd-and-codebase-repositories.md) and [ADR-0008](file:///d:/aico/aico-specs/adr/0008-unified-root-discovery-and-project-manifest.md).
+None. Ratified in [ADR-0002](../../../../adr/0002-decoupled-sdd-and-codebase-repositories.md) and [ADR-0008](../../../../adr/0008-unified-root-discovery-and-project-manifest.md).

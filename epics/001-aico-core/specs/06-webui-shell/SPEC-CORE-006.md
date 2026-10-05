@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-006
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "WebUI Application Shell, Navigation & Dockable Layout"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0004", "ADR-0005"]
 created_at: "2026-10-05T19:15:00Z"
 ---
 
 # Feature Specification: WebUI Application Shell, Navigation & Dockable Layout
 
-- **ID**: SPEC-CORE-006
-- **Domain**: core-ui
-- **Status**: Approved
-- **Derives From**: [ADR-0004](file:///d:/aico/aico-specs/adr/0004-react-frontend-and-reusable-design-system.md), [ADR-0005](file:///d:/aico/aico-specs/adr/0005-unified-accordion-workspace-and-dockable-panels.md)
 
 ---
 
@@ -95,4 +91,4 @@ This specification defines the AICO WebUI Shell: a high-performance React applic
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0004](file:///d:/aico/aico-specs/adr/0004-react-frontend-and-reusable-design-system.md) and [ADR-0005](file:///d:/aico/aico-specs/adr/0005-unified-accordion-workspace-and-dockable-panels.md).
+None. Ratified in [ADR-0004](../../../../adr/0004-react-frontend-and-reusable-design-system.md) and [ADR-0005](../../../../adr/0005-unified-accordion-workspace-and-dockable-panels.md).

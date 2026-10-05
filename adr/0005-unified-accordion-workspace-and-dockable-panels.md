@@ -1,8 +1,15 @@
+---
+id: ADR-0005
+type: adr
+aico_version: "0.1.1"
+title: "Unified Accordion Workspace & Dockable Panel Layout"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0005: Unified Accordion Workspace & Dockable Panel Layout
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 Developers need to navigate seamlessly across systems, large epics, and targeted specifications without cognitive overload. Fragmenting an epic into multiple disconnected tabs forces excessive context switching. Simultaneously, users need omni-search with scope filtering, real-time background execution status, flexible chat/terminal docking, and a clean project switching mechanism.

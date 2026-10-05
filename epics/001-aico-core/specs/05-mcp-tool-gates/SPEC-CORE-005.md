@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-005
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Deterministic MCP Tool Gates & In-Band Code Annotations"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0003", "ADR-0006"]
 created_at: "2026-10-05T19:15:00Z"
 ---
 
 # Feature Specification: Deterministic MCP Tool Gates & Code Annotations
 
-- **ID**: SPEC-CORE-005
-- **Domain**: core-mcp
-- **Status**: Approved
-- **Derives From**: [ADR-0003](file:///d:/aico/aico-specs/adr/0003-security-and-auto-mode-enforcement.md), [ADR-0006](file:///d:/aico/aico-specs/adr/0006-packaging-aico-specs-and-version-tagging.md)
 
 ---
 
@@ -52,7 +48,7 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 - **REQ-006**: When an agent invokes tool `query_lineage_graph`, the GraphToolGate shall execute a 2-to-4 hop Cypher query in Kùzu and return the structural subgraph as a formatted JSON context payload.
 - **REQ-007**: When source code containing an `@implements` annotation is saved, the AnnotationParser shall create an `[:IMPLEMENTS]` edge in Kùzu connecting the enclosing `CodeSymbol` to the target `Requirement`.
 - **REQ-008**: When test code containing an `@verifies` annotation is saved, the AnnotationParser shall create a `[:VERIFIES]` edge in Kùzu connecting the enclosing `Test` to the target `Requirement`.
-- **REQ-009**: When a test runner execution completes, the TestResultSynchronizer shall update the verification status property (`status: "passed"` or `status: "failed"`) on all `[:VERIFIES]` edges.
+- **REQ-009**: When a test runner execution completes, the TestResultSynchronizer shall update the verification status property (`status: "Completed"` or `status: "Completed"`) on all `[:VERIFIES]` edges.
 
 ### State-Driven Requirements
 - **REQ-010**: While an agent is generating artifacts, the ArtifactToolGate shall reject any attempt to pass custom relative or absolute target file paths, enforcing deterministic path calculation.
@@ -60,7 +56,7 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 
 ### Unwanted Behavior & Error Handling
 - **REQ-012**: If an agent attempts to create a document with an ID that already exists in Kùzu, then the ArtifactToolGate shall reject the request with `ToolError::DuplicateArtifactId`.
-- **REQ-013**: If an `@implements` annotation references a requirement ID that does not exist in any specification, then the AnnotationParser shall log a lint warning and create a dangling requirement reference node marked `status: "unresolved"`.
+- **REQ-013**: If an `@implements` annotation references a requirement ID that does not exist in any specification, then the AnnotationParser shall log a lint warning and create a dangling requirement reference node marked `status: "Completed"`.
 
 ### Optional Feature Requirements
 - **REQ-014**: Where the language syntax uses `#` for comments (e.g. Python), the AnnotationParser shall match `# @implements` and `# @verifies` comment patterns.
@@ -92,4 +88,4 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0003](file:///d:/aico/aico-specs/adr/0003-security-and-auto-mode-enforcement.md) and [ADR-0006](file:///d:/aico/aico-specs/adr/0006-packaging-aico-specs-and-version-tagging.md).
+None. Ratified in [ADR-0003](../../../../adr/0003-security-and-auto-mode-enforcement.md) and [ADR-0006](../../../../adr/0006-packaging-aico-specs-and-version-tagging.md).

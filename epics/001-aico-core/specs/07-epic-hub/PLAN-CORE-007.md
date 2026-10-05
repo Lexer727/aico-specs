@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-007
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "Epic Hub, Visual Lineage Canvas & Asset Drop Zones"
+status: Completed
+derives_from: ["SPEC-CORE-007"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: Epic Hub, Visual Lineage Canvas & Asset Drop Zones
 
-- **ID**: PLAN-CORE-007
-- **Spec Reference**: [SPEC-CORE-007.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/07-epic-hub/SPEC-CORE-007.md)
-- **Status**: Ready
 
 ---
 
@@ -22,7 +30,8 @@
 
 ### Phase 1: Local Asset Ingestion & Storage Service (Unblocked Frontier)
 
-- [x] **TASK-CORE-007-1**: Local Asset Ingestion Service & Deduplication
+- **TASK-CORE-007-1**: Local Asset Ingestion Service & Deduplication
+  - **Status**: Done
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-003-1` (Storage In-Process Engine)
   - **What it delivers**:
@@ -36,7 +45,8 @@
 
 ### Phase 2: Multi-Modal Drag-and-Drop Zones
 
-- [x] **TASK-CORE-007-2**: UI Drag-and-Drop Zones (Chat, Sidebar, and Task Card)
+- **TASK-CORE-007-2**: UI Drag-and-Drop Zones (Chat, Sidebar, and Task Card)
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-004`, `REQ-005`
   - **Blocked by**: `TASK-CORE-006-1` (UI Shell), `TASK-CORE-007-1`
   - **What it delivers**:
@@ -50,7 +60,8 @@
 
 ### Phase 3: Human Gate Task Resolution Engine
 
-- [x] **TASK-CORE-007-3**: Human Gate Task Engine & Blocker Resolution
+- **TASK-CORE-007-3**: Human Gate Task Engine & Blocker Resolution
+  - **Status**: Done
   - **Addresses**: `REQ-009`
   - **Blocked by**: `TASK-CORE-007-2`, `TASK-CORE-005-4` (Traceability Graph)
   - **What it delivers**:
@@ -64,7 +75,8 @@
 
 ### Phase 4: Epic Hub Dashboard & Export
 
-- [x] **TASK-CORE-007-4**: Epic Hub Dashboard & Progress Reporting
+- **TASK-CORE-007-4**: Epic Hub Dashboard & Progress Reporting
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-010`
   - **Blocked by**: `TASK-CORE-006-1` (UI Shell), `TASK-CORE-004-3` (Project API)
   - **What it delivers**:
@@ -77,7 +89,8 @@
 
 ### Phase 5: Visual Lineage Canvas & Task DAG Explorer
 
-- [x] **TASK-CORE-007-5**: Visual Lineage Graph Canvas & Task DAG Explorer
+- **TASK-CORE-007-5**: Visual Lineage Graph Canvas & Task DAG Explorer
+  - **Status**: Done
   - **Addresses**: `REQ-002`, `REQ-008`
   - **Blocked by**: `TASK-CORE-007-4`, `TASK-CORE-003-6` (Hybrid Query Engine)
   - **What it delivers**:

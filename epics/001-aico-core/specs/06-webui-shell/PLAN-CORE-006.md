@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-006
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "WebUI Application Shell, Navigation & Dockable Layout"
+status: Completed
+derives_from: ["SPEC-CORE-006"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: WebUI Application Shell, Navigation & Dockable Layout
 
-- **ID**: PLAN-CORE-006
-- **Spec Reference**: [SPEC-CORE-006.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/06-webui-shell/SPEC-CORE-006.md)
-- **Status**: Ready
 
 ---
 
@@ -23,7 +31,8 @@
 
 ### Phase 1: WebUI Shell & Accordion Sidebar (Unblocked Frontier)
 
-- [x] **TASK-CORE-006-1**: App Shell Container & Full-Height Accordion Sidebar
+- **TASK-CORE-006-1**: App Shell Container & Full-Height Accordion Sidebar
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-008`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -37,7 +46,8 @@
 
 ### Phase 2: Dockable Panel System
 
-- [x] **TASK-CORE-006-2**: Dockable Bottom/Right Panel with Canvas-Bounded Sizing
+- **TASK-CORE-006-2**: Dockable Bottom/Right Panel with Canvas-Bounded Sizing
+  - **Status**: Done
   - **Addresses**: `REQ-002`, `REQ-003`, `REQ-004`
   - **Blocked by**: `TASK-CORE-006-1`
   - **What it delivers**:
@@ -51,7 +61,8 @@
 
 ### Phase 3: Project-Scoped Tabs & Multi-Window Sync
 
-- [x] **TASK-CORE-006-3**: Project-Scoped Tab Bar & Multi-Window Sync
+- **TASK-CORE-006-3**: Project-Scoped Tab Bar & Multi-Window Sync
+  - **Status**: Done
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-006-1`
   - **What it delivers**:
@@ -65,7 +76,8 @@
 
 ### Phase 4: Omni-Search Modal (`Ctrl+K`)
 
-- [x] **TASK-CORE-006-4**: Omni-Search Modal & Keyboard Navigation
+- **TASK-CORE-006-4**: Omni-Search Modal & Keyboard Navigation
+  - **Status**: Done
   - **Addresses**: `REQ-005`
   - **Blocked by**: `TASK-CORE-006-1`
   - **What it delivers**:
@@ -78,7 +90,8 @@
 
 ### Phase 5: WebSocket Client & Live Connection Status
 
-- [x] **TASK-CORE-006-5**: WebSocket Client Provider & Reconnect Banner
+- **TASK-CORE-006-5**: WebSocket Client Provider & Reconnect Banner
+  - **Status**: Done
   - **Addresses**: `REQ-009`
   - **Blocked by**: `TASK-CORE-006-1`, `TASK-CORE-001-3` (WebSocket Hub)
   - **What it delivers**:

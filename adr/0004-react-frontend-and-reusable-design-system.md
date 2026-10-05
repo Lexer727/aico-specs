@@ -1,8 +1,15 @@
+---
+id: ADR-0004
+type: adr
+aico_version: "0.1.1"
+title: "React Frontend Stack & Reusable Design System"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0004: React Frontend Stack & Reusable Design System
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 The WebUI requires high-performance rendering for:

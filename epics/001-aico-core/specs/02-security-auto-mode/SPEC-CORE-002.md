@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-002
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Security, Auto-Mode & Command Execution Engine"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0003", "ADR-0008"]
 created_at: "2026-10-05T19:15:00Z"
 ---
 
 # Feature Specification: Security, Auto-Mode & Command Execution Engine
 
-- **ID**: SPEC-CORE-002
-- **Domain**: core-security
-- **Status**: Approved
-- **Derives From**: [ADR-0003](file:///d:/aico/aico-specs/adr/0003-security-and-auto-mode-enforcement.md), [ADR-0008](file:///d:/aico/aico-specs/adr/0008-unified-root-discovery-and-project-manifest.md)
 
 ---
 
@@ -93,4 +89,4 @@ This specification defines the 3-Tier Security Policy Engine running in the Rust
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0003](file:///d:/aico/aico-specs/adr/0003-security-and-auto-mode-enforcement.md).
+None. Ratified in [ADR-0003](../../../../adr/0003-security-and-auto-mode-enforcement.md).

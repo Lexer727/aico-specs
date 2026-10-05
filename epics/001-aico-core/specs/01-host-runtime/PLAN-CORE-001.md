@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-001
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "Host Runtime & Local Axum Server"
+status: Completed
+derives_from: ["SPEC-CORE-001"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: Host Runtime & Local Axum Server
 
-- **ID**: PLAN-CORE-001
-- **Spec Reference**: [SPEC-CORE-001.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/01-host-runtime/SPEC-CORE-001.md)
-- **Status**: Ready
 
 ---
 
@@ -24,7 +32,8 @@
 
 ### Phase 1: Prefactoring & Scaffolding (Unblocked Frontier)
 
-- [x] **TASK-CORE-001-1**: Axum Server Scaffolding & Dynamic Port Binding
+- **TASK-CORE-001-1**: Axum Server Scaffolding & Dynamic Port Binding
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-006`, `REQ-010`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -38,7 +47,8 @@
 
 ### Phase 2: Static Asset Serving & SPA Routing
 
-- [x] **TASK-CORE-001-2**: Embedded Static Asset Serving with SPA Fallback
+- **TASK-CORE-001-2**: Embedded Static Asset Serving with SPA Fallback
+  - **Status**: Done
   - **Addresses**: `REQ-002`
   - **Blocked by**: `TASK-CORE-001-1`
   - **What it delivers**:
@@ -51,7 +61,8 @@
 
 ### Phase 3: Real-Time WebSocket Infrastructure
 
-- [x] **TASK-CORE-001-3**: WebSocket Hub, Client State & Heartbeat Loop
+- **TASK-CORE-001-3**: WebSocket Hub, Client State & Heartbeat Loop
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-007`, `REQ-009`
   - **Blocked by**: `TASK-CORE-001-1`
   - **What it delivers**:
@@ -65,7 +76,8 @@
 
 ### Phase 4: LAN Authentication & Pairing
 
-- [x] **TASK-CORE-001-4**: LAN Token Authentication & Terminal QR Code Generator
+- **TASK-CORE-001-4**: LAN Token Authentication & Terminal QR Code Generator
+  - **Status**: Done
   - **Addresses**: `REQ-004`, `REQ-008`
   - **Blocked by**: `TASK-CORE-001-3`
   - **What it delivers**:
@@ -78,7 +90,8 @@
 
 ### Phase 5: Graceful Shutdown & Drain
 
-- [x] **TASK-CORE-001-5**: Graceful Shutdown Handler & Drain Loop
+- **TASK-CORE-001-5**: Graceful Shutdown Handler & Drain Loop
+  - **Status**: Done
   - **Addresses**: `REQ-005`
   - **Blocked by**: `TASK-CORE-001-3`
   - **What it delivers**:

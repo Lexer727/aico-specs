@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-007
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Epic Hub, Visual Lineage Canvas & Multi-Modal Drop Zones"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0005", "ADR-0007"]
 created_at: "2026-10-05T19:15:00Z"
 ---
 
 # Feature Specification: Epic Hub, Visual Lineage Canvas & Asset Drop Zones
 
-- **ID**: SPEC-CORE-007
-- **Domain**: core-ui
-- **Status**: Approved
-- **Derives From**: [ADR-0005](file:///d:/aico/aico-specs/adr/0005-unified-accordion-workspace-and-dockable-panels.md), [ADR-0007](file:///d:/aico/aico-specs/adr/0007-multi-modal-assets-and-human-gate-tasks.md)
 
 ---
 
@@ -53,7 +49,7 @@ This specification defines the Epic Hub: a unified single-view workspace present
 - **REQ-005**: When the user clicks the pop-out icon (`↗`) on any accordion header, the TabBarManager shall open that specific artifact in a new dedicated tab.
 - **REQ-006**: When a search hit matches an artifact within an epic, the EpicHubView shall open the parent Epic Hub, expand the matching accordion section, and scroll the target element into view.
 - **REQ-007**: When a file is dropped into an asset drop zone, the AssetDropManager shall persist the file to disk in `<project>-specs/epics/<epic-slug>/assets/` and trigger LanceDB text chunking for documents.
-- **REQ-008**: When a file matching the expected MIME type is dropped onto a `Human Gate Task` card in the Plan DAG, the HumanGateManager shall mark the task as `status: "completed"` and transition dependent tasks from `status: "blocked"` to `status: "unblocked"`.
+- **REQ-008**: When a file matching the expected MIME type is dropped onto a `Human Gate Task` card in the Plan DAG, the HumanGateManager shall mark the task as `status: "Completed"` and transition dependent tasks from `status: "Completed"` to `status: "Completed"`.
 - **REQ-009**: When test execution events arrive via WebSocket, the EARSRequirementTable shall update the verification badge (`Green [Passed]` or `Red [Failed]`) for each corresponding `REQ-###` row in real time.
 
 ### State-Driven Requirements
@@ -94,4 +90,4 @@ This specification defines the Epic Hub: a unified single-view workspace present
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0005](file:///d:/aico/aico-specs/adr/0005-unified-accordion-workspace-and-dockable-panels.md) and [ADR-0007](file:///d:/aico/aico-specs/adr/0007-multi-modal-assets-and-human-gate-tasks.md).
+None. Ratified in [ADR-0005](../../../../adr/0005-unified-accordion-workspace-and-dockable-panels.md) and [ADR-0007](../../../../adr/0007-multi-modal-assets-and-human-gate-tasks.md).

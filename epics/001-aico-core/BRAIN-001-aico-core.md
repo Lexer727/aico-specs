@@ -1,8 +1,16 @@
+---
+id: BRAIN-001-aico-core
+type: brainstorm
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "AICO Core Architecture & Local-First Platform"
+status: Completed
+derives_from: ["ADR-0001", "ADR-0002", "ADR-0003", "ADR-0004", "ADR-0005", "ADR-0006", "ADR-0007", "ADR-0008"]
+created_at: "2026-10-05T16:00:00Z"
+---
+
 # Brainstorm: AICO Core Architecture & Local-First Platform
 
-- **Epic ID**: `001-aico-core`
-- **Status**: Approved / Ratified
-- **Topology**: Composite Epic (7 Child Specifications)
 
 ---
 

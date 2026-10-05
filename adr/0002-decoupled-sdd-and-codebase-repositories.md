@@ -1,8 +1,15 @@
+---
+id: ADR-0002
+type: adr
+aico_version: "0.1.1"
+title: "Per-Project Dedicated Specs Repository & Codebase Isolation"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0002: Per-Project Dedicated Specs Repository & Codebase Isolation
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 Spec-Driven Development involves numerous artifacts: brainstorms, deep dives, EARS specifications, task plans, and architectural decisions. Initially, storing all specifications across all projects in a single shared repository was considered. However, sharing a single specs repository couples unrelated projects together, complicates Git history, leaks access when sharing a single project's specs with external collaborators, and clutters the UI tree view with redundant project parent folders.

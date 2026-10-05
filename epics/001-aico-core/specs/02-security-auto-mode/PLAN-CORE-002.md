@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-002
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "Security, Auto-Mode & Execution Engine"
+status: Completed
+derives_from: ["SPEC-CORE-002"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: Security, Auto-Mode & Execution Engine
 
-- **ID**: PLAN-CORE-002
-- **Spec Reference**: [SPEC-CORE-002.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/02-security-auto-mode/SPEC-CORE-002.md)
-- **Status**: Completed
 
 ---
 
@@ -22,7 +30,8 @@
 
 ### Phase 1: Policy Classification & Path Sandboxing (Unblocked Frontier)
 
-- [x] **TASK-CORE-002-1**: 3-Tier Command Policy Classifier & Path Sandboxing
+- **TASK-CORE-002-1**: 3-Tier Command Policy Classifier & Path Sandboxing
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-008`, `REQ-009`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -36,7 +45,8 @@
 
 ### Phase 2: Safe Subprocess Execution Engine
 
-- [x] **TASK-CORE-002-2**: Command Executor with Timeouts & Tree Kill
+- **TASK-CORE-002-2**: Command Executor with Timeouts & Tree Kill
+  - **Status**: Done
   - **Addresses**: `REQ-002`, `REQ-007`
   - **Blocked by**: `TASK-CORE-002-1`
   - **What it delivers**:
@@ -50,7 +60,8 @@
 
 ### Phase 3: Audit Trail & Persistence
 
-- [x] **TASK-CORE-002-3**: Synchronous Audit Logger & Event Recording
+- **TASK-CORE-002-3**: Synchronous Audit Logger & Event Recording
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-005`
   - **Blocked by**: `TASK-CORE-002-2`
   - **What it delivers**:
@@ -63,7 +74,8 @@
 
 ### Phase 4: Interactive WebSocket Gating & Auto-Mode Control
 
-- [x] **TASK-CORE-002-4**: Interactive WebSocket Gating & Auto-Mode Toggle
+- **TASK-CORE-002-4**: Interactive WebSocket Gating & Auto-Mode Toggle
+  - **Status**: Done
   - **Addresses**: `REQ-004`, `REQ-006`
   - **Blocked by**: `TASK-CORE-002-2`, `TASK-CORE-001-3` (WebSocket Hub)
   - **What it delivers**:
@@ -77,7 +89,8 @@
 
 ### Phase 5: Emergency Kill Switch
 
-- [x] **TASK-CORE-002-5**: Emergency Kill Switch & Global Subprocess Abort
+- **TASK-CORE-002-5**: Emergency Kill Switch & Global Subprocess Abort
+  - **Status**: Done
   - **Addresses**: `REQ-010`
   - **Blocked by**: `TASK-CORE-002-2`
   - **What it delivers**:

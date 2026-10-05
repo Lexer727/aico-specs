@@ -1,8 +1,15 @@
+---
+id: ADR-0001
+type: adr
+aico_version: "0.1.1"
+title: "Local Web Host Runtime & Multi-Device Access Topology"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0001: Local Web Host Runtime & Multi-Device Access Topology
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 The initial blueprint in `idea.md` specified a Tauri desktop application with zero network port bindings. However, the system must support:

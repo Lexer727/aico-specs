@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-003
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Dual Embedded Storage & AST Ingestion Pipeline"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0001", "ADR-0006"]
 created_at: "2026-10-05T19:15:00Z"
 ---
 
 # Feature Specification: Dual Embedded Storage & AST Ingestion Pipeline
 
-- **ID**: SPEC-CORE-003
-- **Domain**: core-storage
-- **Status**: Approved
-- **Derives From**: [ADR-0001](file:///d:/aico/aico-specs/adr/0001-host-runtime-and-network-topology.md), [ADR-0006](file:///d:/aico/aico-specs/adr/0006-packaging-aico-specs-and-version-tagging.md)
 
 ---
 
@@ -92,4 +88,4 @@ This specification defines AICO's dual embedded storage topology: an in-process 
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0001](file:///d:/aico/aico-specs/adr/0001-host-runtime-and-network-topology.md) and [ADR-0006](file:///d:/aico/aico-specs/adr/0006-packaging-aico-specs-and-version-tagging.md).
+None. Ratified in [ADR-0001](../../../../adr/0001-host-runtime-and-network-topology.md) and [ADR-0006](../../../../adr/0006-packaging-aico-specs-and-version-tagging.md).

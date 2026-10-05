@@ -1,8 +1,15 @@
+---
+id: ADR-0007
+type: adr
+aico_version: "0.1.1"
+title: "Multi-Modal Context Assets & Human Gate Tasks"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0007: Multi-Modal Context Assets & Human Gate Tasks
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 Software development frequently requires external non-code context: UI inspiration mockups, brand writing guides, audio sound effects, background videos, or reference schemas. Currently, agents lack a structured, local-first way to receive these assets. Furthermore, during implementation planning, certain steps depend directly on human delivery (e.g., "User searches and provides 3 UI inspiration mockups"), which must explicitly block automated agent execution until the asset is provided.

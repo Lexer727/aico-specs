@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-004
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "Project Discovery & Workspace Manifests"
+status: Completed
+derives_from: ["SPEC-CORE-004"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: Project Discovery & Workspace Manifests
 
-- **ID**: PLAN-CORE-004
-- **Spec Reference**: [SPEC-CORE-004.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/04-project-discovery/SPEC-CORE-004.md)
-- **Status**: Completed
 
 ---
 
@@ -22,7 +30,8 @@
 
 ### Phase 1: Manifest Schema & Path Resolution (Unblocked Frontier)
 
-- [x] **TASK-CORE-004-1**: Project Manifest Schema Validator & Path Normalizer
+- **TASK-CORE-004-1**: Project Manifest Schema Validator & Path Normalizer
+  - **Status**: Done
   - **Addresses**: `REQ-002`, `REQ-003`, `REQ-007`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -36,7 +45,8 @@
 
 ### Phase 2: Root Directory Scanner & Workspace Registry
 
-- [x] **TASK-CORE-004-2**: Root Directory Scanner & In-Memory Registry
+- **TASK-CORE-004-2**: Root Directory Scanner & In-Memory Registry
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-005`
   - **Blocked by**: `TASK-CORE-004-1`
   - **What it delivers**:
@@ -49,7 +59,8 @@
 
 ### Phase 3: REST API Endpoints
 
-- [x] **TASK-CORE-004-3**: Project Management REST API
+- **TASK-CORE-004-3**: Project Management REST API
+  - **Status**: Done
   - **Addresses**: `REQ-008`
   - **Blocked by**: `TASK-CORE-004-2`, `TASK-CORE-001-1` (Axum Server)
   - **What it delivers**:
@@ -62,7 +73,8 @@
 
 ### Phase 4: Dynamic Hot Discovery & Git Clone Helper
 
-- [x] **TASK-CORE-004-4**: Dynamic Hot Discovery Filesystem Watcher
+- **TASK-CORE-004-4**: Dynamic Hot Discovery Filesystem Watcher
+  - **Status**: Done
   - **Addresses**: `REQ-006`
   - **Blocked by**: `TASK-CORE-004-2`
   - **What it delivers**:
@@ -73,7 +85,8 @@
 
 ---
 
-- [x] **TASK-CORE-004-5**: Missing Codebase Detection & Initialization Wizard
+- **TASK-CORE-004-5**: Missing Codebase Detection & Initialization Wizard
+  - **Status**: Done
   - **Addresses**: `REQ-004`
   - **Blocked by**: `TASK-CORE-004-2`
   - **What it delivers**:

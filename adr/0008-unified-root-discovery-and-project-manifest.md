@@ -1,8 +1,15 @@
+---
+id: ADR-0008
+type: adr
+aico_version: "0.1.1"
+title: "Unified AICO Root Discovery & Project Manifest"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0008: Unified AICO Root Discovery & Project Manifest
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 Prompting users for multiple independent configuration paths (codebase root, specs root, individual project mappings) during installation creates setup friction. Furthermore, AICO needs a deterministic discovery mechanism to scan for projects, associate each specs repository with its implementation codebase, and populate the UI project switcher on startup. Additionally, users need the ability to onboard existing codebases that may live outside the default folder.

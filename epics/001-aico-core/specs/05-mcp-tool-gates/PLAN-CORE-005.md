@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-005
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "Deterministic MCP Tool Gates & Code Annotations"
+status: Completed
+derives_from: ["SPEC-CORE-005"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: Deterministic MCP Tool Gates & Code Annotations
 
-- **ID**: PLAN-CORE-005
-- **Spec Reference**: [SPEC-CORE-005.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/05-mcp-tool-gates/SPEC-CORE-005.md)
-- **Status**: Completed
 
 ---
 
@@ -22,7 +30,8 @@
 
 ### Phase 1: Annotation Scanner & EARS Syntax Validator (Unblocked Frontier)
 
-- [x] **TASK-CORE-005-1**: Source Code Annotation Scanner & EARS Validator
+- **TASK-CORE-005-1**: Source Code Annotation Scanner & EARS Validator
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-004`, `REQ-005`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -35,7 +44,8 @@
 
 ### Phase 2: In-Process MCP Server & Dispatch Hub
 
-- [x] **TASK-CORE-005-2**: In-Process MCP Server & Protocol Dispatcher
+- **TASK-CORE-005-2**: In-Process MCP Server & Protocol Dispatcher
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-008`, `REQ-009`
   - **Blocked by**: `TASK-CORE-001-1` (Axum Server / Tokio Runtime)
   - **What it delivers**:
@@ -49,7 +59,8 @@
 
 ### Phase 3: SDD Artifact Gate & File Atomicity
 
-- [x] **TASK-CORE-005-3**: Deterministic SDD Artifact Creation Gate
+- **TASK-CORE-005-3**: Deterministic SDD Artifact Creation Gate
+  - **Status**: Done
   - **Addresses**: `REQ-002`
   - **Blocked by**: `TASK-CORE-005-1`, `TASK-CORE-005-2`
   - **What it delivers**:
@@ -63,7 +74,8 @@
 
 ### Phase 4: Traceability Graph & Test-Before-Code Enforcement
 
-- [x] **TASK-CORE-005-4**: Traceability Graph Verification & Test-Before-Code Gate
+- **TASK-CORE-005-4**: Traceability Graph Verification & Test-Before-Code Gate
+  - **Status**: Done
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-005-1`, `TASK-CORE-003-2` (Storage Schema)
   - **What it delivers**:

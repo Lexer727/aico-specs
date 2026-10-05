@@ -1,8 +1,15 @@
+---
+id: ADR-0006
+type: adr
+aico_version: "0.1.1"
+title: "Packaging, Dedicated Project Specs & Version Tagging"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0006: Packaging, Dedicated Project Specs & Version Tagging
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 AICO must be simple to install and maintain across development machines without requiring external runtime dependencies like Node.js or Docker. Furthermore, as the application evolves over time, both internal embedded database schemas (Kùzu and LanceDB) and generated Spec-Driven Development artifacts must remain strictly version-tracked and backward-compatible.

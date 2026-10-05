@@ -1,8 +1,16 @@
+---
+id: PLAN-CORE-003
+type: plan
+aico_version: "0.1.1"
+epic: "001-aico-core"
+title: "Dual Embedded Storage & AST Ingestion Pipeline"
+status: Completed
+derives_from: ["SPEC-CORE-003"]
+created_at: "2026-10-05T20:00:00Z"
+---
+
 # Implementation Plan: Dual Embedded Storage & AST Ingestion Pipeline
 
-- **ID**: PLAN-CORE-003
-- **Spec Reference**: [SPEC-CORE-003.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/03-storage-engines/SPEC-CORE-003.md)
-- **Status**: Completed
 
 ---
 
@@ -23,7 +31,8 @@
 
 ### Phase 1: In-Process Storage Drivers & Concurrency (Unblocked Frontier)
 
-- [x] **TASK-CORE-003-1**: Embedded LanceDB & Kùzu In-Process Connection Managers
+- **TASK-CORE-003-1**: Embedded LanceDB & Kùzu In-Process Connection Managers
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-002`, `REQ-003`, `REQ-009`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -37,7 +46,8 @@
 
 ### Phase 2: Schema Migrations & Traceability Graph
 
-- [x] **TASK-CORE-003-2**: Graph Schema Initializer, Versioning & Traceability Schema
+- **TASK-CORE-003-2**: Graph Schema Initializer, Versioning & Traceability Schema
+  - **Status**: Done
   - **Addresses**: `REQ-006`, `REQ-008`
   - **Blocked by**: `TASK-CORE-003-1`
   - **What it delivers**:
@@ -50,7 +60,8 @@
 
 ### Phase 3: Tree-sitter AST Parsing & Symbol Call Graphs
 
-- [x] **TASK-CORE-003-3**: Tree-sitter AST Parser & Symbol Ingestion Pipeline
+- **TASK-CORE-003-3**: Tree-sitter AST Parser & Symbol Ingestion Pipeline
+  - **Status**: Done
   - **Addresses**: `REQ-005`
   - **Blocked by**: `TASK-CORE-003-2`
   - **What it delivers**:
@@ -64,7 +75,8 @@
 
 ### Phase 4: Semantic Chunking & Vector Ingestion
 
-- [x] **TASK-CORE-003-4**: Semantic Chunker & Local LanceDB Embedding Pipeline
+- **TASK-CORE-003-4**: Semantic Chunker & Local LanceDB Embedding Pipeline
+  - **Status**: Done
   - **Addresses**: `REQ-004`
   - **Blocked by**: `TASK-CORE-003-2`
   - **What it delivers**:
@@ -77,7 +89,8 @@
 
 ### Phase 5: Incremental Watcher & Hybrid Search Engine
 
-- [x] **TASK-CORE-003-5**: Incremental File Watcher & Differential Indexer
+- **TASK-CORE-003-5**: Incremental File Watcher & Differential Indexer
+  - **Status**: Done
   - **Addresses**: `REQ-010`
   - **Blocked by**: `TASK-CORE-003-3`, `TASK-CORE-003-4`
   - **What it delivers**:
@@ -88,7 +101,8 @@
 
 ---
 
-- [x] **TASK-CORE-003-6**: Unified Hybrid Query Engine (Vector + Graph)
+- **TASK-CORE-003-6**: Unified Hybrid Query Engine (Vector + Graph)
+  - **Status**: Done
   - **Addresses**: `REQ-007`
   - **Blocked by**: `TASK-CORE-003-3`, `TASK-CORE-003-4`
   - **What it delivers**:

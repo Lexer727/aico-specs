@@ -1,3 +1,13 @@
+---
+id: GLOSSARY-AICO
+type: glossary
+aico_version: "0.1.1"
+title: "AICO Ubiquitous Domain Glossary"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T15:00:00Z"
+---
+
 # Domain Glossary
 
 ## Core Concepts

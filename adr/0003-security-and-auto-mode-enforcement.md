@@ -1,8 +1,15 @@
+---
+id: ADR-0003
+type: adr
+aico_version: "0.1.1"
+title: "Security & Auto-Mode Policy Engine"
+status: Completed
+derives_from: []
+created_at: "2026-10-05T17:00:00Z"
+---
+
 # ADR-0003: Security & Auto-Mode Policy Engine
 
-- **Status**: accepted
-- **Date**: 2026-10-05
-- **Deciders**: User, Antigravity Agent
 
 ## Context & Problem Statement
 Users require an autonomous development experience ("Auto-Mode") where agents can read context from anywhere on the host machine, write implementation files within the project, and run everyday development commands without asking for permission on every single step. At the same time, exposing network ports for mobile access and running automated commands introduces risks of unauthorized access or catastrophic system changes.

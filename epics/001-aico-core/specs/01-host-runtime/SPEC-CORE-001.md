@@ -1,20 +1,16 @@
 ---
 id: SPEC-CORE-001
 type: spec
-aico_version: "0.1.0"
+aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Host Runtime & Local HTTP/WebSocket Server"
-status: "Approved"
+status: "Completed"
 derives_from: ["ADR-0001", "ADR-0003", "ADR-0005"]
 created_at: "2026-10-05T18:15:00Z"
 ---
 
 # Feature Specification: Host Runtime & Local HTTP/WebSocket Server
 
-- **ID**: SPEC-CORE-001
-- **Domain**: core-runtime
-- **Status**: Approved
-- **Derives From**: [ADR-0001](file:///d:/aico/aico-specs/adr/0001-host-runtime-and-network-topology.md), [ADR-0003](file:///d:/aico/aico-specs/adr/0003-security-and-auto-mode-enforcement.md), [ADR-0005](file:///d:/aico/aico-specs/adr/0005-unified-accordion-workspace-and-dockable-panels.md)
 
 ---
 
@@ -96,4 +92,4 @@ This specification defines the core Host Runtime: an embedded Rust Axum HTTP/Web
 
 ## 6. Open Clarifications
 
-None. All constraints are ratified in [ADR-0001](file:///d:/aico/aico-specs/adr/0001-host-runtime-and-network-topology.md) and [ADR-0003](file:///d:/aico/aico-specs/adr/0003-security-and-auto-mode-enforcement.md).
+None. All constraints are ratified in [ADR-0001](../../../../adr/0001-host-runtime-and-network-topology.md) and [ADR-0003](../../../../adr/0003-security-and-auto-mode-enforcement.md).
