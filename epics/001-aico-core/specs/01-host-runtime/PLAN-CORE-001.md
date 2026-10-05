@@ -51,7 +51,7 @@
 
 ### Phase 3: Real-Time WebSocket Infrastructure
 
-- [ ] **TASK-CORE-001-3**: WebSocket Hub, Client State & Heartbeat Loop
+- [x] **TASK-CORE-001-3**: WebSocket Hub, Client State & Heartbeat Loop
   - **Addresses**: `REQ-003`, `REQ-007`, `REQ-009`
   - **Blocked by**: `TASK-CORE-001-1`
   - **What it delivers**:

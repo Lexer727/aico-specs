@@ -36,7 +36,7 @@
 
 ### Phase 2: Safe Subprocess Execution Engine
 
-- [ ] **TASK-CORE-002-2**: Command Executor with Timeouts & Tree Kill
+- [x] **TASK-CORE-002-2**: Command Executor with Timeouts & Tree Kill
   - **Addresses**: `REQ-002`, `REQ-007`
   - **Blocked by**: `TASK-CORE-002-1`
   - **What it delivers**:

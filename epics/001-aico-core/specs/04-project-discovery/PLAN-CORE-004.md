@@ -36,7 +36,7 @@
 
 ### Phase 2: Root Directory Scanner & Workspace Registry
 
-- [ ] **TASK-CORE-004-2**: Root Directory Scanner & In-Memory Registry
+- [x] **TASK-CORE-004-2**: Root Directory Scanner & In-Memory Registry
   - **Addresses**: `REQ-001`, `REQ-005`
   - **Blocked by**: `TASK-CORE-004-1`
   - **What it delivers**:
