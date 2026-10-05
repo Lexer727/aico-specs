@@ -24,7 +24,7 @@
 
 ### Phase 1: Prefactoring & Scaffolding (Unblocked Frontier)
 
-- [ ] **TASK-CORE-001-1**: Axum Server Scaffolding & Dynamic Port Binding
+- [x] **TASK-CORE-001-1**: Axum Server Scaffolding & Dynamic Port Binding
   - **Addresses**: `REQ-001`, `REQ-006`, `REQ-010`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:

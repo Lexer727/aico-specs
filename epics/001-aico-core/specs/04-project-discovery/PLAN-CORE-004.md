@@ -22,7 +22,7 @@
 
 ### Phase 1: Manifest Schema & Path Resolution (Unblocked Frontier)
 
-- [ ] **TASK-CORE-004-1**: Project Manifest Schema Validator & Path Normalizer
+- [x] **TASK-CORE-004-1**: Project Manifest Schema Validator & Path Normalizer
   - **Addresses**: `REQ-002`, `REQ-003`, `REQ-007`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:

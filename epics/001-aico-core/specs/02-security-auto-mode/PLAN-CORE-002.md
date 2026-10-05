@@ -22,7 +22,7 @@
 
 ### Phase 1: Policy Classification & Path Sandboxing (Unblocked Frontier)
 
-- [ ] **TASK-CORE-002-1**: 3-Tier Command Policy Classifier & Path Sandboxing
+- [x] **TASK-CORE-002-1**: 3-Tier Command Policy Classifier & Path Sandboxing
   - **Addresses**: `REQ-001`, `REQ-008`, `REQ-009`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
