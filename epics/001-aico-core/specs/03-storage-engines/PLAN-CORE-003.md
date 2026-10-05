@@ -2,7 +2,7 @@
 
 - **ID**: PLAN-CORE-003
 - **Spec Reference**: [SPEC-CORE-003.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/03-storage-engines/SPEC-CORE-003.md)
-- **Status**: Ready
+- **Status**: Completed
 
 ---
 
@@ -50,7 +50,7 @@
 
 ### Phase 3: Tree-sitter AST Parsing & Symbol Call Graphs
 
-- [ ] **TASK-CORE-003-3**: Tree-sitter AST Parser & Symbol Ingestion Pipeline
+- [x] **TASK-CORE-003-3**: Tree-sitter AST Parser & Symbol Ingestion Pipeline
   - **Addresses**: `REQ-005`
   - **Blocked by**: `TASK-CORE-003-2`
   - **What it delivers**:
@@ -64,7 +64,7 @@
 
 ### Phase 4: Semantic Chunking & Vector Ingestion
 
-- [ ] **TASK-CORE-003-4**: Semantic Chunker & Local LanceDB Embedding Pipeline
+- [x] **TASK-CORE-003-4**: Semantic Chunker & Local LanceDB Embedding Pipeline
   - **Addresses**: `REQ-004`
   - **Blocked by**: `TASK-CORE-003-2`
   - **What it delivers**:
@@ -77,7 +77,7 @@
 
 ### Phase 5: Incremental Watcher & Hybrid Search Engine
 
-- [ ] **TASK-CORE-003-5**: Incremental File Watcher & Differential Indexer
+- [x] **TASK-CORE-003-5**: Incremental File Watcher & Differential Indexer
   - **Addresses**: `REQ-010`
   - **Blocked by**: `TASK-CORE-003-3`, `TASK-CORE-003-4`
   - **What it delivers**:
@@ -86,7 +86,9 @@
     - Updates only modified nodes/edges in Kùzu and vectors in LanceDB incrementally.
   - **Verification Seam**: `tests/storage_watcher_test.rs::test_incremental_file_reindexing`
 
-- [ ] **TASK-CORE-003-6**: Unified Hybrid Query Engine (Vector + Graph)
+---
+
+- [x] **TASK-CORE-003-6**: Unified Hybrid Query Engine (Vector + Graph)
   - **Addresses**: `REQ-007`
   - **Blocked by**: `TASK-CORE-003-3`, `TASK-CORE-003-4`
   - **What it delivers**:

@@ -23,7 +23,7 @@
 
 ### Phase 1: WebUI Shell & Accordion Sidebar (Unblocked Frontier)
 
-- [ ] **TASK-CORE-006-1**: App Shell Container & Full-Height Accordion Sidebar
+- [x] **TASK-CORE-006-1**: App Shell Container & Full-Height Accordion Sidebar
   - **Addresses**: `REQ-001`, `REQ-008`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -37,7 +37,7 @@
 
 ### Phase 2: Dockable Panel System
 
-- [ ] **TASK-CORE-006-2**: Dockable Bottom/Right Panel with Canvas-Bounded Sizing
+- [x] **TASK-CORE-006-2**: Dockable Bottom/Right Panel with Canvas-Bounded Sizing
   - **Addresses**: `REQ-002`, `REQ-003`, `REQ-004`
   - **Blocked by**: `TASK-CORE-006-1`
   - **What it delivers**:
@@ -51,7 +51,7 @@
 
 ### Phase 3: Project-Scoped Tabs & Multi-Window Sync
 
-- [ ] **TASK-CORE-006-3**: Project-Scoped Tab Bar & Multi-Window Sync
+- [x] **TASK-CORE-006-3**: Project-Scoped Tab Bar & Multi-Window Sync
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-006-1`
   - **What it delivers**:
@@ -65,7 +65,7 @@
 
 ### Phase 4: Omni-Search Modal (`Ctrl+K`)
 
-- [ ] **TASK-CORE-006-4**: Omni-Search Modal & Keyboard Navigation
+- [x] **TASK-CORE-006-4**: Omni-Search Modal & Keyboard Navigation
   - **Addresses**: `REQ-005`
   - **Blocked by**: `TASK-CORE-006-1`
   - **What it delivers**:
@@ -78,7 +78,7 @@
 
 ### Phase 5: WebSocket Client & Live Connection Status
 
-- [ ] **TASK-CORE-006-5**: WebSocket Client Provider & Reconnect Banner
+- [x] **TASK-CORE-006-5**: WebSocket Client Provider & Reconnect Banner
   - **Addresses**: `REQ-009`
   - **Blocked by**: `TASK-CORE-006-1`, `TASK-CORE-001-3` (WebSocket Hub)
   - **What it delivers**:

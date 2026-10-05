@@ -22,7 +22,7 @@
 
 ### Phase 1: Local Asset Ingestion & Storage Service (Unblocked Frontier)
 
-- [ ] **TASK-CORE-007-1**: Local Asset Ingestion Service & Deduplication
+- [x] **TASK-CORE-007-1**: Local Asset Ingestion Service & Deduplication
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-003-1` (Storage In-Process Engine)
   - **What it delivers**:
@@ -36,7 +36,7 @@
 
 ### Phase 2: Multi-Modal Drag-and-Drop Zones
 
-- [ ] **TASK-CORE-007-2**: UI Drag-and-Drop Zones (Chat, Sidebar, and Task Card)
+- [x] **TASK-CORE-007-2**: UI Drag-and-Drop Zones (Chat, Sidebar, and Task Card)
   - **Addresses**: `REQ-003`, `REQ-004`, `REQ-005`
   - **Blocked by**: `TASK-CORE-006-1` (UI Shell), `TASK-CORE-007-1`
   - **What it delivers**:
@@ -50,7 +50,7 @@
 
 ### Phase 3: Human Gate Task Resolution Engine
 
-- [ ] **TASK-CORE-007-3**: Human Gate Task Engine & Blocker Resolution
+- [x] **TASK-CORE-007-3**: Human Gate Task Engine & Blocker Resolution
   - **Addresses**: `REQ-009`
   - **Blocked by**: `TASK-CORE-007-2`, `TASK-CORE-005-4` (Traceability Graph)
   - **What it delivers**:
@@ -64,7 +64,7 @@
 
 ### Phase 4: Epic Hub Dashboard & Export
 
-- [ ] **TASK-CORE-007-4**: Epic Hub Dashboard & Progress Reporting
+- [x] **TASK-CORE-007-4**: Epic Hub Dashboard & Progress Reporting
   - **Addresses**: `REQ-001`, `REQ-010`
   - **Blocked by**: `TASK-CORE-006-1` (UI Shell), `TASK-CORE-004-3` (Project API)
   - **What it delivers**:
@@ -77,7 +77,7 @@
 
 ### Phase 5: Visual Lineage Canvas & Task DAG Explorer
 
-- [ ] **TASK-CORE-007-5**: Visual Lineage Graph Canvas & Task DAG Explorer
+- [x] **TASK-CORE-007-5**: Visual Lineage Graph Canvas & Task DAG Explorer
   - **Addresses**: `REQ-002`, `REQ-008`
   - **Blocked by**: `TASK-CORE-007-4`, `TASK-CORE-003-6` (Hybrid Query Engine)
   - **What it delivers**:

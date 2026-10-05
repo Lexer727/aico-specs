@@ -38,7 +38,7 @@
 
 ### Phase 2: Static Asset Serving & SPA Routing
 
-- [ ] **TASK-CORE-001-2**: Embedded Static Asset Serving with SPA Fallback
+- [x] **TASK-CORE-001-2**: Embedded Static Asset Serving with SPA Fallback
   - **Addresses**: `REQ-002`
   - **Blocked by**: `TASK-CORE-001-1`
   - **What it delivers**:
