@@ -2,7 +2,7 @@
 
 - **ID**: PLAN-CORE-004
 - **Spec Reference**: [SPEC-CORE-004.md](file:///d:/aico/aico-specs/epics/001-aico-core/specs/04-project-discovery/SPEC-CORE-004.md)
-- **Status**: Ready
+- **Status**: Completed
 
 ---
 
@@ -62,7 +62,7 @@
 
 ### Phase 4: Dynamic Hot Discovery & Git Clone Helper
 
-- [ ] **TASK-CORE-004-4**: Dynamic Hot Discovery Filesystem Watcher
+- [x] **TASK-CORE-004-4**: Dynamic Hot Discovery Filesystem Watcher
   - **Addresses**: `REQ-006`
   - **Blocked by**: `TASK-CORE-004-2`
   - **What it delivers**:
@@ -71,7 +71,9 @@
     - Broadcasts `project_registry_updated` event over WebSocket.
   - **Verification Seam**: `tests/project_watcher_test.rs::test_hot_discovery_watcher`
 
-- [ ] **TASK-CORE-004-5**: Missing Codebase Detection & Initialization Wizard
+---
+
+- [x] **TASK-CORE-004-5**: Missing Codebase Detection & Initialization Wizard
   - **Addresses**: `REQ-004`
   - **Blocked by**: `TASK-CORE-004-2`
   - **What it delivers**:
