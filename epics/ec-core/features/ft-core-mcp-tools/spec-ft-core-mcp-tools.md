@@ -23,6 +23,14 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 
 ---
 
+## In-Scope
+- Model Context Protocol (MCP) server endpoints exposing SDD workflow tools.
+- Artifact generation, schema verification, and task transition tool gates.
+- Code annotation parsers extracting `@implements` and `@verifies` comment tags.
+- Context-aware AST subgraph retrieval for AI prompt generation.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want agents to create specifications strictly through typed MCP tools, so that file naming, frontmatter, and directory placement are 100% consistent.
@@ -79,7 +87,7 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Arbitrary file creation outside specifications and codebase boundaries.
 - Fabricating Git commits inside MCP tool handlers (commits are handled through the versioning engine).

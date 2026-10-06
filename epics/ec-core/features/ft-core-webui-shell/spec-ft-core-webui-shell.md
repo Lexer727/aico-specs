@@ -23,6 +23,14 @@ This specification defines the AICO WebUI Shell: a high-performance React applic
 
 ---
 
+## In-Scope
+- Top bar with project-scoped tabs, middle-click tab closure, and instant project switching.
+- Sidebar with integrated real-time search, 5 scope checkboxes, and project tree view.
+- Dockable panel supporting Bottom and Right docking layouts with persistent state.
+- Embedded terminal consoles and live status feedback via WebSocket streaming.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want the Top Bar project dropdown to switch projects while restoring each project's open tabs, so that my workspace stays clean and free of cross-project tab clutter.
@@ -82,7 +90,7 @@ This specification defines the AICO WebUI Shell: a high-performance React applic
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Native operating system multi-window docking (browser windows provide multi-window capability).
 - Custom desktop title bars (native browser tab strips and window frames are used).

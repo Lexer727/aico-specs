@@ -23,6 +23,14 @@ This specification defines AICO's dual embedded storage topology: an in-process 
 
 ---
 
+## In-Scope
+- In-process Kùzu embedded graph database for artifact lineage and AST dependency relationships.
+- In-process LanceDB vector database with BM25 + dense vector hybrid search and RRF ranking.
+- AST symbol chunking and automated file change ingestion via Tree-sitter.
+- Zero background daemon processes required for local storage execution.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want all vector embeddings generated locally on my CPU using ONNX Runtime, so that my code remains completely private and search requires zero API keys.
@@ -79,7 +87,7 @@ This specification defines AICO's dual embedded storage topology: an in-process 
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - External hosted vector database sync (Pinecone, Qdrant, Weaviate).
 - External JVM property graph engines (Neo4j).

@@ -23,6 +23,14 @@ This specification defines the Project Discovery and Manifest Engine: an automat
 
 ---
 
+## In-Scope
+- Automatic discovery of sibling `*-specs` directories in configured AICO root directory.
+- JSON schema parsing and validation of `.aico-project.json` manifests.
+- Relative and absolute codebase path resolution with disk verification.
+- Dynamic active project switching with project context propagation via WebSockets.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want to configure a single root path (e.g. `d:/aico/`) on installation, so that AICO discovers all my project specs and codebases automatically.
@@ -77,7 +85,7 @@ This specification defines the Project Discovery and Manifest Engine: an automat
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Hosting remote multi-user project repositories on cloud servers.
 - Automatic Git remote pushing or branch creation across third-party Git hosts (GitHub/GitLab APIs).

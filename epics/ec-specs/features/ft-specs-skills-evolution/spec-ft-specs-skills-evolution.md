@@ -20,6 +20,14 @@ This specification details the updates required across the `aico-skills` plugin 
 
 ---
 
+## In-Scope
+- Synchronization of skill templates across workspace and plugin locations.
+- Enforcement of EARS syntax and canonical artifact naming conventions.
+- Automation scripts for validating and testing skills suite compatibility.
+- Decoupled ordering support and vertical tracer-bullet DAG task execution.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As an agent executing `/aico-spec-creation`, I want the spec template to include canonical frontmatter and omit duplicate body metadata, so that my generated specifications comply with version 0.1.1 standards.
@@ -55,7 +63,7 @@ This specification details the updates required across the `aico-skills` plugin 
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Modifying non-AICO third-party agent frameworks.
 - Altering external language servers.

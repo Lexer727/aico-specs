@@ -20,6 +20,14 @@ This specification formalizes the canonical structural grammar for all AICO Spec
 
 ---
 
+## In-Scope
+- Canonical YAML frontmatter specifications with decoupled ordering for all SDD artifacts.
+- Six-state task lifecycle validation (Pending, Ready, In Progress, Blocked, Done, Skipped/Canceled).
+- Linting against absolute `file:///` URLs and unmeasurable requirements adjectives.
+- Automatic rejection of malformed plans and specifications at MCP tool gates.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As an engineer or agent, I want every SDD artifact to start with a standardized YAML frontmatter block, so that tooling and parsers can extract provenance, status, and version deterministically.
@@ -68,7 +76,7 @@ This specification formalizes the canonical structural grammar for all AICO Spec
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Automated git branch creation per task (handled by developer workflows).
 - Real-time WYSIWYG rich text document collaboration.

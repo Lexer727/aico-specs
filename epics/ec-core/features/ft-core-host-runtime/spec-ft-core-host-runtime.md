@@ -23,6 +23,14 @@ This specification defines the core Host Runtime: an embedded Rust Axum HTTP/Web
 
 ---
 
+## In-Scope
+- Axum-based HTTP and WebSocket local host server bound to `127.0.0.1` and LAN interfaces.
+- Single-PID lockfile enforcement preventing concurrent server process collisions.
+- Session cookie and pairing token security validation for LAN clients.
+- Graceful shutdown draining active WebSocket connections and background tasks.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want to execute `aico` to boot an in-process HTTP and WebSocket server, so that I can open the WebUI in any desktop browser without configuring external server dependencies.
@@ -82,7 +90,7 @@ This specification defines the core Host Runtime: an embedded Rust Axum HTTP/Web
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Remote public internet hosting or multi-tenant user authentication (AICO is strictly local-first and personal-LAN).
 - Automatic public NAT traversal or UPnP router reconfiguration.

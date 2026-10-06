@@ -20,6 +20,14 @@ This specification defines the new `aico-spec-migration` skill, which provides s
 
 ---
 
+## In-Scope
+- Automatic schema validation and migration of legacy SDD repositories to target schema v0.1.2.
+- Conversion of numerical naming to `ec-` epic containers and `ft-` feature identifiers.
+- Frontmatter normalization, relative path conversion, and duplicate body metadata removal.
+- Non-destructive task DAG migration preserving historical states and dependencies.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As an engineer or agent, I want to invoke `/aico-spec-migration`, so that I can automatically audit and migrate all existing artifacts in `aico-specs` to compliant 0.1.1 schemas.
@@ -55,7 +63,7 @@ This specification defines the new `aico-spec-migration` skill, which provides s
 
 ---
 
-## 6. Out of Scope
+## Out-of-Scope
 
 - Migrating code files (only SDD markdown artifacts are updated).
 - Breaking change migrations across non-AICO markdown specifications.

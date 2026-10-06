@@ -23,6 +23,14 @@ This specification defines the Epic Hub: a unified single-view workspace present
 
 ---
 
+## In-Scope
+- Unified single-view dashboard for epics with collapsible accordions.
+- Visual lineage canvas displaying dependency graphs and blast-radius tracing.
+- Interactive human-gate task deliverables with multi-modal asset drag-and-drop.
+- Real-time task DAG progress visualization and status indicators.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want all artifacts for an epic (brainstorm, deep dive, spec, plan) viewable in one single page with collapsible accordions, so that I never have to context-switch across multiple tabs.
@@ -81,7 +89,7 @@ This specification defines the Epic Hub: a unified single-view workspace present
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - Direct 3D CAD modeling or vector graphic manipulation inside the UI.
 - Video transcoding or audio manipulation (AICO displays and plays media natively via standard browser HTML5 `<video>` and `<audio>` elements).

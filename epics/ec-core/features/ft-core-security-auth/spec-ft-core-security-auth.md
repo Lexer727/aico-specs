@@ -23,6 +23,14 @@ This specification defines the 3-Tier Security Policy Engine running in the Rust
 
 ---
 
+## In-Scope
+- Multi-tier command permission classification (Safe, Supervised, Blocked).
+- Path boundary containment and canonicalization preventing directory traversal.
+- Audit logging for all destructive CLI operations and file modifications.
+- Local loopback pairing token validation with session expiration.
+
+---
+
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want the agent to auto-execute read-only and testing commands in Auto-Mode without prompting me, so that the development loop runs uninterrupted.
@@ -80,7 +88,7 @@ This specification defines the 3-Tier Security Policy Engine running in the Rust
 
 ---
 
-## 5. Out of Scope
+## Out-of-Scope
 
 - OS-level kernel sandboxing (e.g. Linux cgroups, Windows AppContainer, or Docker isolation are not required for local developer use).
 - Modifying OS-level file permissions (chmod/ACLs).
