@@ -105,3 +105,36 @@ created_at: "2026-10-05T15:00:00Z"
 - **Synonyms (Avoid)**: Desktop app, daemon, server, backend.
 - **Example**: The `aico` executable serving `http://localhost:4242` and LAN IP.
 - **Related Terms**: [Epic Hub](#epic-hub).
+
+---
+
+### Epic Container (EC-)
+- **Definition**: The top-level directory container for a multi-feature engineering initiative, identified by the canonical prefix `EC-{short_id}` (e.g. `EC-core`, `EC-specs`), containing an overarching shared brainstorm (`BRAIN-EC-{short_id}.md`) and a child `features/` directory.
+- **Synonyms (Avoid)**: Module, epic folder, project directory.
+- **Example**: `epics/EC-core/` containing the host runtime and storage features.
+- **Related Terms**: [Epic](#epic), [Standalone Feature](#standalone-feature).
+
+---
+
+### Standalone Feature
+- **Definition**: A self-contained capability, tool, or utility residing directly under `<project>-specs/features/<feature-slug>/` with `epic: null` in its frontmatter, operating with its own formal EARS specification and execution plan without requiring an epic container.
+- **Synonyms (Avoid)**: Micro-epic, sub-task, orphan spec.
+- **Example**: `features/export-pdf/` containing `SPEC-export-pdf.md` and `PLAN-export-pdf.md`.
+- **Related Terms**: [Feature](#feature), [Specification](#specification).
+
+---
+
+### Execution Wave
+- **Definition**: The logical, test-driven phases inside a vertical task or feature plan that define progression from initial interface scaffolding (Wave 1: Red Seams), through domain implementation (Wave 2: Green Code), to contract verification (Wave 3: Hardening & Seam Verification), and integration (Wave 4: Review Loop).
+- **Synonyms (Avoid)**: Sprint, milestone, epic wave.
+- **Example**: A task defining Wave 1 Scaffolding, Wave 2 Implementation, Wave 3 Verification.
+- **Related Terms**: [Plan](#plan), [Designated Test Seam](#designated-test-seam).
+
+---
+
+### Frontmatter Order
+- **Definition**: An explicit numerical attribute (`order: <number>`) declared in an SDD artifact's YAML frontmatter header that governs visual and logical sorting in trees and roadmaps, decoupling sequence from fragile directory or file naming schemes.
+- **Synonyms (Avoid)**: Priority, sequence number, folder index.
+- **Example**: `order: 1` in `SPEC-core-host-runtime.md`.
+- **Related Terms**: [Specification](#specification), [Plan](#plan).
+
