@@ -72,4 +72,4 @@ This specification details the updates required across the `aico-skills` plugin 
 
 ## 6. Open Clarifications
 
-None. Ratified in [ADR-0009](../../adr/0009-sdd-artifact-schema-and-task-lifecycle.md).
+None. Ratified in [ADR-0009](../../../../adr/0009-sdd-artifact-schema-and-task-lifecycle.md).

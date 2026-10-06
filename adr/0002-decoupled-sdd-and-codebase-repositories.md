@@ -1,7 +1,7 @@
 ---
 id: adr-0002
 type: adr
-aico_version: "0.1.1"
+aico_version: "0.1.2"
 title: "Per-Project Dedicated Specs Repository & Codebase Isolation"
 status: Completed
 derives_from: []

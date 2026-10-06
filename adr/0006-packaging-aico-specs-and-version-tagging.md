@@ -1,7 +1,7 @@
 ---
 id: adr-0006
 type: adr
-aico_version: "0.1.1"
+aico_version: "0.1.2"
 title: "Packaging, Dedicated Project Specs & Version Tagging"
 status: Completed
 derives_from: []

@@ -1,7 +1,7 @@
 ---
 id: adr-0009
 type: adr
-aico_version: "0.1.1"
+aico_version: "0.1.2"
 title: "SDD Artifact Schema, Relative Links, and Task Lifecycle Management"
 status: Completed
 derives_from: []

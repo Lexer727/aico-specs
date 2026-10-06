@@ -72,4 +72,4 @@ This specification defines the new `aico-spec-migration` skill, which provides s
 
 ## 7. Open Clarifications
 
-None. Ratified in [ADR-0009](../../adr/0009-sdd-artifact-schema-and-task-lifecycle.md).
+None. Ratified in [ADR-0009](../../../../adr/0009-sdd-artifact-schema-and-task-lifecycle.md).

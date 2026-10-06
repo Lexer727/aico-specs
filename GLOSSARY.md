@@ -1,7 +1,7 @@
 ---
 id: glossary-aico
 type: glossary
-aico_version: "0.1.1"
+aico_version: "0.1.2"
 title: "AICO Ubiquitous Domain Glossary"
 status: Completed
 derives_from: []
