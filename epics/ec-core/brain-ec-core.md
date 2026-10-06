@@ -1,7 +1,7 @@
 ---
 id: brain-ec-core
 type: brainstorm
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 title: "AICO Core Architecture & Local-First Platform"
 status: "Completed"

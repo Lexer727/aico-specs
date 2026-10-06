@@ -1,7 +1,7 @@
 ---
 id: spec-ft-specs-skills-evolution
 type: spec
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-specs"
 order: 2
 title: "AICO Skills Suite Evolution & MCP Gate Hardening"

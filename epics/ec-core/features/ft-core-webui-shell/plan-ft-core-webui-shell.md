@@ -1,7 +1,7 @@
 ---
 id: plan-ft-core-webui-shell
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 6
 title: "WebUI Application Shell, Navigation & Dockable Layout"

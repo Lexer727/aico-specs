@@ -1,7 +1,7 @@
 ---
 id: adr-0008
 type: adr
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 title: "Unified AICO Root Discovery & Project Manifest"
 status: "Completed"
 derives_from: []

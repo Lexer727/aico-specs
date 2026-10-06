@@ -1,7 +1,7 @@
 ---
 id: plan-ft-fast-trace
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: null
 order: 1
 title: "Fast Traceability Validator Implementation Plan"

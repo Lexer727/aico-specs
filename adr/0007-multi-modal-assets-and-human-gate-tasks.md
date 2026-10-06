@@ -1,7 +1,7 @@
 ---
 id: adr-0007
 type: adr
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 title: "Multi-Modal Context Assets & Human Gate Tasks"
 status: "Completed"
 derives_from: []

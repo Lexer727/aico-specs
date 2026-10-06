@@ -1,7 +1,7 @@
 ---
 id: adr-0003
 type: adr
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 title: "Security & Auto-Mode Policy Engine"
 status: "Completed"
 derives_from: []

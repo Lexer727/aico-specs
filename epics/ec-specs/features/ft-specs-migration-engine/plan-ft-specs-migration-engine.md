@@ -1,7 +1,7 @@
 ---
 id: plan-ft-specs-migration-engine
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-specs"
 order: 3
 title: "AICO Specification Migration Skill & 0.1.1 Repository Upgrade"

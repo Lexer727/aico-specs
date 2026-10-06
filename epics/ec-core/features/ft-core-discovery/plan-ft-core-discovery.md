@@ -1,7 +1,7 @@
 ---
 id: plan-ft-core-discovery
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 4
 title: "Project Discovery & Workspace Manifests"

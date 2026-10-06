@@ -1,7 +1,7 @@
 ---
 id: spec-ft-fast-trace
 type: spec
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: null
 order: 1
 title: "Fast Traceability Validator"

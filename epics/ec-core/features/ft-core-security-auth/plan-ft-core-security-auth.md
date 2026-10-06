@@ -1,7 +1,7 @@
 ---
 id: plan-ft-core-security-auth
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 2
 title: "Security, Auto-Mode & Execution Engine"

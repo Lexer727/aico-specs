@@ -1,7 +1,7 @@
 ---
 id: plan-ft-core-mcp-tools
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 5
 title: "Deterministic MCP Tool Gates & Code Annotations"

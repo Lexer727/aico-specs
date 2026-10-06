@@ -1,7 +1,7 @@
 ---
 id: brain-ft-fast-trace
 type: brain
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: null
 order: 1
 title: "Fast Traceability Validator Brainstorming"

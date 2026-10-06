@@ -1,7 +1,7 @@
 ---
 id: plan-ft-specs-blueprint-standards
 type: plan
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-specs"
 order: 1
 title: "SDD Blueprint Standards, Relative Linking & Task Lifecycle"

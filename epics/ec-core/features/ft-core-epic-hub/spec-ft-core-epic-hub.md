@@ -1,7 +1,7 @@
 ---
 id: spec-ft-core-epic-hub
 type: spec
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 7
 title: "Epic Hub, Visual Lineage Canvas & Multi-Modal Drop Zones"

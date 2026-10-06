@@ -1,7 +1,7 @@
 ---
 id: spec-ft-core-discovery
 type: spec
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 4
 title: "Project Discovery, Manifest Management & Workspace Pairing"

@@ -1,7 +1,7 @@
 ---
 id: adr-0010
 type: adr
-aico_version: "0.1.2"
+aico_skills_version: "0.1.2"
 title: "SDD Structural Grammar v0.1.2: Standalone Features, EC- Prefixes, Wave-Internal Tasks, and Frontmatter Ordering"
 status: "Completed"
 derives_from: ["ADR-0009"]
