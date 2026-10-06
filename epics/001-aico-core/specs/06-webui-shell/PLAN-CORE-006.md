@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "WebUI Application Shell, Navigation & Dockable Layout"
-status: Completed
+status: "In Progress"
 derives_from: ["SPEC-CORE-006"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -127,9 +127,44 @@ created_at: "2026-10-05T20:00:00Z"
 
 ---
 
+### Phase 7: Sidebar UX, Activity Metrics & Multi-Terminal Workspaces (Amended Frontier)
+
+- **TASK-CORE-006-8**: Sidebar Integrated Search, Persistent Checkbox Scopes & Activity Monitor
+  - **Status**: Pending
+  - **Addresses**: `REQ-002`, `REQ-007`, `REQ-012`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Mounts persistent search input directly inside the left navigation sidebar.
+    - Exposes 4 persistent scope filter checkboxes (`Epics`, `Specs`, `Code`, `ADRs`) that immediately filter the visible items upon toggle or input.
+    - Implements `ActivityMonitor` pinned to the bottom of the sidebar displaying live CPU usage %, active tasks count, and WebSocket sync indicators.
+  - **Verification Seam**: `frontend/tests/SidebarSearch.test.tsx`
+
+- **TASK-CORE-006-9**: Multi-Tab Terminal System with Dynamic Terminal Creation
+  - **Status**: Pending
+  - **Addresses**: `REQ-010`, `REQ-011`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Renames dockable auxiliary panel to "Terminals".
+    - Adds tabbed terminal bar with multiple terminal sessions (`Terminal 1`, `Terminal 2`, `+ New Terminal`) with tab switching and closure.
+    - Provides interactive command input with execution history, clearing, and live status.
+  - **Verification Seam**: `frontend/tests/TerminalPanel.test.tsx`
+
+- **TASK-CORE-006-10**: Sidebar Settings Modal & Configuration View
+  - **Status**: Pending
+  - **Addresses**: `REQ-015`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Adds a Settings button in the bottom-left footer of the sidebar.
+    - Displays modal showing active host server configuration, pairing token QR, and environment version details.
+  - **Verification Seam**: `frontend/tests/SettingsModal.test.tsx`
+
+---
+
 ## 3. Active Frontier
 
-- None (All tasks in PLAN-CORE-006 completed and verified).
+- `TASK-CORE-006-8`: Sidebar Integrated Search, Persistent Checkbox Scopes & Activity Monitor
+- `TASK-CORE-006-9`: Multi-Tab Terminal System with Dynamic Terminal Creation
+- `TASK-CORE-006-10`: Sidebar Settings Modal & Configuration View
 
 ---
 
@@ -137,5 +172,7 @@ created_at: "2026-10-05T20:00:00Z"
 
 - **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-6` and `TASK-CORE-006-7` after browser inspection identified that Tailwind CSS utility styles were missing from the production build, leaving the UI unstyled in default Vite placeholder CSS.
 - **2026-10-06T02:27:00Z**: Implemented Tailwind CSS integration (30.58 KB compiled stylesheet) and dynamic project discovery sync. Verified clean with 15/15 passing Vitest tests. Plan status transitioned to `Completed`.
+- **2026-10-06T02:50:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-8`, `TASK-CORE-006-9`, and `TASK-CORE-006-10` to address user feedback: missing sidebar stats, inline search with persistent checkboxes, terminal renaming and multi-tab creation, and bottom-left settings.
+
 
 

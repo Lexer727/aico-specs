@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Epic Hub, Visual Lineage Canvas & Asset Drop Zones"
-status: Completed
+status: "In Progress"
 derives_from: ["SPEC-CORE-007"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -101,6 +101,55 @@ created_at: "2026-10-05T20:00:00Z"
 
 ---
 
-## 3. Initial Active Frontier
+### Phase 6: Multi-Epic Discovery, Home Dashboard & Tab Content Rendering (Amended Frontier)
 
-- `TASK-CORE-007-1`: Local Asset Ingestion Service & Deduplication (Blocked by `TASK-CORE-003-1`).
+- **TASK-CORE-007-6**: Dynamic Multi-Epic Discovery (`001-aico-core` & `002-aico-specs`) via Server API
+  - **Status**: Pending
+  - **Addresses**: `REQ-001`, `REQ-002`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Adds backend endpoint `GET /api/v1/epics` in `crates/aico-server` scanning the active project's `epics/` directory.
+    - Dynamically lists all epics (`001-aico-core`, `002-aico-specs`) in the UI sidebar, search index, and dashboard.
+  - **Verification Seam**: `crates/aico-server/tests/project_api_test.rs::test_list_epics_endpoint`
+
+- **TASK-CORE-007-7**: Workspace Home / Dashboard View with Epic Progress & Active Frontier
+  - **Status**: Pending
+  - **Addresses**: `REQ-001`
+  - **Blocked by**: `TASK-CORE-007-6`
+  - **What it delivers**:
+    - Implements dedicated Home / Dashboard view component showing all active epics, progress completion rings, verified test counts, and unblocked active task frontiers.
+    - Provides instant navigation cards to open epics, specs, and terminals.
+  - **Verification Seam**: `frontend/tests/DashboardView.test.tsx`
+
+- **TASK-CORE-007-8**: Active Tab Content Renderer (Spec Viewer, Code Viewer, ADR Viewer, Epic Details)
+  - **Status**: Pending
+  - **Addresses**: `REQ-001`, `REQ-004`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Mounts dynamic tab view switcher in main canvas area: when a tab is active, renders its specific content (Spec Viewer, ADR Viewer, Code Viewer, or Epic Hub).
+    - Ensures clicking items in sidebar tree, search modal, or dashboard opens and switches to the active tab cleanly.
+  - **Verification Seam**: `frontend/tests/TabContentRenderer.test.tsx`
+
+- **TASK-CORE-007-9**: Epic Hub Accordion Content Expansion (Collapsed 1-line vs Expanded Rich Content)
+  - **Status**: Pending
+  - **Addresses**: `REQ-001`, `REQ-003`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Updates `EpicHubView` accordions: when collapsed, displays concise 1-line description; when expanded, renders the actual rich content (full narrative overview, architectural decisions table, clickable specifications matrix, test seam list, task DAG, asset drop zone).
+  - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
+
+---
+
+## 3. Active Frontier
+
+- `TASK-CORE-007-6`: Dynamic Multi-Epic Discovery (`001-aico-core` & `002-aico-specs`) via Server API
+- `TASK-CORE-007-7`: Workspace Home / Dashboard View with Epic Progress & Active Frontier
+- `TASK-CORE-007-8`: Active Tab Content Renderer (Spec Viewer, Code Viewer, ADR Viewer, Epic Details)
+- `TASK-CORE-007-9`: Epic Hub Accordion Content Expansion (Collapsed 1-line vs Expanded Rich Content)
+
+---
+
+## 4. Amendment Log
+
+- **2026-10-06T02:50:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-007-6` through `TASK-CORE-007-9` to resolve user feedback: dynamic discovery of `002-aico-specs`, dedicated workspace Home/Dashboard, tab content rendering when opening items, and rich accordion content expansion in Epic Hub.
+
