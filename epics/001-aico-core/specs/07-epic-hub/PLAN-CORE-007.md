@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Epic Hub, Visual Lineage Canvas & Asset Drop Zones"
-status: "In Progress"
+status: "Completed"
 derives_from: ["SPEC-CORE-007"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -113,7 +113,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `crates/aico-server/tests/project_api_test.rs::test_list_epics_endpoint`
 
 - **TASK-CORE-007-7**: Workspace Home / Dashboard View with Epic Progress & Active Frontier
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-001`
   - **Blocked by**: `TASK-CORE-007-6`
   - **What it delivers**:
@@ -122,7 +122,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/DashboardView.test.tsx`
 
 - **TASK-CORE-007-8**: Active Tab Content Renderer (Spec Viewer, Code Viewer, ADR Viewer, Epic Details)
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-004`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -139,7 +139,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
 
 - **TASK-CORE-007-10**: 2-Column Epic Hub Layout & Spatial Optimization
-  - **Status**: In Progress
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-002`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -152,7 +152,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
 
 - **TASK-CORE-007-11**: Visual Wave Task Plan with Overall & Per-Wave Progress Tracking
-  - **Status**: In Progress
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-005`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -161,7 +161,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
 
 - **TASK-CORE-007-12**: Feature Bundle View & SDD Frontmatter Parser Fix
-  - **Status**: In Progress
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-004`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -174,9 +174,7 @@ created_at: "2026-10-05T20:00:00Z"
 
 ## 3. Active Frontier
 
-- `TASK-CORE-007-10`: 2-Column Epic Hub Layout & Spatial Optimization
-- `TASK-CORE-007-11`: Visual Wave Task Plan with Overall & Per-Wave Progress Tracking
-- `TASK-CORE-007-12`: Feature Bundle View & SDD Frontmatter Parser Fix
+None (All tasks in PLAN-CORE-007 completed).
 
 ---
 

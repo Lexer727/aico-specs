@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "WebUI Application Shell, Navigation & Dockable Layout"
-status: "In Progress"
+status: "Completed"
 derives_from: ["SPEC-CORE-006"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -130,7 +130,7 @@ created_at: "2026-10-05T20:00:00Z"
 ### Phase 7: Sidebar UX, Activity Metrics & Multi-Terminal Workspaces (Amended Frontier)
 
 - **TASK-CORE-006-8**: Sidebar Integrated Search, Persistent Checkbox Scopes & Activity Monitor
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-002`, `REQ-007`, `REQ-012`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -140,7 +140,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/SidebarSearch.test.tsx`
 
 - **TASK-CORE-006-9**: Multi-Tab Terminal System with Dynamic Terminal Creation
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-010`, `REQ-011`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -159,7 +159,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/SettingsModal.test.tsx`
 
 - **TASK-CORE-006-11**: Tree-Integrated Search, 5-Scope Filter Checkboxes & Middle-Click Tab Close
-  - **Status**: In Progress
+  - **Status**: Done
   - **Addresses**: `REQ-002`, `REQ-007`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -173,7 +173,7 @@ created_at: "2026-10-05T20:00:00Z"
 
 ## 3. Active Frontier
 
-- `TASK-CORE-006-11`: Tree-Integrated Search, 5-Scope Filter Checkboxes & Middle-Click Tab Close
+None (All tasks in PLAN-CORE-006 completed).
 
 ---
 
