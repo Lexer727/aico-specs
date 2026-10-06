@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Host Runtime & Local Axum Server"
-status: "In Progress"
+status: Completed
 derives_from: ["SPEC-CORE-001"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -105,7 +105,7 @@ created_at: "2026-10-05T20:00:00Z"
 ### Phase 6: Live WebSocket Route & Client Streaming (Amended Frontier)
 
 - **TASK-CORE-001-6**: Axum WebSocket Upgrade Route & Connection Handler (`GET /ws`)
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-007`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -120,11 +120,13 @@ created_at: "2026-10-05T20:00:00Z"
 
 ## 3. Active Frontier
 
-- `TASK-CORE-001-6`: Axum WebSocket Upgrade Route & Connection Handler (`GET /ws`) (Unblocked, ready for implementation).
+- None (All tasks in PLAN-CORE-001 completed and verified).
 
 ---
 
 ## 4. Amendment Log
 
 - **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-001-6` after browser verification revealed that the `/ws` endpoint was not mounted in Axum's `build_router()`, causing WebSocket connection rejection.
+- **2026-10-06T02:27:00Z**: `TASK-CORE-001-6` implemented and verified green against `test_real_websocket_handshake_and_stream`. Plan status transitioned to `Completed`.
+
 

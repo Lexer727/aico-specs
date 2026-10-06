@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "WebUI Application Shell, Navigation & Dockable Layout"
-status: "In Progress"
+status: Completed
 derives_from: ["SPEC-CORE-006"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -105,7 +105,7 @@ created_at: "2026-10-05T20:00:00Z"
 ### Phase 6: UI Styling Restoration & Live Workspace Binding (Amended Frontier)
 
 - **TASK-CORE-006-6**: Tailwind CSS Integration & Layout Theme Restoration
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-015`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -116,7 +116,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/ShellLayout.test.tsx`
 
 - **TASK-CORE-006-7**: Dynamic Project Discovery & Active Workspace Binding
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-003`, `REQ-005`
   - **Blocked by**: `TASK-CORE-006-6`
   - **What it delivers**:
@@ -129,11 +129,13 @@ created_at: "2026-10-05T20:00:00Z"
 
 ## 3. Active Frontier
 
-- `TASK-CORE-006-6`: Tailwind CSS Integration & Layout Theme Restoration (Unblocked, ready for implementation).
+- None (All tasks in PLAN-CORE-006 completed and verified).
 
 ---
 
 ## 4. Amendment Log
 
 - **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-6` and `TASK-CORE-006-7` after browser inspection identified that Tailwind CSS utility styles were missing from the production build, leaving the UI unstyled in default Vite placeholder CSS.
+- **2026-10-06T02:27:00Z**: Implemented Tailwind CSS integration (30.58 KB compiled stylesheet) and dynamic project discovery sync. Verified clean with 15/15 passing Vitest tests. Plan status transitioned to `Completed`.
+
 
