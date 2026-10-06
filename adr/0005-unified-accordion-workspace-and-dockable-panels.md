@@ -1,5 +1,5 @@
 ---
-id: ADR-0005
+id: adr-0005
 type: adr
 aico_version: "0.1.1"
 title: "Unified Accordion Workspace & Dockable Panel Layout"

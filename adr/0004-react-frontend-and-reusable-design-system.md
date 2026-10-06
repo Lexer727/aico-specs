@@ -1,5 +1,5 @@
 ---
-id: ADR-0004
+id: adr-0004
 type: adr
 aico_version: "0.1.1"
 title: "React Frontend Stack & Reusable Design System"

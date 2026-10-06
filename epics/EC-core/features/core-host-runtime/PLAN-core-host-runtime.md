@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-host-runtime
+id: plan-core-host-runtime
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 1
 title: "Host Runtime & Local Axum Server"
 status: Completed
-derives_from: ["SPEC-core-host-runtime"]
+derives_from: ["spec-core-host-runtime"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

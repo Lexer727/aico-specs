@@ -1,5 +1,5 @@
 ---
-id: ADR-0006
+id: adr-0006
 type: adr
 aico_version: "0.1.1"
 title: "Packaging, Dedicated Project Specs & Version Tagging"

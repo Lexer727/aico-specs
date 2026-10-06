@@ -1,12 +1,12 @@
 ---
-id: SPEC-specs-blueprint-standards
+id: spec-specs-blueprint-standards
 type: spec
 aico_version: "0.1.2"
-epic: "EC-specs"
+epic: "ec-specs"
 order: 1
 title: "SDD Blueprint Standards, Relative Linking & Task Lifecycle"
 status: Completed
-derives_from: ["ADR-0009", "BRAIN-002-aico-specs"]
+derives_from: ["ADR-0009", "brain-002-aico-specs"]
 created_at: "2026-10-06T01:43:00Z"
 ---
 

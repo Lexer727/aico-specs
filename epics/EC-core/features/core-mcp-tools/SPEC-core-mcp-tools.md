@@ -1,8 +1,8 @@
 ---
-id: SPEC-core-mcp-tools
+id: spec-core-mcp-tools
 type: spec
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 5
 title: "Deterministic MCP Tool Gates & In-Band Code Annotations"
 status: "Completed"
@@ -26,7 +26,7 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 ## 2. User Stories
 
 1. **US-01** (Priority: P1): As a developer, I want agents to create specifications strictly through typed MCP tools, so that file naming, frontmatter, and directory placement are 100% consistent.
-   - *Independent Test*: Call `create_sdd_artifact` with `artifact_type: "spec"`, `epic: "001-core"`, and `slug: "auth"` and verify the file is created at `<specs>/epics/001-core/specs/auth/SPEC-auth.md` with complete YAML frontmatter.
+   - *Independent Test*: Call `create_sdd_artifact` with `artifact_type: "spec"`, `epic: "001-core"`, and `slug: "auth"` and verify the file is created at `<specs>/epics/001-core/specs/auth/spec-auth.md` with complete YAML frontmatter.
 2. **US-02** (Priority: P1): As a developer, I want functions tagged with `// @implements SPEC-ID::REQ-ID` linked to their requirements in the graph on save, so that requirement coverage is tracked automatically.
    - *Independent Test*: Save a file containing `// @implements SPEC-AUTH-001::REQ-042` and verify Kùzu creates an `(CodeSymbol)-[:IMPLEMENTS]->(Requirement)` edge.
 3. **US-03** (Priority: P1): As a developer, I want tests tagged with `// @verifies SPEC-ID::REQ-ID` linked to their requirements in the graph, so that test pass/fail status updates the specification table in real time.

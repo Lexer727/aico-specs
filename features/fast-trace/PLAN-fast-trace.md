@@ -1,12 +1,12 @@
 ---
-id: PLAN-fast-trace
+id: plan-fast-trace
 type: plan
 aico_version: "0.1.2"
 epic: null
 order: 1
 title: "Fast Traceability Validator Implementation Plan"
 status: "Completed"
-derives_from: ["SPEC-fast-trace"]
+derives_from: ["spec-fast-trace"]
 created_at: "2026-10-06T15:30:00Z"
 ---
 

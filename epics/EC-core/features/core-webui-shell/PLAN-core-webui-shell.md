@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-webui-shell
+id: plan-core-webui-shell
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 6
 title: "WebUI Application Shell, Navigation & Dockable Layout"
 status: "Completed"
-derives_from: ["SPEC-core-webui-shell"]
+derives_from: ["spec-core-webui-shell"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

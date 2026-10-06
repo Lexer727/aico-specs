@@ -1,5 +1,5 @@
 ---
-id: SPEC-fast-trace
+id: spec-fast-trace
 type: spec
 aico_version: "0.1.2"
 epic: null

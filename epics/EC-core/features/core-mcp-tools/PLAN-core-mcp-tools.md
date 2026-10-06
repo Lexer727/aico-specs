@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-mcp-tools
+id: plan-core-mcp-tools
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 5
 title: "Deterministic MCP Tool Gates & Code Annotations"
 status: Completed
-derives_from: ["SPEC-core-mcp-tools"]
+derives_from: ["spec-core-mcp-tools"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

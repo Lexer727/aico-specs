@@ -1,5 +1,5 @@
 ---
-id: ADR-0003
+id: adr-0003
 type: adr
 aico_version: "0.1.1"
 title: "Security & Auto-Mode Policy Engine"

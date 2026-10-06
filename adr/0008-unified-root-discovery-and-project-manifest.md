@@ -1,5 +1,5 @@
 ---
-id: ADR-0008
+id: adr-0008
 type: adr
 aico_version: "0.1.1"
 title: "Unified AICO Root Discovery & Project Manifest"

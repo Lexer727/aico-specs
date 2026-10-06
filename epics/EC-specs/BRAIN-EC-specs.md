@@ -1,8 +1,8 @@
 ---
-id: BRAIN-EC-specs
+id: brain-ec-specs
 type: brainstorm
 aico_version: "0.1.2"
-epic: "EC-specs"
+epic: "ec-specs"
 title: "AICO Specification & Plan Blueprints Evolution"
 status: Completed
 derives_from: ["ADR-0009"]
@@ -39,7 +39,7 @@ aico_version: "0.1.1"
 epic: "<epic-slug>" # Optional for ADRs
 title: "<Human Readable Title>"
 status: <Draft|Pending|In Progress|Completed>
-derives_from: [<Pointers to upstream IDs>]
+derives_from: ["<Pointers to upstream IDs>"]
 created_at: "<ISO-8601 Timestamp>"
 ---
 ```

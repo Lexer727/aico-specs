@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-security-auth
+id: plan-core-security-auth
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 2
 title: "Security, Auto-Mode & Execution Engine"
 status: Completed
-derives_from: ["SPEC-core-security-auth"]
+derives_from: ["spec-core-security-auth"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

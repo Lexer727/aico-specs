@@ -1,12 +1,12 @@
 ---
-id: PLAN-specs-migration-engine
+id: plan-specs-migration-engine
 type: plan
 aico_version: "0.1.2"
-epic: "EC-specs"
+epic: "ec-specs"
 order: 3
 title: "AICO Specification Migration Skill & 0.1.1 Repository Upgrade"
 status: Completed
-derives_from: ["SPEC-specs-migration-engine"]
+derives_from: ["spec-specs-migration-engine"]
 created_at: "2026-10-06T01:45:00Z"
 ---
 
@@ -17,7 +17,7 @@ created_at: "2026-10-06T01:45:00Z"
 - Author new `aico-spec-migration` skill in `d:/aico/codebase/aico-skills/aico-spec-migration/`.
 - Execute migration script/process across all legacy artifacts in `d:/aico/aico-specs/`:
   - `adr/*.md` (ADR-0001 through ADR-0008)
-  - `epics/001-aico-core/BRAIN-001-aico-core.md`
+  - `epics/001-aico-core/brain-001-aico-core.md`
   - `epics/001-aico-core/specs/*/*.md` (SPEC-CORE-001..007, PLAN-CORE-001..007)
 - Validate complete conversion: 0 absolute links, 100% frontmatter coverage, 100% task status formatting, version set to `0.1.1`.
 
@@ -50,7 +50,7 @@ created_at: "2026-10-06T01:45:00Z"
 
 ### Phase 3: Epic 001 Specifications & Plans Migration
 
-- **TASK-SPECS-003-3**: Migrate `BRAIN-001-aico-core.md` to Version 0.1.1
+- **TASK-SPECS-003-3**: Migrate `brain-001-aico-core.md` to Version 0.1.1
   - **Status**: Done
   - **Addresses**: REQ-002, REQ-006
   - **Blocked by**: TASK-SPECS-003-1

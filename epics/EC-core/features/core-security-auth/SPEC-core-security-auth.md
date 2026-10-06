@@ -1,8 +1,8 @@
 ---
-id: SPEC-core-security-auth
+id: spec-core-security-auth
 type: spec
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 2
 title: "Security, Auto-Mode & Command Execution Engine"
 status: "Completed"

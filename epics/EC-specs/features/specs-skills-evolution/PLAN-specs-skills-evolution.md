@@ -1,12 +1,12 @@
 ---
-id: PLAN-specs-skills-evolution
+id: plan-specs-skills-evolution
 type: plan
 aico_version: "0.1.2"
-epic: "EC-specs"
+epic: "ec-specs"
 order: 2
 title: "AICO Skills Suite Evolution & MCP Gate Hardening"
 status: Completed
-derives_from: ["SPEC-specs-skills-evolution"]
+derives_from: ["spec-specs-skills-evolution"]
 created_at: "2026-10-06T01:44:00Z"
 ---
 
@@ -24,7 +24,7 @@ created_at: "2026-10-06T01:44:00Z"
 
 ### Phase 1: Skill Template & Instruction Updates
 
-- **TASK-SPECS-002-1**: Update `SPEC-TEMPLATE.md` and `aico-spec-creation/SKILL.md`
+- **TASK-SPECS-002-1**: Update `spec-template.md` and `aico-spec-creation/SKILL.md`
   - **Status**: Done
   - **Addresses**: REQ-001
   - **Blocked by**: None
@@ -33,7 +33,7 @@ created_at: "2026-10-06T01:44:00Z"
     - Remove duplicate `ID`, `Status`, `Derives From` from body.
     - Require relative markdown links.
 
-- **TASK-SPECS-002-2**: Update `PLAN-TEMPLATE.md` and `aico-planning/SKILL.md`
+- **TASK-SPECS-002-2**: Update `plan-template.md` and `aico-planning/SKILL.md`
   - **Status**: Done
   - **Addresses**: REQ-002
   - **Blocked by**: None

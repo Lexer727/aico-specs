@@ -1,8 +1,8 @@
 ---
-id: SPEC-core-webui-shell
+id: spec-core-webui-shell
 type: spec
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 6
 title: "WebUI Application Shell, Navigation & Dockable Layout"
 status: "Completed"

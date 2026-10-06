@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-discovery
+id: plan-core-discovery
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 4
 title: "Project Discovery & Workspace Manifests"
 status: Completed
-derives_from: ["SPEC-core-discovery"]
+derives_from: ["spec-core-discovery"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

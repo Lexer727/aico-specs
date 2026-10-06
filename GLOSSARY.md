@@ -1,5 +1,5 @@
 ---
-id: GLOSSARY-AICO
+id: glossary-aico
 type: glossary
 aico_version: "0.1.1"
 title: "AICO Ubiquitous Domain Glossary"
@@ -71,7 +71,7 @@ created_at: "2026-10-05T15:00:00Z"
 ### Brainstorm
 - **Definition**: An exploratory artifact capturing problem framing, candidate approaches, rejected alternatives, and architectural trade-offs for an Epic prior to specification.
 - **Synonyms (Avoid)**: Scratchpad, design doc, RFC, ideation file.
-- **Example**: `BRAIN-web-platform.md` outlining why Axum was chosen over Actix.
+- **Example**: `brain-web-platform.md` outlining why Axum was chosen over Actix.
 - **Related Terms**: [Epic](#epic), [Deep Dive](#deep-dive), [Specification](#specification).
 
 ---
@@ -87,7 +87,7 @@ created_at: "2026-10-05T15:00:00Z"
 ### Specification
 - **Definition**: A formal, testable contract containing unambiguous EARS requirement statements with strict out-of-scope boundaries and designated public test seams.
 - **Synonyms (Avoid)**: Spec sheet, PRD, requirements list, user story.
-- **Example**: `SPEC-api-server.md` containing `REQ-001` through `REQ-012`.
+- **Example**: `spec-api-server.md` containing `REQ-001` through `REQ-012`.
 - **Related Terms**: [Epic](#epic), [Plan](#plan).
 
 ---
@@ -95,7 +95,7 @@ created_at: "2026-10-05T15:00:00Z"
 ### Plan
 - **Definition**: A Directed Acyclic Graph (DAG) of dependency-ordered vertical tracer-bullet tasks derived directly from a Specification's requirements.
 - **Synonyms (Avoid)**: Task list, todo list, sprint backlog, roadmap.
-- **Example**: `PLAN-api-server.md` listing unblocked and blocked engineering tasks.
+- **Example**: `plan-api-server.md` listing unblocked and blocked engineering tasks.
 - **Related Terms**: [Epic](#epic), [Specification](#specification).
 
 ---
@@ -111,7 +111,7 @@ created_at: "2026-10-05T15:00:00Z"
 ### Epic Container (EC-)
 - **Definition**: The top-level directory container for a multi-feature engineering initiative, identified by the canonical prefix `EC-{short_id}` (e.g. `EC-core`, `EC-specs`), containing an overarching shared brainstorm (`BRAIN-EC-{short_id}.md`) and a child `features/` directory.
 - **Synonyms (Avoid)**: Module, epic folder, project directory.
-- **Example**: `epics/EC-core/` containing the host runtime and storage features.
+- **Example**: `epics/ec-core/` containing the host runtime and storage features.
 - **Related Terms**: [Epic](#epic), [Standalone Feature](#standalone-feature).
 
 ---
@@ -119,7 +119,7 @@ created_at: "2026-10-05T15:00:00Z"
 ### Standalone Feature
 - **Definition**: A self-contained capability, tool, or utility residing directly under `<project>-specs/features/<feature-slug>/` with `epic: null` in its frontmatter, operating with its own formal EARS specification and execution plan without requiring an epic container.
 - **Synonyms (Avoid)**: Micro-epic, sub-task, orphan spec.
-- **Example**: `features/export-pdf/` containing `SPEC-export-pdf.md` and `PLAN-export-pdf.md`.
+- **Example**: `features/export-pdf/` containing `spec-export-pdf.md` and `plan-export-pdf.md`.
 - **Related Terms**: [Feature](#feature), [Specification](#specification).
 
 ---
@@ -135,6 +135,6 @@ created_at: "2026-10-05T15:00:00Z"
 ### Frontmatter Order
 - **Definition**: An explicit numerical attribute (`order: <number>`) declared in an SDD artifact's YAML frontmatter header that governs visual and logical sorting in trees and roadmaps, decoupling sequence from fragile directory or file naming schemes.
 - **Synonyms (Avoid)**: Priority, sequence number, folder index.
-- **Example**: `order: 1` in `SPEC-core-host-runtime.md`.
+- **Example**: `order: 1` in `spec-core-host-runtime.md`.
 - **Related Terms**: [Specification](#specification), [Plan](#plan).
 

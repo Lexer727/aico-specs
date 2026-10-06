@@ -1,5 +1,5 @@
 ---
-id: ADR-0010
+id: adr-0010
 type: adr
 aico_version: "0.1.2"
 title: "SDD Structural Grammar v0.1.2: Standalone Features, EC- Prefixes, Wave-Internal Tasks, and Frontmatter Ordering"
@@ -16,7 +16,7 @@ Following the initial release of the AICO WebUI shell, several structural limita
 1. **Mandatory Epic Overhead**: Every feature was forced into an epic container (`epics/<epic>/specs/<feature>`), even when a capability was small, self-contained, or an isolated utility. Developers lacked a first-class **Standalone Feature** workflow.
 2. **Ambiguous Entry Point**: Starting a new idea lacked a triage front door to brainstorm and determine whether a request warranted a multi-feature Epic or a standalone Feature.
 3. **Misaligned Wave Concept**: Epics were using "Waves" as separators between entire specifications, whereas an Epic contains Features, and individual vertical tasks inside a feature are what logically progress through execution waves (Scaffolding $\to$ Implementation $\to$ Seam Verification $\to$ Integration).
-4. **Fragile Numeric Prefixes**: Directories (`001-aico-core`, `01-host-runtime`) and files (`SPEC-CORE-001.md`) encoded sequence numbers in filenames. Inserting or reordering features broke cross-document links and git history.
+4. **Fragile Numeric Prefixes**: Directories (`001-aico-core`, `01-host-runtime`) and files (`spec-core-001.md`) encoded sequence numbers in filenames. Inserting or reordering features broke cross-document links and git history.
 5. **Redundant Project Naming**: Repositories repeated the project name across every folder and file (e.g. `001-aico-core`, `002-aico-specs`), adding unnecessary noise.
 6. **Underdeveloped Feature Overview**: While the Epic Hub provided a rich two-column view, the Feature Viewer was a skeletal placeholder lacking EARS requirements inspection, task progress, and seam traceability.
 

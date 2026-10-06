@@ -1,8 +1,8 @@
 ---
-id: SPEC-core-host-runtime
+id: spec-core-host-runtime
 type: spec
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 1
 title: "Host Runtime & Local HTTP/WebSocket Server"
 status: "Completed"

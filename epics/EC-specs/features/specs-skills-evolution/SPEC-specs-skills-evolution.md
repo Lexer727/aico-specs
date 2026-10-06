@@ -1,12 +1,12 @@
 ---
-id: SPEC-specs-skills-evolution
+id: spec-specs-skills-evolution
 type: spec
 aico_version: "0.1.2"
-epic: "EC-specs"
+epic: "ec-specs"
 order: 2
 title: "AICO Skills Suite Evolution & MCP Gate Hardening"
 status: Completed
-derives_from: ["ADR-0009", "SPEC-SPECS-001"]
+derives_from: ["ADR-0009", "spec-specs-001"]
 created_at: "2026-10-06T01:44:00Z"
 ---
 
@@ -51,7 +51,7 @@ This specification details the updates required across the `aico-skills` plugin 
 1. **MCP Gate Test (`crates/aico-mcp/tests/mcp_gate_test.rs`)**:
    - Verifies `ArtifactToolGate` writes `0.1.1` frontmatter.
 2. **Skill Template Integrity**:
-   - Inspection of `SPEC-TEMPLATE.md` and `PLAN-TEMPLATE.md`.
+   - Inspection of `spec-template.md` and `plan-template.md`.
 
 ---
 

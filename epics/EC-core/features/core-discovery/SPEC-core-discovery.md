@@ -1,8 +1,8 @@
 ---
-id: SPEC-core-discovery
+id: spec-core-discovery
 type: spec
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 4
 title: "Project Discovery, Manifest Management & Workspace Pairing"
 status: "Completed"

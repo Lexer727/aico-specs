@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-epic-hub
+id: plan-core-epic-hub
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 7
 title: "Epic Hub, Visual Lineage Canvas & Asset Drop Zones"
 status: "Completed"
-derives_from: ["SPEC-core-epic-hub"]
+derives_from: ["spec-core-epic-hub"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

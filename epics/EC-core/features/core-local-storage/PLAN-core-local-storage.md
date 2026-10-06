@@ -1,12 +1,12 @@
 ---
-id: PLAN-core-local-storage
+id: plan-core-local-storage
 type: plan
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 3
 title: "Dual Embedded Storage & AST Ingestion Pipeline"
 status: Completed
-derives_from: ["SPEC-core-local-storage"]
+derives_from: ["spec-core-local-storage"]
 created_at: "2026-10-05T20:00:00Z"
 ---
 

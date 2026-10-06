@@ -1,8 +1,8 @@
 ---
-id: SPEC-core-local-storage
+id: spec-core-local-storage
 type: spec
 aico_version: "0.1.2"
-epic: "EC-core"
+epic: "ec-core"
 order: 3
 title: "Dual Embedded Storage & AST Ingestion Pipeline"
 status: "Completed"

@@ -1,12 +1,12 @@
 ---
-id: PLAN-specs-blueprint-standards
+id: plan-specs-blueprint-standards
 type: plan
 aico_version: "0.1.2"
-epic: "EC-specs"
+epic: "ec-specs"
 order: 1
 title: "SDD Blueprint Standards, Relative Linking & Task Lifecycle"
 status: Completed
-derives_from: ["SPEC-specs-blueprint-standards"]
+derives_from: ["spec-specs-blueprint-standards"]
 created_at: "2026-10-06T01:43:00Z"
 ---
 
