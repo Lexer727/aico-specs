@@ -38,7 +38,7 @@ TASK-FAST-TRACE-001 (Scanner Engine & Seams)
 
 ### Phase 1: Source Scanner & Seam Scaffolding
 
-- **TASK-FAST-TRACE-001**: Single-Pass Source Comment Annotation Scanner
+  - **TASK-FAST-TRACE-001**: Single-Pass Source Comment Annotation Scanner
   - **Status**: Done
   - **Addresses**: `REQ-001`
   - **Blocked by**: None (Can start immediately)
@@ -46,10 +46,6 @@ TASK-FAST-TRACE-001 (Scanner Engine & Seams)
     - Creates `crates/aico-core/src/trace.rs` with `TraceabilityScanner` struct.
     - Implements regex and Tree-sitter parsers extracting `@implements` and `@verifies` annotations with line numbers.
     - Exposes public trait seam `scan_workspace_annotations(root_path: &Path) -> Vec<SourceAnnotation>`.
-  - **Execution Waves**:
-    - **Wave 1 (Scaffolding)**: Scaffold public trait interfaces and failing red integration tests.
-    - **Wave 2 (Implementation)**: Minimal regex and Tree-sitter comment scanner turning tests green.
-    - **Wave 3 (Verification)**: Benchmark scan latency across large repositories (< 15ms target).
   - **Verification Seam**: `crates/aico-core/tests/trace_test.rs::test_scan_workspace_annotations`
 
 ---
@@ -64,10 +60,6 @@ TASK-FAST-TRACE-001 (Scanner Engine & Seams)
     - Implements specification parser indexing all declared requirement IDs (`spec-core-*::req-*`).
     - Compares scanned source annotations against indexed specification requirements.
     - Detects valid, active, and satisfied requirement bindings.
-  - **Execution Waves**:
-    - **Wave 1 (Scaffolding)**: Red test cases for matching valid spec requirements.
-    - **Wave 2 (Implementation)**: Inverted catalog index and cross-reference validation logic.
-    - **Wave 3 (Verification)**: Test case-insensitive requirement ID matching.
   - **Verification Seam**: `crates/aico-core/tests/trace_test.rs::test_validate_requirement_references`
 
 ---
@@ -82,10 +74,6 @@ TASK-FAST-TRACE-001 (Scanner Engine & Seams)
     - Generates structured compiler-style diagnostic warnings for missing, typoed, or orphan requirement IDs.
     - Formats output with exact file path, line number, column, and recommended suggestion.
     - Integrates diagnostic reporting with CLI and server WebSocket event streams.
-  - **Execution Waves**:
-    - **Wave 1 (Scaffolding)**: Red unit tests asserting diagnostic output format for broken references.
-    - **Wave 2 (Implementation)**: Diagnostic reporter with Levenshtein fuzzy suggestion matchers.
-    - **Wave 3 (Verification)**: End-to-end regression tests verifying zero false positives on clean repositories.
   - **Verification Seam**: `crates/aico-core/tests/trace_test.rs::test_broken_annotation_diagnostics`
 
 ---
