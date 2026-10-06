@@ -5,7 +5,7 @@ aico_version: "0.1.2"
 epic: "ec-specs"
 order: 3
 title: "AICO Specification Migration Skill & 0.1.1 Repository Upgrade"
-status: Completed
+status: "Completed"
 derives_from: ["ADR-0009", "spec-specs-001", "spec-specs-002"]
 created_at: "2026-10-06T01:45:00Z"
 ---

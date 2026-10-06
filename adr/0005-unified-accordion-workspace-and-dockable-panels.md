@@ -3,7 +3,7 @@ id: adr-0005
 type: adr
 aico_version: "0.1.2"
 title: "Unified Accordion Workspace & Dockable Panel Layout"
-status: Completed
+status: "Completed"
 derives_from: []
 created_at: "2026-10-05T17:00:00Z"
 ---

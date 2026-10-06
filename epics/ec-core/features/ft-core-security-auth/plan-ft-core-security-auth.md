@@ -5,7 +5,7 @@ aico_version: "0.1.2"
 epic: "ec-core"
 order: 2
 title: "Security, Auto-Mode & Execution Engine"
-status: Completed
+status: "Completed"
 derives_from: ["spec-ft-core-security-auth"]
 created_at: "2026-10-05T20:00:00Z"
 ---

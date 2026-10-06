@@ -3,7 +3,7 @@ id: adr-0006
 type: adr
 aico_version: "0.1.2"
 title: "Packaging, Dedicated Project Specs & Version Tagging"
-status: Completed
+status: "Completed"
 derives_from: []
 created_at: "2026-10-05T17:00:00Z"
 ---

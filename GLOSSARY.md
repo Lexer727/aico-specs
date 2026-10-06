@@ -3,7 +3,7 @@ id: glossary-aico
 type: glossary
 aico_version: "0.1.2"
 title: "AICO Ubiquitous Domain Glossary"
-status: Completed
+status: "Completed"
 derives_from: []
 created_at: "2026-10-05T15:00:00Z"
 ---

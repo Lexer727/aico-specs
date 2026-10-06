@@ -5,7 +5,7 @@ aico_version: "0.1.2"
 epic: null
 order: 1
 title: "Fast Traceability Validator Implementation Plan"
-status: Completed
+status: "Completed"
 derives_from: ["spec-ft-fast-trace"]
 created_at: "2026-10-06T15:30:00Z"
 ---

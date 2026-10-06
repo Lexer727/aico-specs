@@ -5,7 +5,7 @@ aico_version: "0.1.2"
 epic: "ec-core"
 order: 4
 title: "Project Discovery & Workspace Manifests"
-status: Completed
+status: "Completed"
 derives_from: ["spec-ft-core-discovery"]
 created_at: "2026-10-05T20:00:00Z"
 ---

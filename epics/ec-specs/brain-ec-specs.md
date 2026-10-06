@@ -4,7 +4,7 @@ type: brainstorm
 aico_version: "0.1.2"
 epic: "ec-specs"
 title: "AICO Specification & Plan Blueprints Evolution"
-status: Completed
+status: "Completed"
 derives_from: ["ADR-0009"]
 created_at: "2026-10-06T01:42:00Z"
 ---

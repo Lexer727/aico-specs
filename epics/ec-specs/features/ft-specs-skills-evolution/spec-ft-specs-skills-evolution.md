@@ -5,7 +5,7 @@ aico_version: "0.1.2"
 epic: "ec-specs"
 order: 2
 title: "AICO Skills Suite Evolution & MCP Gate Hardening"
-status: Completed
+status: "Completed"
 derives_from: ["ADR-0009", "spec-specs-001"]
 created_at: "2026-10-06T01:44:00Z"
 ---

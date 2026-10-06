@@ -3,7 +3,7 @@ id: adr-0009
 type: adr
 aico_version: "0.1.2"
 title: "SDD Artifact Schema, Relative Links, and Task Lifecycle Management"
-status: Completed
+status: "Completed"
 derives_from: []
 created_at: "2026-10-06T01:40:00Z"
 ---

@@ -3,7 +3,7 @@ id: adr-0010
 type: adr
 aico_version: "0.1.2"
 title: "SDD Structural Grammar v0.1.2: Standalone Features, EC- Prefixes, Wave-Internal Tasks, and Frontmatter Ordering"
-status: Completed
+status: "Completed"
 derives_from: ["ADR-0009"]
 created_at: "2026-10-06T15:10:00Z"
 ---
