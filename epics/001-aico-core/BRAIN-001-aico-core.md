@@ -4,7 +4,7 @@ type: brainstorm
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "AICO Core Architecture & Local-First Platform"
-status: Completed
+status: "In Progress"
 derives_from: ["ADR-0001", "ADR-0002", "ADR-0003", "ADR-0004", "ADR-0005", "ADR-0006", "ADR-0007", "ADR-0008"]
 created_at: "2026-10-05T16:00:00Z"
 ---
@@ -71,7 +71,10 @@ The `001-aico-core` epic decomposes into 7 specifications:
 
 ---
 
-## 4. Next Steps
-1. Task graph planning via `/aico-planning` to decompose specifications into vertical tracer bullets (`PLAN-*.md`).
-2. Scaffold failing behavioral/contract tests (`/aico-test-scaffolding`).
-3. Implementation phase (`/aico-implementation`) advancing the unblocked task frontier.
+## 4. Active Remediation Frontier (Amended)
+
+- **2026-10-06T02:20:00Z**: Epic reopened to `In Progress` via `/aico-plan-amendment` to remediate runtime UI and WebSocket defects:
+  1. `TASK-CORE-001-6`: Axum WebSocket Upgrade Route & Connection Handler (`GET /ws`) in `PLAN-CORE-001`.
+  2. `TASK-CORE-006-6`: Tailwind CSS Integration & Layout Theme Restoration in `PLAN-CORE-006`.
+  3. `TASK-CORE-006-7`: Dynamic Project Discovery & Active Workspace Binding in `PLAN-CORE-006`.
+

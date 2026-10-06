@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "WebUI Application Shell, Navigation & Dockable Layout"
-status: Completed
+status: "In Progress"
 derives_from: ["SPEC-CORE-006"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -102,6 +102,38 @@ created_at: "2026-10-05T20:00:00Z"
 
 ---
 
-## 3. Initial Active Frontier
+### Phase 6: UI Styling Restoration & Live Workspace Binding (Amended Frontier)
 
-- `TASK-CORE-006-1`: App Shell Container & Full-Height Accordion Sidebar (Ready for `/aico-test-scaffolding`).
+- **TASK-CORE-006-6**: Tailwind CSS Integration & Layout Theme Restoration
+  - **Status**: Pending
+  - **Addresses**: `REQ-001`, `REQ-015`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Installs `@tailwindcss/vite` and `tailwindcss` in `frontend/package.json`.
+    - Configures Tailwind Vite plugin in `frontend/vite.config.ts`.
+    - Replaces Vite template styling in `frontend/src/index.css` with `@import "tailwindcss";` and defines dark theme root styling.
+    - Rebuilds frontend bundle (`npm run build`) and verifies compiled CSS bundles all utility classes (`bg-zinc-900`, `flex`, `border-zinc-800`, etc.).
+  - **Verification Seam**: `frontend/tests/ShellLayout.test.tsx`
+
+- **TASK-CORE-006-7**: Dynamic Project Discovery & Active Workspace Binding
+  - **Status**: Pending
+  - **Addresses**: `REQ-003`, `REQ-005`
+  - **Blocked by**: `TASK-CORE-006-6`
+  - **What it delivers**:
+    - Replaces static `mockProjects` in `App.tsx` and `ProjectSwitcher.tsx` with dynamic fetching from `GET /api/v1/projects`.
+    - Hooks project dropdown selection to `POST /api/v1/projects/active`.
+    - Updates active workspace tabs and state upon receiving `active_project_changed` WebSocket events.
+  - **Verification Seam**: `frontend/tests/ProjectSwitcher.test.tsx`
+
+---
+
+## 3. Active Frontier
+
+- `TASK-CORE-006-6`: Tailwind CSS Integration & Layout Theme Restoration (Unblocked, ready for implementation).
+
+---
+
+## 4. Amendment Log
+
+- **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-6` and `TASK-CORE-006-7` after browser inspection identified that Tailwind CSS utility styles were missing from the production build, leaving the UI unstyled in default Vite placeholder CSS.
+

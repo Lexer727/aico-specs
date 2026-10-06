@@ -4,7 +4,7 @@ type: plan
 aico_version: "0.1.1"
 epic: "001-aico-core"
 title: "Host Runtime & Local Axum Server"
-status: Completed
+status: "In Progress"
 derives_from: ["SPEC-CORE-001"]
 created_at: "2026-10-05T20:00:00Z"
 ---
@@ -102,6 +102,29 @@ created_at: "2026-10-05T20:00:00Z"
 
 ---
 
-## 3. Initial Active Frontier
+### Phase 6: Live WebSocket Route & Client Streaming (Amended Frontier)
 
-- `TASK-CORE-001-1`: Axum Server Scaffolding & Dynamic Port Binding (Ready for `/aico-test-scaffolding`).
+- **TASK-CORE-001-6**: Axum WebSocket Upgrade Route & Connection Handler (`GET /ws`)
+  - **Status**: Pending
+  - **Addresses**: `REQ-003`, `REQ-007`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Implements `ws_handler` in `crates/aico-server/src/server.rs` using `axum::extract::ws::{WebSocketUpgrade, WebSocket}`.
+    - Mounts `.route("/ws", get(ws_handler))` in `HostServer::build_router()`.
+    - Forwards broadcast events from `state.ws_hub.subscribe()` to each connected WebSocket client.
+    - Handles incoming client frames and gracefully drops disconnected client receivers.
+    - Adds real async WebSocket client integration test in `crates/aico-server/tests/ws_test.rs`.
+  - **Verification Seam**: `crates/aico-server/tests/ws_test.rs::test_real_websocket_handshake_and_stream`
+
+---
+
+## 3. Active Frontier
+
+- `TASK-CORE-001-6`: Axum WebSocket Upgrade Route & Connection Handler (`GET /ws`) (Unblocked, ready for implementation).
+
+---
+
+## 4. Amendment Log
+
+- **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-001-6` after browser verification revealed that the `/ws` endpoint was not mounted in Axum's `build_router()`, causing WebSocket connection rejection.
+
