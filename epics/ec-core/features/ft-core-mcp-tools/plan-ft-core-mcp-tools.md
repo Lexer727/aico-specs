@@ -84,9 +84,3 @@ created_at: "2026-10-05T20:00:00Z"
     - Implements `verify_task` gate checking that red behavioral tests were executed and passed before marking an implementation task complete.
     - Exposes graph query checking for dangling requirements (uncovered by tests or unaddressed by tasks).
   - **Verification Seam**: `tests/mcp_verification_test.rs::test_traceability_and_test_before_code_gate`
-
----
-
-## 3. Initial Active Frontier
-
-- `TASK-CORE-005-1`: Source Code Annotation Scanner & EARS Validator (Ready for `/aico-test-scaffolding`).

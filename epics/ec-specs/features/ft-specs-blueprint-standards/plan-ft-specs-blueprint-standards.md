@@ -47,9 +47,3 @@ created_at: "2026-10-06T01:43:00Z"
   - **What it delivers**:
     - Defines task statuses: `Pending`, `In Progress`, `Done`, `Blocked`, `Skipped/Canceled`, `Rewritten`.
     - Enforces mandatory `Reason` and `Rewrite Target` fields for canceled or rewritten tasks.
-
----
-
-## 3. Initial Active Frontier
-
-- None remaining (All tasks completed and verified).

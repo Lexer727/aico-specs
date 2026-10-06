@@ -172,25 +172,9 @@ created_at: "2026-10-05T20:00:00Z"
 
 ---
 
-## 3. Active Frontier
-
-None (All tasks in PLAN-CORE-006 completed).
-
----
-
-## 4. Amendment Log
+## 3. Amendment Log
 
 - **2026-10-06T03:30:00Z**: Appended `TASK-CORE-006-11` via `/aico-plan-amendment` for tree-integrated search filtering, 5 scope checkboxes (adding Features), removing top-bar search button, and enabling middle-click tab closure.
-- `TASK-CORE-006-9`: Multi-Tab Terminal System with Dynamic Terminal Creation
-- `TASK-CORE-006-10`: Sidebar Settings Modal & Configuration View
-
----
-
-## 4. Amendment Log
-
-- **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-6` and `TASK-CORE-006-7` after browser inspection identified that Tailwind CSS utility styles were missing from the production build, leaving the UI unstyled in default Vite placeholder CSS.
+- **2026-10-06T02:50:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-8`, `TASK-CORE-006-9` (Multi-Tab Terminal System with Dynamic Terminal Creation), and `TASK-CORE-006-10` (Sidebar Settings Modal & Configuration View) to address user feedback: missing sidebar stats, inline search with persistent checkboxes, terminal renaming and multi-tab creation, and bottom-left settings.
 - **2026-10-06T02:27:00Z**: Implemented Tailwind CSS integration (30.58 KB compiled stylesheet) and dynamic project discovery sync. Verified clean with 15/15 passing Vitest tests. Plan status transitioned to `Completed`.
-- **2026-10-06T02:50:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-8`, `TASK-CORE-006-9`, and `TASK-CORE-006-10` to address user feedback: missing sidebar stats, inline search with persistent checkboxes, terminal renaming and multi-tab creation, and bottom-left settings.
-
-
-
+- **2026-10-06T02:20:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-006-6` and `TASK-CORE-006-7` after browser inspection identified that Tailwind CSS utility styles were missing from the production build, leaving the UI unstyled in default Vite placeholder CSS.

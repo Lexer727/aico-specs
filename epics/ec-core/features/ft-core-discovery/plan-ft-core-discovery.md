@@ -86,9 +86,3 @@ created_at: "2026-10-05T20:00:00Z"
     - Flags project state as `CodebaseMissing`.
     - Exposes API and WebSocket command to trigger git clone from remote URL or initialize an empty git repo.
   - **Verification Seam**: `tests/project_missing_test.rs::test_missing_codebase_handling`
-
----
-
-## 3. Active Frontier
-
-- None remaining (All tasks completed and verified green).

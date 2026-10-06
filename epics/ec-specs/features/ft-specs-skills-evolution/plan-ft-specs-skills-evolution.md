@@ -56,9 +56,3 @@ created_at: "2026-10-06T01:44:00Z"
   - **What it delivers**:
     - Set `aico_version: "0.1.1"` in `ArtifactToolGate::create_artifact`.
     - Verify with `cargo test -p aico-mcp`.
-
----
-
-## 3. Initial Active Frontier
-
-- None remaining (All tasks completed and verified).

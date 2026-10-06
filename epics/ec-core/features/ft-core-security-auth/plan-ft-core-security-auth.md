@@ -99,9 +99,3 @@ created_at: "2026-10-05T20:00:00Z"
     - Exposes `POST /api/v1/emergency-kill` and `/ws` emergency interrupt command.
     - Terminates all active child processes within 200ms, transitions running agent tasks to `cancelled`, and logs an incident event.
   - **Verification Seam**: `tests/security_killswitch_test.rs::test_emergency_kill_switch`
-
----
-
-## 3. Initial Active Frontier
-
-- `TASK-CORE-002-1`: 3-Tier Command Policy Classifier & Path Sandboxing (Ready for `/aico-test-scaffolding`).

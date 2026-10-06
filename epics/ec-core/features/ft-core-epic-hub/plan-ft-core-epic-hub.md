@@ -105,7 +105,7 @@ created_at: "2026-10-05T20:00:00Z"
 ### Phase 6: Multi-Epic Discovery, Home Dashboard & Tab Content Rendering (Amended Frontier)
 
 - **TASK-CORE-007-6**: Dynamic Multi-Epic Discovery (`001-aico-core` & `002-aico-specs`) via Server API
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-002`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -171,15 +171,6 @@ created_at: "2026-10-05T20:00:00Z"
     - Fixes YAML frontmatter parser in `server.rs` to stop at the terminating `---`, preventing body markdown examples from overwriting status (resolving the `<Draft|Pending|In Progress|Completed>` issue for `002-aico-specs`).
   - **Verification Seam**: `crates/aico-server/tests/project_api_test.rs`, `frontend/tests/FeatureViewer.test.tsx`
 
----
-
-## 3. Active Frontier
-
-None (All tasks in PLAN-CORE-007 completed).
-
----
-
-## 4. Amendment Log
+## 3. Amendment Log
 
 - **2026-10-06T03:35:00Z**: Appended `TASK-CORE-007-10`, `TASK-CORE-007-11`, and `TASK-CORE-007-12` via `/aico-plan-amendment` for spatial 2-column layout in EpicHubView, visual wave task plan with overall and per-wave progress bars, feature bundle navigation, and frontmatter parsing lockdown.
-

@@ -111,9 +111,3 @@ created_at: "2026-10-05T20:00:00Z"
     - Combines top-K vector matches from LanceDB with graph neighborhood traversal (callers, callees, specs) from Kùzu.
     - Returns ranked, deduplicated context packets for agent prompt injection.
   - **Verification Seam**: `tests/storage_hybrid_test.rs::test_hybrid_vector_and_graph_query`
-
----
-
-## 3. Initial Active Frontier
-
-- `TASK-CORE-003-1`: Embedded LanceDB & Kùzu In-Process Connection Managers (Ready for `/aico-test-scaffolding`).

@@ -75,9 +75,3 @@ TASK-FAST-TRACE-001 (Scanner Engine & Seams)
     - Formats output with exact file path, line number, column, and recommended suggestion.
     - Integrates diagnostic reporting with CLI and server WebSocket event streams.
   - **Verification Seam**: `crates/aico-core/tests/trace_test.rs::test_broken_annotation_diagnostics`
-
----
-
-## 3. Active Frontier
-
-- None remaining (All tasks completed and verified green).

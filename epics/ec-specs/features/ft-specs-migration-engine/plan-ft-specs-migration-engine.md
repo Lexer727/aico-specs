@@ -75,9 +75,3 @@ created_at: "2026-10-06T01:45:00Z"
     - Removes duplicated body header fields.
     - Upgrades all tasks from `- [x]` to structured `- **Status**: Done` fields.
     - Replaces all `file:///` URLs with relative markdown links.
-
----
-
-## 3. Initial Active Frontier
-
-- None remaining (All tasks completed and verified).
