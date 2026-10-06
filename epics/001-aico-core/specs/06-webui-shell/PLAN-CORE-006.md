@@ -150,7 +150,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/TerminalPanel.test.tsx`
 
 - **TASK-CORE-006-10**: Sidebar Settings Modal & Configuration View
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-015`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -158,11 +158,28 @@ created_at: "2026-10-05T20:00:00Z"
     - Displays modal showing active host server configuration, pairing token QR, and environment version details.
   - **Verification Seam**: `frontend/tests/SettingsModal.test.tsx`
 
+- **TASK-CORE-006-11**: Tree-Integrated Search, 5-Scope Filter Checkboxes & Middle-Click Tab Close
+  - **Status**: In Progress
+  - **Addresses**: `REQ-002`, `REQ-007`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Replaces flat search results with in-tree filtering: keeps the accordion tree structure and filters child nodes in-place under visible sections.
+    - Hides/shows entire accordion tree sections based on 5 filter checkboxes (`Epics`, `Features`, `Specs`, `Code`, `ADRs`).
+    - Removes redundant top bar search button.
+    - Implements middle mouse click on open tabs to close them (protecting Dashboard tab from closure).
+  - **Verification Seam**: `frontend/tests/ShellLayout.test.tsx`, `frontend/tests/TabBar.test.tsx`
+
 ---
 
 ## 3. Active Frontier
 
-- `TASK-CORE-006-8`: Sidebar Integrated Search, Persistent Checkbox Scopes & Activity Monitor
+- `TASK-CORE-006-11`: Tree-Integrated Search, 5-Scope Filter Checkboxes & Middle-Click Tab Close
+
+---
+
+## 4. Amendment Log
+
+- **2026-10-06T03:30:00Z**: Appended `TASK-CORE-006-11` via `/aico-plan-amendment` for tree-integrated search filtering, 5 scope checkboxes (adding Features), removing top-bar search button, and enabling middle-click tab closure.
 - `TASK-CORE-006-9`: Multi-Tab Terminal System with Dynamic Terminal Creation
 - `TASK-CORE-006-10`: Sidebar Settings Modal & Configuration View
 

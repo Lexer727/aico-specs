@@ -131,25 +131,56 @@ created_at: "2026-10-05T20:00:00Z"
   - **Verification Seam**: `frontend/tests/TabContentRenderer.test.tsx`
 
 - **TASK-CORE-007-9**: Epic Hub Accordion Content Expansion (Collapsed 1-line vs Expanded Rich Content)
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-003`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
     - Updates `EpicHubView` accordions: when collapsed, displays concise 1-line description; when expanded, renders the actual rich content (full narrative overview, architectural decisions table, clickable specifications matrix, test seam list, task DAG, asset drop zone).
   - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
 
+- **TASK-CORE-007-10**: 2-Column Epic Hub Layout & Spatial Optimization
+  - **Status**: In Progress
+  - **Addresses**: `REQ-001`, `REQ-002`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Restructures `EpicHubView` into an optimized layout:
+      - Top: Overview section, open by default, displaying summary, domain terms, and openable Features bundle list.
+      - 2-Column Body:
+        - Left column: Collapsible accordions for Brainstorm, Specs, Deep Dive, and Assets (all closed by default). Assets includes the file drop zone inside when expanded.
+        - Right column: Task Plan alone on the right, open by default.
+      - Bottom: Interactive Lineage Graph canvas.
+  - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
+
+- **TASK-CORE-007-11**: Visual Wave Task Plan with Overall & Per-Wave Progress Tracking
+  - **Status**: In Progress
+  - **Addresses**: `REQ-003`, `REQ-005`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Renders all tasks in exact chronological order grouped into visually distinct waves (e.g. Wave 1 Host Runtime, Wave 2 LAN Security, etc.).
+    - Adds an overall progress track bar for the whole Task Plan and dedicated progress track bars for each individual wave.
+  - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
+
+- **TASK-CORE-007-12**: Feature Bundle View & SDD Frontmatter Parser Fix
+  - **Status**: In Progress
+  - **Addresses**: `REQ-001`, `REQ-004`
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Adds `FeatureViewer` component for feature bundles (e.g. `01-host-runtime`) holding both its `SPEC` and `PLAN`.
+    - Enables opening features from sidebar tree, search results, and epic overview.
+    - Fixes YAML frontmatter parser in `server.rs` to stop at the terminating `---`, preventing body markdown examples from overwriting status (resolving the `<Draft|Pending|In Progress|Completed>` issue for `002-aico-specs`).
+  - **Verification Seam**: `crates/aico-server/tests/project_api_test.rs`, `frontend/tests/FeatureViewer.test.tsx`
+
 ---
 
 ## 3. Active Frontier
 
-- `TASK-CORE-007-6`: Dynamic Multi-Epic Discovery (`001-aico-core` & `002-aico-specs`) via Server API
-- `TASK-CORE-007-7`: Workspace Home / Dashboard View with Epic Progress & Active Frontier
-- `TASK-CORE-007-8`: Active Tab Content Renderer (Spec Viewer, Code Viewer, ADR Viewer, Epic Details)
-- `TASK-CORE-007-9`: Epic Hub Accordion Content Expansion (Collapsed 1-line vs Expanded Rich Content)
+- `TASK-CORE-007-10`: 2-Column Epic Hub Layout & Spatial Optimization
+- `TASK-CORE-007-11`: Visual Wave Task Plan with Overall & Per-Wave Progress Tracking
+- `TASK-CORE-007-12`: Feature Bundle View & SDD Frontmatter Parser Fix
 
 ---
 
 ## 4. Amendment Log
 
-- **2026-10-06T02:50:00Z**: Reopened plan to `In Progress` via `/aico-plan-amendment`. Added `TASK-CORE-007-6` through `TASK-CORE-007-9` to resolve user feedback: dynamic discovery of `002-aico-specs`, dedicated workspace Home/Dashboard, tab content rendering when opening items, and rich accordion content expansion in Epic Hub.
+- **2026-10-06T03:35:00Z**: Appended `TASK-CORE-007-10`, `TASK-CORE-007-11`, and `TASK-CORE-007-12` via `/aico-plan-amendment` for spatial 2-column layout in EpicHubView, visual wave task plan with overall and per-wave progress bars, feature bundle navigation, and frontmatter parsing lockdown.
 
