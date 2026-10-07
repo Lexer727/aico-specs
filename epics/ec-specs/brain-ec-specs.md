@@ -72,11 +72,13 @@ A new skill, `aico-spec-migration`, systematically audits and updates existing a
 
 ## 3. Epic Decomposition (Composite Multi-Spec Structure)
 
-This epic decomposes into 3 child specifications:
+This epic decomposes into 4 child specifications:
 
-1. **`01-blueprint-standards`** (`SPEC-SPECS-001`, `PLAN-SPECS-001`):
+1. **`ft-specs-blueprint-standards`** (`spec-ft-specs-blueprint-standards`, `plan-ft-specs-blueprint-standards`):
    - Formal EARS requirements for the universal frontmatter schema, relative links, 4-state artifact lifecycle, and 6-state task tracking.
-2. **`02-skills-evolution`** (`SPEC-SPECS-002`, `PLAN-SPECS-002`):
+2. **`ft-specs-skills-evolution`** (`spec-ft-specs-skills-evolution`, `plan-ft-specs-skills-evolution`):
    - Updates to `aico-skills` (`aico-spec-creation`, `aico-planning`, `aico-epic`, `aico-domain-modeling`, `aico-implementation`) and `aico-mcp` to enforce the new blueprints.
-3. **`03-migration-engine`** (`SPEC-SPECS-003`, `PLAN-SPECS-003`):
-   - Specification and implementation of the `aico-spec-migration` skill, plus migration of all existing `001-aico-core` and ADR artifacts to AICO version `0.1.1`.
+3. **`ft-specs-migration-engine`** (`spec-ft-specs-migration-engine`, `plan-ft-specs-migration-engine`):
+   - Specification and implementation of the `aico-spec-migration` skill, plus migration of all existing `ec-core` and ADR artifacts.
+4. **`ft-specs-skills-versioning-and-naming`** (`spec-ft-specs-skills-versioning-and-naming`, `plan-ft-specs-skills-versioning-and-naming`):
+   - Decoupling of AICO skills versioning (`aico-skills/VERSION`) from the platform version, standardization of artifact terminology to AICO artifacts, dynamic template placeholders (`{aico_skills_version}`), and WebUI Shell Settings alignment.
