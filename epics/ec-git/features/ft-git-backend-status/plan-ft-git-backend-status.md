@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-git"
 order: 1
 title: "Multi-Repo Manifest Discovery & Git Status Inspection Engine Plan"
-status: "Pending"
+status: "Completed"
 repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-git-backend-status"]
 created_at: "2026-10-07T00:30:00Z"
@@ -27,7 +27,7 @@ created_at: "2026-10-07T00:30:00Z"
 ### Phase 1: Core Manifest Extension
 
 - **TASK-GIT-001-1**: Multi-Repo Manifest Parsing in `aico-core`
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001, REQ-002
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -38,7 +38,7 @@ created_at: "2026-10-07T00:30:00Z"
 ### Phase 2: Asynchronous Git Engine
 
 - **TASK-GIT-001-2**: Asynchronous Git Status Inspection Engine in `aico-server`
-  - **Status**: Blocked
+  - **Status**: Done
   - **Addresses**: REQ-003, REQ-004, REQ-006
   - **Blocked by**: TASK-GIT-001-1
   - **What it delivers**:
@@ -50,7 +50,7 @@ created_at: "2026-10-07T00:30:00Z"
 ### Phase 3: REST API Integration
 
 - **TASK-GIT-001-3**: Git Status REST API Endpoint in `aico-server`
-  - **Status**: Blocked
+  - **Status**: Done
   - **Addresses**: REQ-005
   - **Blocked by**: TASK-GIT-001-2
   - **What it delivers**:

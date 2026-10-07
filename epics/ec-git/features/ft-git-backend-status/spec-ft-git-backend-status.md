@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-git"
 order: 1
 title: "Multi-Repo Manifest Discovery & Git Status Inspection Engine"
-status: "Draft"
+status: "Completed"
 derives_from: ["brain-ec-git"]
 created_at: "2026-10-07T00:26:00Z"
 ---
