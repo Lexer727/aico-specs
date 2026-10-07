@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-git"
 order: 2
 title: "Plan Frontmatter Multi-Repo Traceability & Blueprint Standards Plan"
-status: "Pending"
+status: "Completed"
 repositories: ["aico-skills", "aico-specs"]
 derives_from: ["spec-ft-git-skills-traceability"]
 created_at: "2026-10-07T00:33:00Z"
@@ -26,7 +26,7 @@ created_at: "2026-10-07T00:33:00Z"
 ### Phase 1: Planning Skill & Template Updates
 
 - **TASK-GIT-002-1**: Planning Skill Template & Documentation Alignment
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001, REQ-002
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -37,7 +37,7 @@ created_at: "2026-10-07T00:33:00Z"
 ### Phase 2: Verification Engine Linting
 
 - **TASK-GIT-002-2**: Artifact Verification Linter Extension for Repository Declarations
-  - **Status**: Blocked
+  - **Status**: Done
   - **Addresses**: REQ-003, REQ-004
   - **Blocked by**: TASK-GIT-002-1
   - **What it delivers**:
