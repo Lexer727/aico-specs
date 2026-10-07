@@ -4,7 +4,7 @@ type: brainstorm
 aico_skills_version: "0.1.2"
 epic: "ec-git"
 title: "AICO Multi-Repo Git Integration & Workspace Traceability"
-status: "Completed"
+status: "In Progress"
 derives_from: ["ADR-0002", "ADR-0008"]
 created_at: "2026-10-07T00:25:00Z"
 ---
@@ -94,6 +94,7 @@ This epic decomposes into 4 cohesive child features:
 2. **`ft-git-skills-traceability`** (`spec-ft-git-skills-traceability`, `plan-ft-git-skills-traceability`, `order: 2`):
    - Skills harness update: add `repositories: [...]` to `PLAN-TEMPLATE.md` and `aico-planning/SKILL.md`.
    - Dynamic roll-up logic in verification scripts and documentation linters.
+   - Remediation: enforce mandatory `repositories` validation in `verify-artifacts.mjs` and backfill legacy plans.
 
 3. **`ft-git-dashboard-ui`** (`spec-ft-git-dashboard-ui`, `plan-ft-git-dashboard-ui`, `order: 3`):
    - Home Dashboard "Codebase Repositories" telemetry card with branch, ahead/behind pills, and dirty status.
@@ -113,3 +114,4 @@ This epic decomposes into 4 cohesive child features:
 - [x] Home Dashboard dynamically displays real-time Git status for `aico`, `aico-specs`, and `aico-skills`.
 - [x] Child plans declare `repositories: [...]` matching project manifest IDs.
 - [x] Relative repository paths configured in `.aico-project.json` and verified with tests.
+- [ ] Mandatory plan repositories verification enforced in `verify-artifacts.mjs` and legacy plans backfilled across `ec-specs` and `ec-core`.
