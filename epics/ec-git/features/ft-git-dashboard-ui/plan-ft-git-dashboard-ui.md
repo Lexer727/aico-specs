@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-git"
 order: 3
 title: "Dashboard Git Repository Status & Workspace Traceability UI Plan"
-status: "Pending"
+status: "Completed"
 repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-git-dashboard-ui"]
 created_at: "2026-10-07T00:36:00Z"
@@ -29,7 +29,7 @@ created_at: "2026-10-07T00:36:00Z"
 ### Phase 1: Dashboard Git Telemetry
 
 - **TASK-GIT-003-1**: Home Dashboard Repositories Telemetry Card
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001, REQ-002, REQ-005
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -39,8 +39,8 @@ created_at: "2026-10-07T00:36:00Z"
 
 ### Phase 2: Epic & Feature Dynamic Roll-up
 
-- **TASK-GIT-003-2`: Dynamic Epic & Feature Workspace Repository Badges
-  - **Status**: Blocked
+- **TASK-GIT-003-2**: Dynamic Epic & Feature Workspace Repository Badges
+  - **Status**: Done
   - **Addresses**: REQ-003, REQ-004
   - **Blocked by**: TASK-GIT-003-1
   - **What it delivers**:

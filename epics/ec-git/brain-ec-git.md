@@ -4,7 +4,7 @@ type: brainstorm
 aico_skills_version: "0.1.2"
 epic: "ec-git"
 title: "AICO Multi-Repo Git Integration & Workspace Traceability"
-status: "In Progress"
+status: "Completed"
 derives_from: ["ADR-0002", "ADR-0008"]
 created_at: "2026-10-07T00:25:00Z"
 ---
@@ -104,8 +104,8 @@ This epic decomposes into 3 cohesive child features:
 
 ## 4. Milestone Convergence Criteria
 
-- [ ] All 3 child features specified and planned with vertical tracer-bullet DAGs.
-- [ ] Passing unit and integration tests across Rust backend and React frontend.
-- [ ] Home Dashboard dynamically displays real-time Git status for `aico`, `aico-specs`, and `aico-skills`.
-- [ ] Child plans declare `repositories: [...]` matching project manifest IDs.
-- [ ] Epic status transitions to `Completed` when all child feature DAGs are green.
+- [x] All 3 child features specified and planned with vertical tracer-bullet DAGs.
+- [x] Passing unit and integration tests across Rust backend and React frontend.
+- [x] Home Dashboard dynamically displays real-time Git status for `aico`, `aico-specs`, and `aico-skills`.
+- [x] Child plans declare `repositories: [...]` matching project manifest IDs.
+- [x] Epic status transitions to `Completed` when all child feature DAGs are green.
