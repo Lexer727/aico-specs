@@ -84,7 +84,7 @@ Extend the project manifest while preserving 100% backward compatibility:
 
 ## 3. Epic Decomposition & Child Features
 
-This epic decomposes into 3 cohesive child features:
+This epic decomposes into 4 cohesive child features:
 
 1. **`ft-git-backend-status`** (`spec-ft-git-backend-status`, `plan-ft-git-backend-status`, `order: 1`):
    - Manifest parsing extension for `repositories` in `aico-core`.
@@ -100,12 +100,16 @@ This epic decomposes into 3 cohesive child features:
    - Epic Hub "Relevant Repositories" badge section.
    - Feature Viewer repository target tags.
 
+4. **`ft-git-relative-paths-manifest`** (`spec-ft-git-relative-paths-manifest`, `plan-ft-git-relative-paths-manifest`, `order: 4`):
+   - Relative repository paths in `.aico-project.json` (`../codebase/aico`, `.`, `../codebase/aico-skills`).
+   - Portable workspace resolution and unit tests asserting resolution against specs directory.
+
 ---
 
 ## 4. Milestone Convergence Criteria
 
-- [x] All 3 child features specified and planned with vertical tracer-bullet DAGs.
+- [x] All initial child features specified and planned with vertical tracer-bullet DAGs.
 - [x] Passing unit and integration tests across Rust backend and React frontend.
 - [x] Home Dashboard dynamically displays real-time Git status for `aico`, `aico-specs`, and `aico-skills`.
 - [x] Child plans declare `repositories: [...]` matching project manifest IDs.
-- [x] Epic status transitions to `Completed` when all child feature DAGs are green.
+- [x] Relative repository paths configured in `.aico-project.json` and verified with tests.

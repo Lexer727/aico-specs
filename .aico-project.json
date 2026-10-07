@@ -7,19 +7,19 @@
     {
       "id": "aico",
       "name": "AICO Engine & WebUI",
-      "path": "d:/dev/aico",
+      "path": "../codebase/aico",
       "type": "codebase"
     },
     {
       "id": "aico-specs",
       "name": "AICO Specs",
-      "path": "d:/aico/aico-specs",
+      "path": ".",
       "type": "specs"
     },
     {
       "id": "aico-skills",
       "name": "AICO Skills Suite",
-      "path": "d:/aico/codebase/aico-skills",
+      "path": "../codebase/aico-skills",
       "type": "skills"
     }
   ]

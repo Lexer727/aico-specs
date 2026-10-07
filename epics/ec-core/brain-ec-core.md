@@ -57,7 +57,7 @@ Modern AI-assisted software engineering suffers from:
 
 ## 3. Epic Decomposition (Composite Multi-Spec)
 
-The `001-aico-core` epic decomposes into 7 specifications:
+The `001-aico-core` epic decomposes into 8 specifications:
 
 | Spec ID | Directory | Subsystem Focus |
 |---|---|---|
@@ -68,6 +68,7 @@ The `001-aico-core` epic decomposes into 7 specifications:
 | `SPEC-CORE-005` | `specs/05-mcp-tool-gates` | Deterministic MCP gates, `@verifies`/`@implements` parser |
 | `SPEC-CORE-006` | `specs/06-webui-shell` | Accordion sidebar, bottom/right dock, project tabs |
 | `SPEC-CORE-007` | `specs/07-epic-hub` | Visual lineage canvas, asset drop zones, human gate tasks |
+| `SPEC-CORE-008` | `features/ft-core-repository-badges-alignment` | Feature & Epic header alignment, badge layout, remove jump links |
 
 ---
 
@@ -79,6 +80,4 @@ The `001-aico-core` epic decomposes into 7 specifications:
   3. `TASK-CORE-006-7`: Dynamic Project Discovery & Active Workspace Binding in `PLAN-CORE-006`.
 - **2026-10-06T02:27:00Z**: All amended remediation tasks implemented and verified green against backend unit/integration tests and frontend Vitest suites.
 - **2026-10-06T02:50:00Z**: Epic reopened to `In Progress` via `/aico-plan-amendment` to address UI ergonomics, multi-epic discovery, tab content rendering, sidebar activity stats, persistent search scopes, and multi-tab terminals across `PLAN-CORE-006` and `PLAN-CORE-007`.
-
-
-
+- **2026-10-07T01:10:00Z**: Decomposed and added `ft-core-repository-badges-alignment` (`spec-ft-core-repository-badges-alignment`, `plan-ft-core-repository-badges-alignment`, `order: 8`) to align repository headers symmetrically across Feature Viewer and Epic Hub.
