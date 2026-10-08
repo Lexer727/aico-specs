@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 8
 title: "Feature and Epic Repository Header Alignment & Badge Layout Plan"
-status: "In Progress"
+status: "Completed"
 repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-core-repository-badges-alignment"]
 created_at: "2026-10-07T01:08:00Z"
@@ -53,7 +53,7 @@ created_at: "2026-10-07T01:08:00Z"
 ### Phase 3: State Persistence & Re-render Synchronization
 
 - **TASK-CORE-008-3**: Fix FeatureViewer Repositories Prop Binding and State Synchronization
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-005
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:

@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 8
 title: "Feature and Epic Repository Header Alignment & Badge Layout"
-status: "In Progress"
+status: "Completed"
 derives_from: ["brain-ec-core"]
 created_at: "2026-10-07T01:07:00Z"
 ---

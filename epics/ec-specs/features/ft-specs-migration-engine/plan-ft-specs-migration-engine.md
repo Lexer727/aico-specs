@@ -6,6 +6,7 @@ epic: "ec-specs"
 order: 3
 title: "AICO Specification Migration Skill & 0.1.1 Repository Upgrade"
 status: "Completed"
+repositories: ["aico-specs", "aico-skills"]
 derives_from: ["spec-ft-specs-migration-engine"]
 created_at: "2026-10-06T01:45:00Z"
 ---

@@ -4,7 +4,7 @@ type: brainstorm
 aico_skills_version: "0.1.2"
 epic: "ec-git"
 title: "AICO Multi-Repo Git Integration & Workspace Traceability"
-status: "In Progress"
+status: "Completed"
 derives_from: ["ADR-0002", "ADR-0008"]
 created_at: "2026-10-07T00:25:00Z"
 ---
@@ -114,4 +114,4 @@ This epic decomposes into 4 cohesive child features:
 - [x] Home Dashboard dynamically displays real-time Git status for `aico`, `aico-specs`, and `aico-skills`.
 - [x] Child plans declare `repositories: [...]` matching project manifest IDs.
 - [x] Relative repository paths configured in `.aico-project.json` and verified with tests.
-- [ ] Mandatory plan repositories verification enforced in `verify-artifacts.mjs` and legacy plans backfilled across `ec-specs` and `ec-core`.
+- [x] Mandatory plan repositories verification enforced in `verify-artifacts.mjs` and legacy plans backfilled across `ec-specs` and `ec-core`.

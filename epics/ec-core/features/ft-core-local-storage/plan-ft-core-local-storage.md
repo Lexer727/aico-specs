@@ -6,6 +6,7 @@ epic: "ec-core"
 order: 3
 title: "Dual Embedded Storage & AST Ingestion Pipeline"
 status: "Completed"
+repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-core-local-storage"]
 created_at: "2026-10-05T20:00:00Z"
 ---

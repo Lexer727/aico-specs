@@ -6,6 +6,7 @@ epic: "ec-core"
 order: 5
 title: "Deterministic MCP Tool Gates & Code Annotations"
 status: "Completed"
+repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-core-mcp-tools"]
 created_at: "2026-10-05T20:00:00Z"
 ---

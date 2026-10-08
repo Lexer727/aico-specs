@@ -6,6 +6,7 @@ epic: "ec-core"
 order: 6
 title: "WebUI Application Shell, Navigation & Dockable Layout"
 status: "Completed"
+repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-core-webui-shell"]
 created_at: "2026-10-05T20:00:00Z"
 ---

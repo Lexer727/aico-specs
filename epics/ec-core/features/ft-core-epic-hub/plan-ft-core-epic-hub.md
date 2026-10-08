@@ -6,6 +6,7 @@ epic: "ec-core"
 order: 7
 title: "Epic Hub, Visual Lineage Canvas & Asset Drop Zones"
 status: "Completed"
+repositories: ["aico", "aico-specs"]
 derives_from: ["spec-ft-core-epic-hub"]
 created_at: "2026-10-05T20:00:00Z"
 ---

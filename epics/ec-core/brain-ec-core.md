@@ -4,7 +4,7 @@ type: brainstorm
 aico_skills_version: "0.1.2"
 epic: "ec-core"
 title: "AICO Core Architecture & Local-First Platform"
-status: "In Progress"
+status: "Completed"
 derives_from: ["ADR-0001", "ADR-0002", "ADR-0003", "ADR-0004", "ADR-0005", "ADR-0006", "ADR-0007", "ADR-0008"]
 created_at: "2026-10-05T16:00:00Z"
 ---
@@ -82,3 +82,4 @@ The `001-aico-core` epic decomposes into 8 specifications:
 - **2026-10-06T02:50:00Z**: Epic reopened to `In Progress` via `/aico-plan-amendment` to address UI ergonomics, multi-epic discovery, tab content rendering, sidebar activity stats, persistent search scopes, and multi-tab terminals across `PLAN-CORE-006` and `PLAN-CORE-007`.
 - **2026-10-07T01:10:00Z**: Decomposed and added `ft-core-repository-badges-alignment` (`spec-ft-core-repository-badges-alignment`, `plan-ft-core-repository-badges-alignment`, `order: 8`) to align repository headers symmetrically across Feature Viewer and Epic Hub.
 - **2026-10-07T01:30:00Z**: Epic reopened to `In Progress` via `/aico-plan-amendment` to append `TASK-CORE-008-3` fixing FeatureViewer repository prop binding and state persistence across tab switches, window blurs, and re-renders.
+- **2026-10-09T01:38:00Z**: `TASK-CORE-008-3` implemented and verified green with 53 Vitest suites; FeatureViewer repository synchronization confirmed stable across tab re-renders.

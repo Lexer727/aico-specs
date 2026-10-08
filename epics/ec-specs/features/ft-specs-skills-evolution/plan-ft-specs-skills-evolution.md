@@ -6,6 +6,7 @@ epic: "ec-specs"
 order: 2
 title: "AICO Skills Suite Evolution & MCP Gate Hardening"
 status: "Completed"
+repositories: ["aico-skills", "aico-specs"]
 derives_from: ["spec-ft-specs-skills-evolution"]
 created_at: "2026-10-06T01:44:00Z"
 ---

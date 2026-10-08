@@ -6,6 +6,7 @@ epic: "ec-specs"
 order: 1
 title: "SDD Blueprint Standards, Relative Linking & Task Lifecycle"
 status: "Completed"
+repositories: ["aico-specs", "aico-skills"]
 derives_from: ["spec-ft-specs-blueprint-standards"]
 created_at: "2026-10-06T01:43:00Z"
 ---

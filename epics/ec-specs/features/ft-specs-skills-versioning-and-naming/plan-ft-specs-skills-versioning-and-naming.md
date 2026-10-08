@@ -6,6 +6,7 @@ epic: "ec-specs"
 order: 4
 title: "AICO Skills Version Decoupling & Artifact Terminology Standardization Plan"
 status: "Completed"
+repositories: ["aico-skills", "aico-specs"]
 derives_from: ["spec-ft-specs-skills-versioning-and-naming"]
 created_at: "2026-10-07T00:10:00Z"
 ---

@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-git"
 order: 2
 title: "Plan Frontmatter Multi-Repo Traceability & Blueprint Standards Plan"
-status: "In Progress"
+status: "Completed"
 repositories: ["aico-skills", "aico-specs"]
 derives_from: ["spec-ft-git-skills-traceability"]
 created_at: "2026-10-07T00:33:00Z"
@@ -49,7 +49,7 @@ created_at: "2026-10-07T00:33:00Z"
 ### Phase 3: Verification Enforcement & Legacy Plan Backfill
 
 - **TASK-GIT-002-3**: Enforce Mandatory Plan Repositories Check in Verification Engine
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-003, REQ-005
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -57,7 +57,7 @@ created_at: "2026-10-07T00:33:00Z"
   - **Verification Seam**: `d:/aico/codebase/aico-skills/aico-verify/scripts/verify-artifacts.mjs`
 
 - **TASK-GIT-002-4**: Backfill Repositories Attribute into All Legacy Plans
-  - **Status**: Blocked
+  - **Status**: Done
   - **Addresses**: REQ-006
   - **Blocked by**: TASK-GIT-002-3
   - **What it delivers**:
