@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 10
 title: "WebUI Visual Token Alignment and Shell Consistency Plan"
-status: "Draft"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-core-ui-visual-consistency"]
 created_at: "2026-10-09T19:16:00Z"
@@ -40,7 +40,7 @@ created_at: "2026-10-09T19:16:00Z"
 ### Phase 1: Header Deduplication & Dashboard Layout Stabilization
 
 - **TASK-CORE-010-1**: Deduplicate OmniSearch Trigger in Shell Header
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -50,7 +50,7 @@ created_at: "2026-10-09T19:16:00Z"
   - **Verification Seam**: `frontend/tests/ShellLayoutSearch.test.tsx`
 
 - **TASK-CORE-010-2**: Stabilize Dashboard Project Epics Action Button Layout
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-002
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -62,7 +62,7 @@ created_at: "2026-10-09T19:16:00Z"
 ### Phase 2: Design Token & Semantic Icon Alignment
 
 - **TASK-CORE-010-3**: Unify Feature Design Tokens Across Tree View, Tab Bar, and Epic Hub
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-003
   - **Blocked by**: TASK-CORE-010-1
   - **What it delivers**:
@@ -74,7 +74,7 @@ created_at: "2026-10-09T19:16:00Z"
   - **Verification Seam**: `frontend/tests/TabBar.test.tsx`, `frontend/tests/ShellLayoutSearch.test.tsx`
 
 - **TASK-CORE-010-4**: Align Repositories Specs Badge Color and ADR Scale Icon
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-004, REQ-005
   - **Blocked by**: TASK-CORE-010-2
   - **What it delivers**:
@@ -86,7 +86,7 @@ created_at: "2026-10-09T19:16:00Z"
 ### Phase 3: Verification & Blueprint Compliance
 
 - **TASK-CORE-010-5**: Full Suite Verification and Build
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001 through REQ-005
   - **Blocked by**: TASK-CORE-010-3, TASK-CORE-010-4
   - **What it delivers**:

@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-core"
 order: 10
 title: "WebUI Visual Token Alignment and Shell Consistency"
-status: "Draft"
+status: "Completed"
 derives_from: ["brain-ec-core"]
 created_at: "2026-10-09T19:15:00Z"
 ---
