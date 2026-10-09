@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "In Progress"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -149,7 +149,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 7: TabBar Parity, Inline Typing, Session Persistence & Authentic AGY Branding
 
 - **TASK-TERM-002-11**: TabBar Parity for Terminal Strip (Middle-Click, Drag-Drop, Overflow Chevrons)
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-015
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -159,7 +159,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-12**: Inline Terminal Input Integration & Text Selection Retention
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-016
   - **Blocked by**: TASK-TERM-002-11
   - **What it delivers**:
@@ -168,7 +168,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-13**: Session Persistence vs Clean Boot Initialization
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-017
   - **Blocked by**: TASK-TERM-002-11
   - **What it delivers**:
@@ -177,7 +177,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-14**: Authentic Antigravity CLI Branding & Responsive Panel Fitting
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-018
   - **Blocked by**: TASK-TERM-002-12
   - **What it delivers**:
