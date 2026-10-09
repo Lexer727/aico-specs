@@ -48,6 +48,7 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
 ### Ubiquitous Requirements
 - **REQ-001**: The WorkspaceAgent shall discover and load `GEMINI.md` from the root of the active specification repository to enforce persistent behavioral guardrails across all turns.
 - **REQ-002**: The WorkspaceAgent shall recognize identical rule constraints in multi-repository workspace roots.
+- **REQ-007**: The PluginHarness shall package canonical `rules/GEMINI.md` and `rules/AGENTS.md` in the `aico-skills` plugin bundle so that newly installed agent environments automatically discover and enforce the mandatory review gate.
 
 ### State-Driven Requirements
 - **REQ-003**: While conducting initial problem exploration, bug diagnosis, or architecture trade-off analysis, the WorkspaceAgent shall restrict tool invocations to read-only inspection operations.
@@ -55,6 +56,7 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
 
 ### Event-Driven Requirements
 - **REQ-005**: When the developer explicitly confirms approval of a proposed specification, plan, or bug fix, the WorkspaceAgent shall transition to implementation and execute the authorized changes.
+- **REQ-008**: When the `aico-skills` plugin repository is updated, the deployment harness shall synchronize the bundled rules to the global installed plugin directory (`~/.gemini/config/plugins/aico-skills/rules/`).
 
 ### Unwanted Behavior & Guardrails
 - **REQ-006**: If the developer has not provided explicit authorization to proceed, then the WorkspaceAgent shall not execute write, replace, or delete operations on source code, tests, or specification artifacts.
@@ -69,6 +71,9 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
    - Verifies presence of Mandatory Review & Approval Gate and AICO Blueprint Conformance sections.
 2. **Artifact Verification (`aico-verify`)**:
    - Automated conformance check via `scripts/verify-artifacts.mjs` verifying 100% structural compliance.
+3. **Plugin Rules Integrity (`aico_skills::rules/GEMINI.md`)**:
+   - Location: `rules/GEMINI.md` and `rules/AGENTS.md` inside `aico-skills` plugin package.
+   - Verifies automatic loading of rules upon plugin installation.
 
 ---
 

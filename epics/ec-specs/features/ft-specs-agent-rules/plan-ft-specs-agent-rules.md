@@ -62,8 +62,32 @@ created_at: "2026-10-10T01:21:00Z"
   - **What it delivers**:
     - Audits entire repository for 100% structural and ground-truth parity.
 
+### Phase 4: Plugin Harness Packaging & Distribution
+
+- **TASK-RULES-005**: Package canonical rules/GEMINI.md, rules/AGENTS.md, and root GEMINI.md in aico-skills
+  - **Status**: Done
+  - **Addresses**: REQ-007
+  - **Blocked by**: TASK-RULES-004
+  - **What it delivers**:
+    - Adds `rules/GEMINI.md`, `rules/AGENTS.md`, and root `GEMINI.md` to `d:/aico/codebase/aico-skills` so the plugin distributes rules automatically.
+
+- **TASK-RULES-006**: Synchronize rules directory to global plugin deployment
+  - **Status**: Done
+  - **Addresses**: REQ-008
+  - **Blocked by**: TASK-RULES-005
+  - **What it delivers**:
+    - Copies/links `rules/` into `C:\Users\astau\.gemini\config\plugins\aico-skills\rules\` for active machine runtime discovery.
+
+- **TASK-RULES-007**: Commit aico-skills updates and verify dual-repo blueprint parity
+  - **Status**: Done
+  - **Addresses**: REQ-007, REQ-008
+  - **Blocked by**: TASK-RULES-006
+  - **What it delivers**:
+    - Verifies all artifacts pass with `verify-artifacts.mjs` and commits distribution assets.
+
 ---
 
 ## 3. Amendment History
 
 - **2026-10-10T01:21:00Z**: Created plan for workspace agent rules and mandatory review gate under epic `ec-specs`.
+- **2026-10-10T01:52:00Z**: Appended Phase 4 (TASK-RULES-005, TASK-RULES-006, TASK-RULES-007) to package `rules/GEMINI.md` and `rules/AGENTS.md` directly into the `aico-skills` plugin repository and synchronize with global plugin deployment per REQ-007 and REQ-008.
