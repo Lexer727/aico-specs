@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI with Multi-Shell Selector & AI Launcher"
-status: "In Progress"
+status: "Completed"
 derives_from: ["brain-ec-terminal"]
 created_at: "2026-10-09T19:48:00Z"
 ---
