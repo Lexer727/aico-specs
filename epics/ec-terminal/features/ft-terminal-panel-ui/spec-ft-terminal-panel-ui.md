@@ -77,9 +77,14 @@ This feature transforms `TerminalConsole.tsx` into a real, multi-session termina
 - **REQ-005**: While a terminal tab is active, the component shall maintain a WebSocket connection to `/api/v1/terminal/ws`, displaying received `output` data in the terminal window and forwarding user keystrokes as `input` messages.
 - **REQ-006**: When a terminal tab is closed by the user, the application shall send a `close` message, close the WebSocket connection, and remove the tab from the panel.
 - **REQ-007**: The terminal output viewer shall decode standard ANSI color escape sequences, rendering formatted colored text in the terminal buffer.
+- **REQ-008**: The dockable terminal panel shall allow closing terminal tabs even when only one terminal is open, transitioning the view to an empty state with quick actions to launch a session.
+- **REQ-009**: In the dockable terminal panel header row, the application shall render the `TERMINALS` label and terminal icon, collapsing to the icon only on constrained viewports, with action buttons positioned in the same row.
+- **REQ-010**: The primary Plus button shall display an icon without text, and terminal tabs shall display responsive label abbreviations when space is limited (`PowerShell` -> `ps`).
+- **REQ-011**: Terminal sessions shall default their execution directory to the specs directory of the active project when no working directory is explicitly provided.
 
 ---
 
 ## 4. Designated Public Test Seams
 
-- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-007)
+- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010)
+- **Terminal Bridge Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-011)

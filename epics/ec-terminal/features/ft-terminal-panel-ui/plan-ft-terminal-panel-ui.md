@@ -82,5 +82,37 @@ created_at: "2026-10-09T19:49:00Z"
   - **Blocked by**: TASK-TERM-002-3
   - **What it delivers**:
     - Vitest test suite execution.
-    - `verify-artifacts.mjs` verification across all 57 artifacts in `aico-specs`.
+    - `verify-artifacts.mjs` verification across all 58 artifacts in `aico-specs`.
   - **Verification Seam**: Vitest + `verify-artifacts.mjs`
+
+### Phase 5: Header Alignment & Runtime UX Remediation
+
+- **TASK-TERM-002-5**: Header Row Consolidation & Plus Button Icon-Only
+  - **Status**: Done
+  - **Addresses**: REQ-009, REQ-010
+  - **Blocked by**: TASK-TERM-002-4
+  - **What it delivers**:
+    - Place action buttons in the same row as TERMINALS.
+    - Render terminal icon alongside TERMINALS label, collapsing to icon only if space is limited.
+    - Render Plus button with icon and no text.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-6**: Tab Bar Styling Parity & Single-Tab Closability with Empty State
+  - **Status**: Done
+  - **Addresses**: REQ-008, REQ-010
+  - **Blocked by**: TASK-TERM-002-5
+  - **What it delivers**:
+    - Style tab strip to match main view `TabBar.tsx`.
+    - Allow closing single terminal tab when only 1 is open.
+    - Show clean empty state when no terminals are open with quick-launch triggers.
+    - Provide responsive tab label abbreviation (`PowerShell` -> `ps`).
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-7**: Interactive AGY Shell & Active Project Specs CWD Resolution
+  - **Status**: Done
+  - **Addresses**: REQ-001, REQ-011
+  - **Blocked by**: TASK-TERM-002-6
+  - **What it delivers**:
+    - Launch Antigravity CLI via interactive PowerShell session with startup banner.
+    - Automatically resolve active project specs directory as default shell cwd.
+  - **Verification Seam**: `crates/aico-server/tests/terminal_bridge_test.rs`
