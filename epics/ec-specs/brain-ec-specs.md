@@ -82,3 +82,5 @@ This epic decomposes into 4 child specifications:
    - Specification and implementation of the `aico-spec-migration` skill, plus migration of all existing `ec-core` and ADR artifacts.
 4. **`ft-specs-skills-versioning-and-naming`** (`spec-ft-specs-skills-versioning-and-naming`, `plan-ft-specs-skills-versioning-and-naming`):
    - Decoupling of AICO skills versioning (`aico-skills/VERSION`) from the platform version, standardization of artifact terminology to AICO artifacts, dynamic template placeholders (`{aico_skills_version}`), and WebUI Shell Settings alignment.
+5. **`ft-specs-agent-rules`** (`spec-ft-specs-agent-rules`, `plan-ft-specs-agent-rules`):
+   - Formal specification of workspace agent rules (`GEMINI.md` / `AGENTS.md`) and enforcement of the mandatory human review and approval gate before any code or specification modifications.
