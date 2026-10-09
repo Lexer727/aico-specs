@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "Completed"
+status: "In Progress"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -185,9 +185,48 @@ created_at: "2026-10-09T19:49:00Z"
     - Ensure terminal content fits responsive panel width without horizontal overflow scrollbars.
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
+### Phase 8: Native Prompt Cleanup, History Retention, Wheel Scroll Fix & Forceful Kill Action
+
+- **TASK-TERM-002-15**: Native Prompt Input Cleanup (Remove Shell Placeholder Pre-Text)
+  - **Status**: Pending
+  - **Addresses**: REQ-019
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Remove placeholder pre-text (`Type command...`) for PowerShell, Git Bash, and CMD sessions, leaving only native shell prompt and cursor.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-16**: Terminal Output Buffer & Session State Persistence Across Reloads
+  - **Status**: Pending
+  - **Addresses**: REQ-020
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Serialize output history lines (recent buffer) and pending prompt state in `sessionStorage`.
+    - Restore previous terminal buffer on page refresh without clearing screen.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-17**: Non-Passive TabBar Wheel Scroll Physics & Snap-Back Elimination
+  - **Status**: Pending
+  - **Addresses**: REQ-021
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Bind non-passive wheel event listeners with `e.preventDefault()` on both `TabBar.tsx` and `TerminalConsole.tsx` tab strip containers.
+    - Remove `scroll-smooth` class from tab containers to eliminate animation stutter and snap-back during continuous wheel scrolling.
+  - **Verification Seam**: `frontend/tests/TabBar.test.tsx`, `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-18**: Forceful Kill Terminal Action & Backend Process Tree Cleanup
+  - **Status**: Pending
+  - **Addresses**: REQ-022
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Add `{ type: "kill" }` protocol message in backend and child process kill on disconnect/kill command.
+    - Replace "Clear terminal output" button with "Kill Terminal" button in terminal header.
+    - Immediately terminate process and dispose tab from UI even when unresponsive.
+  - **Verification Seam**: `crates/aico-server/tests/terminal_bridge_test.rs`, `frontend/tests/TerminalConsole.test.tsx`
+
 ---
 
 ## 3. Amendment Log
 
 - **2026-10-09T23:12:00Z**: Added TASK-TERM-002-8, TASK-TERM-002-9, and TASK-TERM-002-10 to remediate stream chunk fragmentation, prompt/input line disconnection, and AI session UX with slash command autocomplete per REQ-012, REQ-013, and REQ-014. Reopened plan to `In Progress`.
 - **2026-10-09T23:48:00Z**: Added Phase 7 (TASK-TERM-002-11 through TASK-TERM-002-14) to implement TabBar parity (middle-click, drag-drop, overflow chevrons), inline prompt typing (eliminating duplicate bottom bar), text selection retention, sessionStorage persistence vs clean boot, and authentic Antigravity CLI arch branding per REQ-015 through REQ-018. Reopened plan to `In Progress`.
+- **2026-10-10T00:13:00Z**: Added Phase 8 (TASK-TERM-002-15 through TASK-TERM-002-18) to remove shell placeholder pre-text, persist terminal output history buffers across reloads, fix non-passive wheel scrolling without snap-back in TabBar and terminal tab strip, and add forceful Kill Terminal action per REQ-019 through REQ-022. Reopened plan to `In Progress`.

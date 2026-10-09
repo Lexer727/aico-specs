@@ -88,10 +88,15 @@ This feature transforms `TerminalConsole.tsx` into a real, multi-session termina
 - **REQ-016**: The terminal panel shall allow user typing directly at the active terminal prompt without a duplicate bottom input bar, and clicking or releasing text selections in the terminal window shall preserve highlighted text for copying.
 - **REQ-017**: On clean fresh boot, the terminal panel shall initialize with zero open terminals in the empty state; during an active session, open terminal tabs shall persist across page reloads.
 - **REQ-018**: The AI (`agy`) terminal session shall render the authentic Antigravity CLI header with multi-color arch branding, user account details, model parameters, divider separators, and bottom status shortcuts without horizontal overflow scrollbars.
+- **REQ-019**: In standard shell terminal sessions (`powershell`, `bash`, `cmd`), the inline command input shall not display placeholder pre-text (such as `Type command...`), presenting only the clean native shell prompt and input cursor.
+- **REQ-020**: The terminal panel shall persist the complete terminal output history buffer and active prompt state across browser page reloads via `sessionStorage`, restoring previous session output when the page is refreshed.
+- **REQ-021**: The horizontal tab strips in both the primary workspace (`TabBar.tsx`) and the dockable terminal panel (`TerminalConsole.tsx`) shall prevent vertical scroll leakage on mouse wheel events via non-passive listeners with `e.preventDefault()`, directly translating wheel delta to horizontal scroll position without animation snap-back or lag.
+- **REQ-022**: The dockable terminal panel header shall provide a dedicated "Kill Terminal" action button with distinct terminate styling that, when triggered, sends a forceful termination request (`{"type": "kill"}`) to the backend, closes the WebSocket connection, and immediately dismisses the active terminal tab even if the shell process or stream is unresponsive.
 
 ---
 
 ## 4. Designated Public Test Seams
 
-- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010, REQ-012 through REQ-018)
-- **Terminal Bridge Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-011)
+- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010, REQ-012 through REQ-022)
+- **TabBar Component Seam**: `frontend/tests/TabBar.test.tsx` (verifies REQ-021)
+- **Terminal Bridge Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-011, REQ-022)
