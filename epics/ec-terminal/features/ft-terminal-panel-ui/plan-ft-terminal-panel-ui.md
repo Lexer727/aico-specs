@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "Draft"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -41,7 +41,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 1: Header Actions & Multi-Shell Selector
 
 - **TASK-TERM-002-1**: Implement AI Button, Plus Button, and Shell Dropdown Selector
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001, REQ-002, REQ-003, REQ-004
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -53,7 +53,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 2: Live WebSocket Streaming & Session Management
 
 - **TASK-TERM-002-2**: Implement Real WebSocket Process Client in TerminalConsole
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-005, REQ-006
   - **Blocked by**: TASK-TERM-002-1
   - **What it delivers**:
@@ -66,7 +66,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 3: ANSI Color Rendering & Test Seams
 
 - **TASK-TERM-002-3**: Implement ANSI Color Decoding & Interactive Viewer
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-007
   - **Blocked by**: TASK-TERM-002-2
   - **What it delivers**:
@@ -77,7 +77,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 4: Full Suite Verification & Build
 
 - **TASK-TERM-002-4**: Full Suite Verification and Blueprint Conformance
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001 through REQ-007
   - **Blocked by**: TASK-TERM-002-3
   - **What it delivers**:

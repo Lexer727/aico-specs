@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 1
 title: "Terminal Subsystem Backend Process Bridge Implementation Plan"
-status: "Draft"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-backend-stream-bridge"]
 created_at: "2026-10-09T19:47:00Z"
@@ -44,7 +44,7 @@ created_at: "2026-10-09T19:47:00Z"
 ### Phase 1: Process Spawner & Resolver
 
 - **TASK-TERM-001-1**: Implement Shell Process Spawner & Resolver
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-002, REQ-006, REQ-007
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -56,7 +56,7 @@ created_at: "2026-10-09T19:47:00Z"
 ### Phase 2: WebSocket Streaming & Session Handler
 
 - **TASK-TERM-001-2**: Implement Terminal WebSocket Endpoint & Streaming Bridge
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001, REQ-003, REQ-004, REQ-005
   - **Blocked by**: TASK-TERM-001-1
   - **What it delivers**:
@@ -69,7 +69,7 @@ created_at: "2026-10-09T19:47:00Z"
 ### Phase 3: Integration Seam Tests & Verification
 
 - **TASK-TERM-001-3**: End-to-End Terminal WebSocket Integration Tests
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-001 through REQ-007
   - **Blocked by**: TASK-TERM-001-2
   - **What it delivers**:

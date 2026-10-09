@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 1
 title: "Terminal Subsystem Backend Process Bridge & WebSocket Streaming"
-status: "Draft"
+status: "Completed"
 derives_from: ["brain-ec-terminal"]
 created_at: "2026-10-09T19:46:00Z"
 ---
