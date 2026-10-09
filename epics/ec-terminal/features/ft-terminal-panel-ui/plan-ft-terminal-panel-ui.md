@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "In Progress"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -188,7 +188,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 8: Native Prompt Cleanup, History Retention, Wheel Scroll Fix & Forceful Kill Action
 
 - **TASK-TERM-002-15**: Native Prompt Input Cleanup (Remove Shell Placeholder Pre-Text)
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-019
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -196,7 +196,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-16**: Terminal Output Buffer & Session State Persistence Across Reloads
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-020
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -205,7 +205,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-17**: Non-Passive TabBar Wheel Scroll Physics & Snap-Back Elimination
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-021
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -214,7 +214,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TabBar.test.tsx`, `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-18**: Forceful Kill Terminal Action & Backend Process Tree Cleanup
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-022
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
