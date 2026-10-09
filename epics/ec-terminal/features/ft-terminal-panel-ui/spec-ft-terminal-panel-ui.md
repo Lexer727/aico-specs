@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI with Multi-Shell Selector & AI Launcher"
-status: "Completed"
+status: "In Progress"
 derives_from: ["brain-ec-terminal"]
 created_at: "2026-10-09T19:48:00Z"
 ---
@@ -84,10 +84,14 @@ This feature transforms `TerminalConsole.tsx` into a real, multi-session termina
 - **REQ-012**: The terminal viewer shall reassemble incoming streaming stdout and stderr chunks continuously without breaking partial words or token fragments across separate lines.
 - **REQ-013**: In interactive terminal sessions (e.g., PowerShell), user typing shall render inline directly behind the active shell prompt without injecting an artificial standalone `>` command line into the output history.
 - **REQ-014**: The AI (`agy`) terminal session shall display the initialization banner upon launch, omit the `agy>` prefix from the prompt and user input, and provide an interactive autocomplete menu when the user types a leading `/` slash command.
+- **REQ-015**: The terminal tabs strip shall support middle-click to close tabs, drag-and-drop tab reordering with live preview shifting, and overflow scroll navigation chevrons, matching the interaction standards of the primary workspace TabBar.
+- **REQ-016**: The terminal panel shall allow user typing directly at the active terminal prompt without a duplicate bottom input bar, and clicking or releasing text selections in the terminal window shall preserve highlighted text for copying.
+- **REQ-017**: On clean fresh boot, the terminal panel shall initialize with zero open terminals in the empty state; during an active session, open terminal tabs shall persist across page reloads.
+- **REQ-018**: The AI (`agy`) terminal session shall render the authentic Antigravity CLI header with multi-color arch branding, user account details, model parameters, divider separators, and bottom status shortcuts without horizontal overflow scrollbars.
 
 ---
 
 ## 4. Designated Public Test Seams
 
-- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010, REQ-012 through REQ-014)
+- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010, REQ-012 through REQ-018)
 - **Terminal Bridge Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-011)

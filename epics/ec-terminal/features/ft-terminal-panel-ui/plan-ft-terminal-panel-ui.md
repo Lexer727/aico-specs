@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "Completed"
+status: "In Progress"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -146,8 +146,48 @@ created_at: "2026-10-09T19:49:00Z"
     - Implement interactive autocomplete dropdown suggesting available slash commands (`/help`, `/skills`, `/agents`, `/model`, `/effort`, `/plan`, `/clear`, `/exit`) when typing `/`.
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
+### Phase 7: TabBar Parity, Inline Typing, Session Persistence & Authentic AGY Branding
+
+- **TASK-TERM-002-11**: TabBar Parity for Terminal Strip (Middle-Click, Drag-Drop, Overflow Chevrons)
+  - **Status**: Pending
+  - **Addresses**: REQ-015
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Support middle mouse button click to close terminal tabs.
+    - Implement drag-and-drop terminal tab reordering with live preview shifting.
+    - Add horizontal scroll overflow navigation with left and right chevrons matching TabBar.tsx.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-12**: Inline Terminal Input Integration & Text Selection Retention
+  - **Status**: Pending
+  - **Addresses**: REQ-016
+  - **Blocked by**: TASK-TERM-002-11
+  - **What it delivers**:
+    - Move input typing directly to the active prompt in the terminal window, eliminating the duplicate bottom bar.
+    - Preserve mouse text highlights on click/mouseup so text can be copied without losing selection.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-13**: Session Persistence vs Clean Boot Initialization
+  - **Status**: Pending
+  - **Addresses**: REQ-017
+  - **Blocked by**: TASK-TERM-002-11
+  - **What it delivers**:
+    - Initialize with zero open terminals on fresh boot, presenting the clean empty state.
+    - Persist open terminal tabs across browser reloads via sessionStorage.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-14**: Authentic Antigravity CLI Branding & Responsive Panel Fitting
+  - **Status**: Pending
+  - **Addresses**: REQ-018
+  - **Blocked by**: TASK-TERM-002-12
+  - **What it delivers**:
+    - Render authentic Antigravity CLI header with multi-color arch branding, user account details, model parameters, divider rules, and bottom status bar.
+    - Ensure terminal content fits responsive panel width without horizontal overflow scrollbars.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
 ---
 
 ## 3. Amendment Log
 
 - **2026-10-09T23:12:00Z**: Added TASK-TERM-002-8, TASK-TERM-002-9, and TASK-TERM-002-10 to remediate stream chunk fragmentation, prompt/input line disconnection, and AI session UX with slash command autocomplete per REQ-012, REQ-013, and REQ-014. Reopened plan to `In Progress`.
+- **2026-10-09T23:48:00Z**: Added Phase 7 (TASK-TERM-002-11 through TASK-TERM-002-14) to implement TabBar parity (middle-click, drag-drop, overflow chevrons), inline prompt typing (eliminating duplicate bottom bar), text selection retention, sessionStorage persistence vs clean boot, and authentic Antigravity CLI arch branding per REQ-015 through REQ-018. Reopened plan to `In Progress`.
