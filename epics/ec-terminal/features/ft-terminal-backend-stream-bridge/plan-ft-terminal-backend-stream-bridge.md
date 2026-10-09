@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 1
 title: "Terminal Subsystem Backend Process Bridge Implementation Plan"
-status: "Completed"
+status: "In Progress"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-backend-stream-bridge"]
 created_at: "2026-10-09T19:47:00Z"
@@ -22,6 +22,7 @@ created_at: "2026-10-09T19:47:00Z"
     - `bash`: Checks `C:\Program Files\Git\bin\bash.exe`, then `C:\Program Files (x86)\Git\bin\bash.exe`, then `bash.exe` on PATH.
     - `agy`: Checks `agy.exe` on PATH or user AppData (`C:\Users\astau\AppData\Local\agy\bin\agy.exe`).
   - Spawns child process via `tokio::process::Command` with piped `stdin`, `stdout`, and `stderr`.
+  - On Windows, spawns with `creation_flags(0x08000000)` (`CREATE_NO_WINDOW`) so child console commands (`Clear-Host`, `cls`) are detached and cannot clear the parent server console.
 - **WebSocket Streaming Protocol**:
   - WebSocket route: `/api/v1/terminal/ws`.
   - JSON messages:
@@ -77,3 +78,20 @@ created_at: "2026-10-09T19:47:00Z"
     - Test PowerShell execution and output loopback.
     - Test `agy` executable resolution and error handling.
   - **Verification Seam**: `crates/aico-server/tests/terminal_bridge_test.rs`
+
+### Phase 4: Process Detachment & Console Isolation Remediation
+
+- **TASK-TERM-001-4**: Process Console Window Detachment (`CREATE_NO_WINDOW`) for Server Isolation
+  - **Status**: Pending
+  - **Addresses**: REQ-008
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Set Windows process creation flag `0x08000000` (`CREATE_NO_WINDOW`) on `Command` in `terminal.rs`.
+    - Verify child terminal console clear operations do not affect the parent server console.
+  - **Verification Seam**: `crates/aico-server/tests/terminal_bridge_test.rs`
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-09T23:12:00Z**: Added TASK-TERM-001-4 to apply `CREATE_NO_WINDOW` on Windows process creation for complete console isolation per REQ-008. Reopened plan to `In Progress`.

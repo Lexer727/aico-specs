@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 1
 title: "Terminal Subsystem Backend Process Bridge & WebSocket Streaming"
-status: "Completed"
+status: "In Progress"
 derives_from: ["brain-ec-terminal"]
 created_at: "2026-10-09T19:46:00Z"
 ---
@@ -67,9 +67,10 @@ This feature provides the core backend process execution, stream multiplexing, a
 - **REQ-005**: When the WebSocket connection is closed or a `close` message is received, the server shall terminate the child process and reclaim process resources.
 - **REQ-006**: When an `init` message requests the `agy` shell, the server shall resolve `agy.exe` and spawn the interactive assistant session in the active project directory.
 - **REQ-007**: If a requested shell executable fails to spawn or is not found on the host machine, the server shall send an `error` message to the client without terminating the server.
+- **REQ-008**: When spawning any shell process on Windows, the server shall set the `CREATE_NO_WINDOW` process creation flag (`0x08000000`) so child shells execute completely detached from the host server console, preventing child console clear operations (`cls`, `Clear-Host`) from wiping or interfering with the parent server console.
 
 ---
 
 ## 4. Designated Public Test Seams
 
-- **Terminal Bridge Integration Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-001 through REQ-007)
+- **Terminal Bridge Integration Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-001 through REQ-008)

@@ -4,7 +4,7 @@ type: brainstorm
 aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 title: "Interactive Terminal Subsystem & Multi-Shell Runtime"
-status: "Completed"
+status: "In Progress"
 derives_from: []
 created_at: "2026-10-09T19:45:00Z"
 ---

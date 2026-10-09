@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "Completed"
+status: "In Progress"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -116,3 +116,38 @@ created_at: "2026-10-09T19:49:00Z"
     - Launch Antigravity CLI via interactive PowerShell session with startup banner.
     - Automatically resolve active project specs directory as default shell cwd.
   - **Verification Seam**: `crates/aico-server/tests/terminal_bridge_test.rs`
+
+### Phase 6: Terminal Fidelity, Stream Buffering & AI Slash Autocomplete Remediation
+
+- **TASK-TERM-002-8**: Continuous Terminal Stream Buffering & Chunk Reassembly
+  - **Status**: Pending
+  - **Addresses**: REQ-012
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - Reassemble fragmented incoming WebSocket stdout/stderr chunks across line boundaries without breaking partial words across lines.
+    - Preserve ANSI styling across streaming buffer tokens.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-9**: Prompt Inline Keystroke Alignment & Duplicate Prefix Removal
+  - **Status**: Pending
+  - **Addresses**: REQ-013
+  - **Blocked by**: TASK-TERM-002-8
+  - **What it delivers**:
+    - Cease artificial injection of `> ${cmd}` on separate lines in history.
+    - Render user keystrokes inline directly after the active prompt, allowing native shell command echo and prompt continuity.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+- **TASK-TERM-002-10**: AI Session Banner, Prompt Normalization & Slash-Command Autocomplete
+  - **Status**: Pending
+  - **Addresses**: REQ-014
+  - **Blocked by**: TASK-TERM-002-8
+  - **What it delivers**:
+    - Render official initialization banner on AI tab startup without prepending `agy>` to user prompts.
+    - Implement interactive autocomplete dropdown suggesting available slash commands (`/help`, `/skills`, `/agents`, `/model`, `/effort`, `/plan`, `/clear`, `/exit`) when typing `/`.
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-09T23:12:00Z**: Added TASK-TERM-002-8, TASK-TERM-002-9, and TASK-TERM-002-10 to remediate stream chunk fragmentation, prompt/input line disconnection, and AI session UX with slash command autocomplete per REQ-012, REQ-013, and REQ-014. Reopened plan to `In Progress`.

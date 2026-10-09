@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI with Multi-Shell Selector & AI Launcher"
-status: "Completed"
+status: "In Progress"
 derives_from: ["brain-ec-terminal"]
 created_at: "2026-10-09T19:48:00Z"
 ---
@@ -81,10 +81,13 @@ This feature transforms `TerminalConsole.tsx` into a real, multi-session termina
 - **REQ-009**: In the dockable terminal panel header row, the application shall render the `TERMINALS` label and terminal icon, collapsing to the icon only on constrained viewports, with action buttons positioned in the same row.
 - **REQ-010**: The primary Plus button shall display an icon without text, and terminal tabs shall display responsive label abbreviations when space is limited (`PowerShell` -> `ps`).
 - **REQ-011**: Terminal sessions shall default their execution directory to the specs directory of the active project when no working directory is explicitly provided.
+- **REQ-012**: The terminal viewer shall reassemble incoming streaming stdout and stderr chunks continuously without breaking partial words or token fragments across separate lines.
+- **REQ-013**: In interactive terminal sessions (e.g., PowerShell), user typing shall render inline directly behind the active shell prompt without injecting an artificial standalone `>` command line into the output history.
+- **REQ-014**: The AI (`agy`) terminal session shall display the initialization banner upon launch, omit the `agy>` prefix from the prompt and user input, and provide an interactive autocomplete menu when the user types a leading `/` slash command.
 
 ---
 
 ## 4. Designated Public Test Seams
 
-- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010)
+- **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx` (verifies REQ-001 through REQ-010, REQ-012 through REQ-014)
 - **Terminal Bridge Seam**: `crates/aico-server/tests/terminal_bridge_test.rs` (verifies REQ-011)
