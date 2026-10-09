@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 1
 title: "Terminal Subsystem Backend Process Bridge Implementation Plan"
-status: "In Progress"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-backend-stream-bridge"]
 created_at: "2026-10-09T19:47:00Z"
@@ -82,7 +82,7 @@ created_at: "2026-10-09T19:47:00Z"
 ### Phase 4: Process Detachment & Console Isolation Remediation
 
 - **TASK-TERM-001-4**: Process Console Window Detachment (`CREATE_NO_WINDOW`) for Server Isolation
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-008
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:

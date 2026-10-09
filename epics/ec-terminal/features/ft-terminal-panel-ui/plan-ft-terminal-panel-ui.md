@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 2
 title: "Interactive Terminal Panel UI Implementation Plan"
-status: "In Progress"
+status: "Completed"
 repositories: ["aico"]
 derives_from: ["spec-ft-terminal-panel-ui"]
 created_at: "2026-10-09T19:49:00Z"
@@ -120,7 +120,7 @@ created_at: "2026-10-09T19:49:00Z"
 ### Phase 6: Terminal Fidelity, Stream Buffering & AI Slash Autocomplete Remediation
 
 - **TASK-TERM-002-8**: Continuous Terminal Stream Buffering & Chunk Reassembly
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-012
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
@@ -129,7 +129,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-9**: Prompt Inline Keystroke Alignment & Duplicate Prefix Removal
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-013
   - **Blocked by**: TASK-TERM-002-8
   - **What it delivers**:
@@ -138,7 +138,7 @@ created_at: "2026-10-09T19:49:00Z"
   - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
 
 - **TASK-TERM-002-10**: AI Session Banner, Prompt Normalization & Slash-Command Autocomplete
-  - **Status**: Pending
+  - **Status**: Done
   - **Addresses**: REQ-014
   - **Blocked by**: TASK-TERM-002-8
   - **What it delivers**:
