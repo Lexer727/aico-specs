@@ -4,7 +4,7 @@ type: brainstorm
 aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 title: "Interactive Terminal Subsystem & Multi-Shell Runtime"
-status: "Completed"
+status: "In Progress"
 derives_from: []
 created_at: "2026-10-09T19:45:00Z"
 ---
@@ -86,8 +86,9 @@ On Windows workstations:
 
 ## 4. Child Feature Decomposition
 
-This epic decomposes into two vertical child features:
+This epic decomposes into five vertical child features across two architectural generations:
 
+### Generation 1: Initial Process Streaming & Panel Scaffold (Foundational)
 1. **`ft-terminal-backend-stream-bridge`** (`order: 1`):
    - **Scope**: Backend Rust Axum WebSocket endpoint (`/api/v1/terminal/ws`), process execution and streaming bridge, session registry, stdin writing, stdout/stderr chunk streaming, and process termination on tab close or client disconnect.
    - **Contract**: WebSocket JSON protocol (`{"type": "init", "shell": "powershell" | "agy" | "bash" | "cmd", "cwd": "..."}`, `{"type": "input", "data": "..."}`, `{"type": "output", "data": "..."}`).
@@ -99,13 +100,26 @@ This epic decomposes into two vertical child features:
    - Shell dropdown menu next to Plus button for selecting PowerShell, Git Bash, or Command Prompt.
    - ANSI color rendering, scrollback buffer, tab creation/closing, and native window popout trigger.
 
+### Generation 2: Native ConPTY Runtime, xterm.js Engine & Multi-Provider AI Quota Monitor (Active Evolution)
+3. **`ft-terminal-conpty-bridge`** (`order: 3`):
+   - **Scope**: Backend native Pseudo-Terminal (PTY) engine powered by `portable-pty` (Windows ConPTY and Unix PTY). Full TUI support, raw keystrokes without line-buffering delay, dynamic resize (`PtySize`), and clean process tree lifecycle management.
+
+4. **`ft-terminal-xterm-ui`** (`order: 4`):
+   - **Scope**: Industry-standard `@xterm/xterm` engine with `@xterm/addon-fit` embedded in `TerminalConsole.tsx`. Fixes the slash menu positioning bug, removes hardcoded emails and shortcuts, and provides 100% VT100/ANSI terminal emulation with interactive prompt selection.
+
+5. **`ft-terminal-ai-quota-monitor`** (`order: 5`):
+   - **Scope**: Backend dynamic quota discovery service (`/api/v1/ai/quotas`) and compact 2-line `AiStatusMonitor.tsx` in the sidebar. Displays Gemini Weekly and 5-Hour remaining limits on line 1, Claude/secondary providers on line 2 (only if authenticated), and real-time AI terminal state (`Inactive`, `Waiting for Input`, `Working`).
+
 ---
 
 ## 5. Milestone Convergence & Verification Seams
 
-1. **Backend Process Stream Seam**: `crates/aico-server/tests/terminal_bridge_test.rs`
-   - Validates process spawning, input forwarding, output streaming, and session termination.
-2. **Terminal Panel Component Seam**: `frontend/tests/TerminalConsole.test.tsx`
-   - Validates UI buttons (AI agy button, Plus button, Shell dropdown menu), tab creation/switching, and streaming output rendering.
-3. **End-to-End WebSocket Seam**:
-   - Validates real execution and output loopback between browser and host shells.
+1. **Backend ConPTY Bridge Seam**: `crates/aico-server/tests/conpty_bridge_test.rs`
+   - Validates ConPTY process spawning, raw byte streaming, dynamic resizing, and process termination on Windows.
+2. **xterm Console Component Seam**: `frontend/tests/TerminalConsole.test.tsx`
+   - Validates xterm.js instance initialization, FitAddon resizing, tab switching, and WebSocket communication.
+3. **AI Quota API Seam**: `crates/aico-server/tests/ai_quota_test.rs`
+   - Validates `/api/v1/ai/quotas` endpoint, dynamic CLI credential discovery, and omission of unauthenticated providers.
+4. **AI Status Monitor UI Seam**: `frontend/tests/AiStatusMonitor.test.tsx`
+   - Validates compact 2-line layout, circular progress meters, and AI activity badge transitions.
+
