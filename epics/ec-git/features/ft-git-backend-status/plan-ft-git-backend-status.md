@@ -57,3 +57,45 @@ created_at: "2026-10-07T00:30:00Z"
     - Route `GET /api/v1/git/status` in `crates/aico-server/src/server.rs` returning status list for all active repositories.
     - Integration test asserting valid JSON payload containing repository status objects.
   - **Verification Seam**: `crates/aico-server/tests/server_test.rs::test_git_status_endpoint`
+
+---
+
+### Phase 4: Decoupled Project Manifest, Remote URLs & Specs Repo Cleanup
+
+- **TASK-GIT-001-4**: Decouple `ProjectManifest` Schema & Add Repository `url`
+  - **Status**: Done
+  - **Addresses**: `REQ-001`, `REQ-002`
+  - **Blocked by**: `TASK-GIT-001-3`
+  - **Verification Seam**: `crates/aico-core/tests/manifest_test.rs`
+  - **What it delivers**:
+    - In `crates/aico-core/src/manifest.rs`, eliminates mandatory `codebase_path` and `version` checks; makes `codebase_path`, `version`, and `created_at` optional.
+    - Adds `url: Option<String>` to `ProjectRepository`.
+    - When `repositories` is empty or omitted, registers `specs_dir` without requiring any engine or codebase path.
+    - Updates `DiscoveredProject` in `crates/aico-core/src/scanner.rs` to remove mandatory `codebase_path`.
+    - Updates `crates/aico-server/src/assets.rs` to locate `assets/` and config via declared codebase repositories or specs root.
+
+- **TASK-GIT-001-5**: Propagate `url` to `GitRepoStatus` and WebUI Dashboard Card
+  - **Status**: Done
+  - **Addresses**: `REQ-007`
+  - **Blocked by**: `TASK-GIT-001-4`
+  - **Verification Seam**: `crates/aico-server/tests/git_scanner_test.rs`, `frontend/tests/DashboardGitStatus.test.tsx`
+  - **What it delivers**:
+    - Adds `url: Option<String>` to `GitRepoStatus` in `crates/aico-server/src/git.rs`.
+    - Passes `repo.url` in `GitStatusScanner::scan_repo`.
+    - Updates `frontend/src/features/feature-task-data.ts` and `GitRepositoriesCard.tsx` to render external link buttons next to repository titles.
+
+- **TASK-GIT-001-6**: Clean Up `aico-specs` Manifest, Delete Redundant `aico.config.json` and `GEMINI.md`
+  - **Status**: Done
+  - **Addresses**: `REQ-001`, `REQ-002`
+  - **Blocked by**: `TASK-GIT-001-5`
+  - **Verification Seam**: Full Vitest suite (`npm test`), Rust suite (`cargo test -p aico-server`), `npm run build`, and `verify-artifacts.mjs`.
+  - **What it delivers**:
+    - Refactors `D:/aico/aico-specs/.aico-project.json` to minimal format with `name` and `repositories` including GitHub URLs, omitting `codebase_path` and `version`.
+    - Deletes redundant `aico-specs/aico.config.json`.
+    - Deletes redundant `aico-specs/GEMINI.md`.
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-17T01:23:00Z**: Appended Phase 4 tasks (`TASK-GIT-001-4`, `TASK-GIT-001-5`, `TASK-GIT-001-6` for `REQ-001`, `REQ-002`, `REQ-007`) via `/aico-plan-amendment` to decouple `.aico-project.json` from `codebase_path` and `version`, add repository remote `url` attributes with clickable WebUI dashboard links, and clean up redundant config/rules from `aico-specs`.
