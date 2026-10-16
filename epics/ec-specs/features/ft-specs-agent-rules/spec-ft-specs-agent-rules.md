@@ -23,10 +23,11 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
 ## In-Scope
 
 - Canonical `GEMINI.md` rule file placed at the root of `aico-specs` and mirrored at the workspace root (`d:/aico`).
-- Strict 3-phase workflow enforcement:
+- Strict 4-phase workflow enforcement:
   1. Investigate & Diagnose.
-  2. Present Proposals & Plan.
-  3. Halt & Await Developer Sign-Off.
+  2. Present Proposals & Await Spec Sign-Off.
+  3. Write Specs/Plans & Halt for Implementation Confirmation.
+  4. Implement Only After Post-Spec Confirmation.
 - Guaranteed automatic discovery across Antigravity, Google Gemini CLI (`agy`), and future agent environments.
 - Zero premature file modification or spec manipulation prior to explicit user consent.
 
@@ -55,8 +56,9 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
 - **REQ-004**: While an implementation plan or specification amendment has not received explicit developer sign-off, the WorkspaceAgent shall halt tool execution and await approval.
 
 ### Event-Driven Requirements
-- **REQ-005**: When the developer explicitly confirms approval of a proposed specification, plan, or bug fix, the WorkspaceAgent shall transition to implementation and execute the authorized changes.
+- **REQ-005**: When the developer explicitly confirms approval of a proposed specification, plan, or bug fix, the WorkspaceAgent shall transition to the next authorized phase.
 - **REQ-008**: When the `aico-skills` plugin repository is updated, the deployment harness shall synchronize the bundled rules to the global installed plugin directory (`~/.gemini/config/plugins/aico-skills/rules/`).
+- **REQ-009**: When the WorkspaceAgent creates or updates specification (`spec-*.md`) or implementation plan (`plan-*.md`) artifacts on disk, the WorkspaceAgent shall immediately halt after writing and verifying the spec/plan files and await explicit developer confirmation before modifying any codebase source or test files.
 
 ### Unwanted Behavior & Guardrails
 - **REQ-006**: If the developer has not provided explicit authorization to proceed, then the WorkspaceAgent shall not execute write, replace, or delete operations on source code, tests, or specification artifacts.

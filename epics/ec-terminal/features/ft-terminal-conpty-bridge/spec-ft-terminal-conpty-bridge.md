@@ -5,7 +5,7 @@ aico_skills_version: "0.1.2"
 epic: "ec-terminal"
 order: 3
 title: "Terminal ConPTY Pseudo-Terminal Backend Bridge & Interactive Runtime"
-status: "Draft"
+status: "Completed"
 derives_from: ["brain-ec-terminal"]
 created_at: "2026-10-10T03:05:00Z"
 ---
@@ -31,7 +31,8 @@ This feature replaces standard piped process execution in `aico-server` with a n
   - Forwarding raw keystrokes from `input` messages to the PTY master writer without line buffering.
   - Handling dynamic `resize` messages to update ConPTY window dimensions on the fly.
 - **Process Lifecycle & Session Management**:
-  - Gracefully terminating child process trees and releasing PTY resources when tabs close or sockets disconnect.
+  - Retaining named PTY sessions and rolling scrollback buffers across WebSocket reconnects (`tab_id`), while gracefully terminating child process trees and releasing PTY resources when tabs explicitly close (`close`/`kill`) or processes exit.
+  - Multi-client PTY output fan-out, broadcasting PTY output to all attached clients and routing input from multiple concurrent clients to the shared terminal session.
   - Tracking AI session activity state (`waiting_for_input`, `working`, `idle`).
 - **Automated Integration Tests**:
   - Comprehensive PTY integration test suite in `crates/aico-server/tests/conpty_bridge_test.rs`.
@@ -56,6 +57,9 @@ This feature replaces standard piped process execution in `aico-server` with a n
 3. **US-03** (Priority: P1): As a developer closing a terminal tab, I want the backend to terminate the process tree immediately, so that orphaned PTY sessions do not persist on the host.
    - *Independent Test*: Open a PTY session over WebSocket and close the connection; assert child process terminates.
 
+4. **US-04** (Priority: P1): As a developer using a mobile companion alongside my PC, I want both my phone and PC to connect to the same terminal tab concurrently, so that I can monitor live output and enter keystrokes from either device without disconnecting the other.
+   - *Independent Test*: Connect two WebSocket clients with the same `tab_id`, send input from client 1, and assert both client 1 and client 2 receive the echoed output.
+
 ---
 
 ## 3. Requirements (EARS Syntax)
@@ -65,10 +69,12 @@ This feature replaces standard piped process execution in `aico-server` with a n
 - **REQ-002**: The TerminalWebSocketHandler shall support bi-directional transmission of raw terminal byte streams and structured control messages over `/api/v1/terminal/ws`.
 
 ### Event-Driven Requirements
-- **REQ-003**: When a client sends a WebSocket `init` message, the TerminalWebSocketHandler shall spawn the requested shell executable (`powershell.exe`, `cmd.exe`, `bash.exe`, `agy.exe`, or `claude.exe`) attached to the allocated PTY slave.
+- **REQ-003**: When a client sends a WebSocket `init` message, the TerminalWebSocketHandler shall spawn the requested shell executable (`powershell.exe`, `cmd.exe`, `bash.exe`, `agy.exe`, or `claude.exe`) attached to the allocated PTY slave, defaulting the working directory to the AICO Workspace Root (`active.specs_path.parent()`) when `cwd` is omitted or empty.
 - **REQ-004**: When a client sends a WebSocket `input` message, the PtyManager shall write the raw input bytes directly to the PTY master writer without line-buffering delay.
 - **REQ-005**: When a client sends a WebSocket `resize` message containing column and row dimensions, the PtyManager shall update the PTY master geometry via `PtySize`.
-- **REQ-006**: When a WebSocket connection disconnects or receives a `close`/`kill` message, the PtyManager shall terminate the spawned child process tree and release all associated PTY handles.
+- **REQ-006**: When a WebSocket connection receives an explicit `close` or `kill` message (or disconnects from an anonymous session without a `tab_id`), the PtyManager shall terminate the spawned child process tree and release all associated PTY handles.
+- **REQ-011**: When a client sends a WebSocket `init` message containing a `tab_id`, the PtyManager shall retain the live `PtySession` and a rolling UTF-8 output scrollback buffer (up to 128 KB) keyed by `tab_id` across WebSocket disconnects, replaying the buffered scrollback output and re-attaching the live PTY stream when a client reconnects with the same `tab_id`.
+- **REQ-012**: When multiple WebSocket clients connect with the same `tab_id`, the PtySession shall attach both clients concurrently, broadcasting PTY output to all attached clients and forwarding input from any connected client to the shared PTY process.
 
 ### State-Driven Requirements
 - **REQ-007**: While a child process generates stdout or stderr output inside the PTY, the PtyManager shall stream raw chunks from the PTY master reader to the WebSocket client as `output` messages.
@@ -76,6 +82,7 @@ This feature replaces standard piped process execution in `aico-server` with a n
 
 ### Unwanted Behavior & Error Handling
 - **REQ-009**: If the requested shell binary is not found on the host system, then the TerminalWebSocketHandler shall emit a structured `error` message and gracefully close the socket.
+- **REQ-010**: When the PtyManager intercepts and answers the initial ConPTY `\x1b[6n` Device Status Report (DSR) cursor-position query on session startup, it shall strip that consumed `\x1b[6n` sequence from the forwarded WebSocket `output` chunk so client terminal emulators (`@xterm/xterm`) do not emit a duplicate `\x1b[1;1R` reply into the child shell's standard input buffer.
 
 ---
 

@@ -70,7 +70,7 @@ This feature transforms `TerminalConsole.tsx` into a real, multi-session termina
 
 ## 3. Functional Requirements (EARS)
 
-- **REQ-001**: In the dockable terminal panel, the application shall provide a dedicated "AI" action button with an AI/Sparkle icon that, when clicked, creates a new terminal tab running the `agy` CLI assistant in the active project directory.
+- **REQ-001**: In the dockable terminal panel, the application shall provide dedicated icon-only Antigravity (`data-testid="agy-terminal-btn"`) and Claude (`data-testid="claude-terminal-btn"`) action buttons with brand icons and colorways that, when clicked, create new terminal tabs running the `agy` (`Antigravity` / `AGY`) or `claude` (`Claude`) CLI assistants in the active workspace directory.
 - **REQ-002**: In the dockable terminal panel, the application shall provide a primary Plus (`+`) button that, when clicked, creates a new terminal tab running the default shell (`powershell`).
 - **REQ-003**: Immediately adjacent to the Plus button, the application shall render a dropdown trigger button that, when clicked, displays a menu listing selectable shell types (`PowerShell`, `Git Bash`, `Command Prompt`).
 - **REQ-004**: When a user selects a shell type from the dropdown menu, the application shall create a new terminal tab running the selected shell and dismiss the dropdown menu.
@@ -80,7 +80,7 @@ This feature transforms `TerminalConsole.tsx` into a real, multi-session termina
 - **REQ-008**: The dockable terminal panel shall allow closing terminal tabs even when only one terminal is open, transitioning the view to an empty state with quick actions to launch a session.
 - **REQ-009**: In the dockable terminal panel header row, the application shall render the `TERMINALS` label and terminal icon, collapsing to the icon only on constrained viewports, with action buttons positioned in the same row.
 - **REQ-010**: The primary Plus button shall display an icon without text, and terminal tabs shall display responsive label abbreviations when space is limited (`PowerShell` -> `ps`).
-- **REQ-011**: Terminal sessions shall default their execution directory to the specs directory of the active project when no working directory is explicitly provided.
+- **REQ-011**: Terminal sessions shall default their execution directory to the AICO Workspace Root (the parent directory of `<project>-specs`, where `.agents/skills`, `GEMINI.md`, `*-specs`, and `codebase/` reside) when no working directory is explicitly provided.
 - **REQ-012**: The terminal viewer shall reassemble incoming streaming stdout and stderr chunks continuously without breaking partial words or token fragments across separate lines.
 - **REQ-013**: In interactive terminal sessions (e.g., PowerShell), user typing shall render inline directly behind the active shell prompt without injecting an artificial standalone `>` command line into the output history.
 - **REQ-014**: The AI (`agy`) terminal session shall display the initialization banner upon launch, omit the `agy>` prefix from the prompt and user input, and provide an interactive autocomplete menu when the user types a leading `/` slash command.

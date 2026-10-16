@@ -69,6 +69,10 @@ The `001-aico-core` epic decomposes into 8 specifications:
 | `SPEC-CORE-006` | `specs/06-webui-shell` | Accordion sidebar, bottom/right dock, project tabs |
 | `SPEC-CORE-007` | `specs/07-epic-hub` | Visual lineage canvas, asset drop zones, human gate tasks |
 | `SPEC-CORE-008` | `features/ft-core-repository-badges-alignment` | Feature & Epic header alignment, badge layout, remove jump links |
+| `spec-ft-core-omni-search-fulltext` | `features/ft-core-omni-search-fulltext` | Workspace tree full-text fuzzy search and OmniSearch integration |
+| `spec-ft-core-ui-visual-consistency` | `features/ft-core-ui-visual-consistency` | WebUI visual token alignment and shell consistency |
+| `spec-ft-core-assets-manager` | `features/ft-core-assets-manager` | Multi-modal asset management, previews, and OS integration |
+| `spec-ft-core-skills-sync` | `features/ft-core-skills-sync` | Startup workspace `.agents/skills` and `GEMINI.md`/`AGENTS.md` rules synchronization |
 
 ---
 
