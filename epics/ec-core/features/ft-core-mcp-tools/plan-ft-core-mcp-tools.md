@@ -24,7 +24,7 @@ created_at: "2026-10-05T20:00:00Z"
   - `regex`: Fast extraction of `// @verifies SPEC-ID::REQ-ID` and `// @implements SPEC-ID::REQ-ID` comment annotations.
   - `ears-parser`: Custom AST/regex parser for validating EARS syntax patterns (`While ... the system shall ...`, `When ... the system shall ...`, `Where ... the system shall ...`, `If ... then the system shall ...`, `The system shall ...`).
   - `kuzu`: Transactional writes of artifact nodes, requirement relationships, and verification edges.
-- **Gate Guarantee**: Artifacts cannot be written directly by agents bypassing validation. Agents must invoke `create_sdd_artifact`, which enforces syntax, required metadata, and graph registration atomically.
+- **Gate Guarantee**: Stateless SDD file scaffolding is delegated to `aico-cli.mjs` (`ft-tooling-sdd-cli`) while `aico-mcp` enforces in-band annotation extraction, EARS validation, task verification, and stateful graph/hybrid queries (`ft-tooling-mcp-repurpose`).
 
 ---
 
@@ -40,7 +40,7 @@ created_at: "2026-10-05T20:00:00Z"
     - Implements `AnnotationExtractor` scanning test files for `// @verifies <SPEC-ID>::<REQ-ID>` and source files for `// @implements <SPEC-ID>::<REQ-ID>`.
     - Implements `EarsSyntaxValidator` verifying modal keyword `shall`, precondition clauses, and requirement ID syntax (`REQ-\d{3}`).
     - Returns structured validation errors with line numbers and corrective guidance.
-  - **Verification Seam**: `tests/mcp_annotation_test.rs::test_annotation_extraction_and_ears_validation`
+  - **Verification Seam**: `crates/aico-mcp/tests/annotation_test.rs::test_extract_verifies_annotations`
 
 ---
 
@@ -52,25 +52,23 @@ created_at: "2026-10-05T20:00:00Z"
   - **Blocked by**: `TASK-CORE-001-1` (Axum Server / Tokio Runtime)
   - **What it delivers**:
     - Implements `McpServerManager` providing standard MCP tool registry (`tools/list`, `tools/call`).
-    - Exposes core SDD tools: `create_sdd_artifact`, `verify_task`, `query_graph`, `run_test_seam`.
+    - Exposes core SDD tools: `verify_task`, `query_lineage_graph`, `search_hybrid`, `extract_annotations`, `validate_ears`.
     - Integrates with `PolicyEngine` to enforce Tier classification and audit logging on every tool execution.
     - Formats error responses with actionable repair suggestions on validation failures.
-  - **Verification Seam**: `tests/mcp_server_test.rs::test_mcp_tool_listing_and_dispatch`
+  - **Verification Seam**: `crates/aico-mcp/tests/mcp_server_test.rs::test_list_tools_returns_sdd_core_tools`
 
 ---
 
 ### Phase 3: SDD Artifact Gate & File Atomicity
 
 - **TASK-CORE-005-3**: Deterministic SDD Artifact Creation Gate
-  - **Status**: Done
+  - **Status**: Rewritten
+  - **Reason**: Stateless SDD file and folder scaffolding moved to the unified `aico-cli.mjs` script in `aico-skills` (`ft-tooling-sdd-cli`) while `aico-mcp` is repurposed for stateful graph/vector queries (`ft-tooling-mcp-repurpose`).
+  - **Rewrite Target**: `TASK-TOOL-001-1`
   - **Addresses**: `REQ-002`
   - **Blocked by**: `TASK-CORE-005-1`, `TASK-CORE-005-2`
   - **What it delivers**:
-    - Implements handler for `create_sdd_artifact`.
-    - Validates artifact type (`brainstorm`, `deep_dive`, `spec`, `plan`).
-    - Enforces required YAML frontmatter and derives-from IDs.
-    - Performs atomic file write to the dedicated specs directory (`<project>-specs/epics/<slug>/...`).
-  - **Verification Seam**: `tests/mcp_gate_test.rs::test_create_sdd_artifact_gate`
+    - Superseded by `aico-cli.mjs` scaffolding subcommands (`scaffold-epic`, `scaffold-feature`, `scaffold-adr`).
 
 ---
 
@@ -84,4 +82,10 @@ created_at: "2026-10-05T20:00:00Z"
     - Writes `VERIFIES` and `IMPLEMENTS` edges between tests, code symbols, and requirements into Kùzu.
     - Implements `verify_task` gate checking that red behavioral tests were executed and passed before marking an implementation task complete.
     - Exposes graph query checking for dangling requirements (uncovered by tests or unaddressed by tasks).
-  - **Verification Seam**: `tests/mcp_verification_test.rs::test_traceability_and_test_before_code_gate`
+  - **Verification Seam**: `crates/aico-mcp/tests/mcp_verification_test.rs::test_traceability_and_test_before_code_gate`
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-17T21:15:00Z**: Marked `TASK-CORE-005-3` (`create_sdd_artifact` gate) as `Rewritten` (superseded by `TASK-TOOL-001-1` in `ft-tooling-sdd-cli` and `TASK-TOOL-002-1` in `ft-tooling-mcp-repurpose`) and normalized `crates/aico-mcp/tests/` seam paths.
