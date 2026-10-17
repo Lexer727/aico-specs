@@ -84,3 +84,5 @@ This epic decomposes into 4 child specifications:
    - Decoupling of AICO skills versioning (`aico-skills/VERSION`) from the platform version, standardization of artifact terminology to AICO artifacts, dynamic template placeholders (`{aico_skills_version}`), and WebUI Shell Settings alignment.
 5. **`ft-specs-agent-rules`** (`spec-ft-specs-agent-rules`, `plan-ft-specs-agent-rules`):
    - Formal specification of workspace agent rules (`GEMINI.md` / `AGENTS.md`) and enforcement of the mandatory human review and approval gate before any code or specification modifications.
+6. **`ft-specs-traceability-syntax-evolution`** (`spec-ft-specs-traceability-syntax-evolution`, `plan-ft-specs-traceability-syntax-evolution`):
+   - Canonical 3-segment in-band annotation standard (`ft-<slug>::TASK-<task>::REQ-<req>`), skill placeholder conventions, strict comment scanning, and automated codebase migration.

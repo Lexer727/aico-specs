@@ -73,6 +73,10 @@ The `001-aico-core` epic decomposes into 8 specifications:
 | `spec-ft-core-ui-visual-consistency` | `features/ft-core-ui-visual-consistency` | WebUI visual token alignment and shell consistency |
 | `spec-ft-core-assets-manager` | `features/ft-core-assets-manager` | Multi-modal asset management, previews, and OS integration |
 | `spec-ft-core-skills-sync` | `features/ft-core-skills-sync` | Startup workspace `.agents/skills` and `GEMINI.md`/`AGENTS.md` rules synchronization |
+| `spec-ft-core-code-navigation-and-search` | `features/ft-core-code-navigation-and-search` | Code viewer feature navigation pill, sidebar tree full-text search, and feature/epic code links |
+| `spec-ft-core-workspace-path-normalization` | `features/ft-core-workspace-path-normalization` | Workspace-relative path normalization, tab deduplication, and workspace topology view in Settings |
+| `spec-ft-core-code-path-simplification-and-omnisearch` | `features/ft-core-code-path-simplification-and-omnisearch` | Code path simplification (leaving codebase out) and OmniSearch relative path consistency |
+| `spec-ft-core-multirepo-code-path-normalization` | `features/ft-core-multirepo-code-path-normalization` | Multi-repository code path normalization (<repo>/<path>) and root-agnostic resolution |
 
 ---
 
@@ -87,3 +91,7 @@ The `001-aico-core` epic decomposes into 8 specifications:
 - **2026-10-07T01:10:00Z**: Decomposed and added `ft-core-repository-badges-alignment` (`spec-ft-core-repository-badges-alignment`, `plan-ft-core-repository-badges-alignment`, `order: 8`) to align repository headers symmetrically across Feature Viewer and Epic Hub.
 - **2026-10-07T01:30:00Z**: Epic reopened to `In Progress` via `/aico-plan-amendment` to append `TASK-CORE-008-3` fixing FeatureViewer repository prop binding and state persistence across tab switches, window blurs, and re-renders.
 - **2026-10-09T01:38:00Z**: `TASK-CORE-008-3` implemented and verified green with 53 Vitest suites; FeatureViewer repository synchronization confirmed stable across tab re-renders.
+- **2026-10-17T17:40:00Z**: Added `ft-core-code-navigation-and-search` (`spec-ft-core-code-navigation-and-search`, `plan-ft-core-code-navigation-and-search`, `order: 13`) to consolidate CodeViewer annotations into a single clickable feature pill, integrate sidebar tree full-text search, and introduce code links in FeatureViewer and EpicHubView.
+- **2026-10-17T18:25:00Z**: Added `ft-core-workspace-path-normalization` (`spec-ft-core-workspace-path-normalization`, `plan-ft-core-workspace-path-normalization`, `order: 14`) to normalize code paths relative to workspace root `d:/aico`, resolve multi-prefix raw files, eliminate duplicate tabs, and document workspace topology in SettingsModal.
+- **2026-10-17T18:57:00Z**: Added `ft-core-code-path-simplification-and-omnisearch` (`spec-ft-core-code-path-simplification-and-omnisearch`, `plan-ft-core-code-path-simplification-and-omnisearch`, `order: 15`) to simplify code paths (omitting redundant `codebase/` prefix) and display relative paths for code hits in OmniSearch.
+- **2026-10-17T19:35:00Z**: Added `ft-core-multirepo-code-path-normalization` (`spec-ft-core-multirepo-code-path-normalization`, `plan-ft-core-multirepo-code-path-normalization`, `order: 16`) to retain repository folder names (`<repo>/<rel-path>`), support multi-repository codebases under `codebase/`, and implement root-agnostic dynamic path normalization.
