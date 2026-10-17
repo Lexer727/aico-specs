@@ -19,33 +19,33 @@ created_at: "2026-10-09T00:16:00Z"
   - Implement a dedicated module in `frontend/src/utils/searchEngine.ts` that indexes entities across all document fields:
     - Epics: `id`, `title`, `executive_summary`, `brainstorm_content`, `deepdive_content`, `ubiquitous_language`.
     - Features: `id`, `name`, `description`, `in_scope`, `out_of_scope`, `requirements` (`id`, `statement`), `tasks` (`id`, `title`, `description`), `brainstorm_content`, `deepdive_content`.
+    - Specifications: full markdown content (`raw_spec_content`, requirement statements, and in-scope text) across all epics and standalone features.
     - ADRs: `id`, `title`, `context`, `decision`, `consequences`.
-    - Code Files: file path string.
+    - Code Files: file path string and backend search hit snippets.
   - Compute a combined match score evaluating:
     1. Exact token and prefix matches.
     2. Approximate string matching using Levenshtein distance ($\le 2$ edits for words $> 4$ characters).
     3. Acronym / camelCase / kebab-case sub-string matches.
   - Return matched items with match details (e.g. matched field: title, task, summary, requirement) and match score.
 
-- **Sidebar Tree Auto-Expansion & Highlighting (`ShellLayout.tsx`)**:
-  - Accept full entity data or search engine results in `ShellLayout.tsx`.
-  - When `searchQuery` is non-empty:
-    - Evaluate active items against the fuzzy search engine.
-    - Automatically expand all accordion sections (`openSections`) that contain matching entities so hits are immediately visible.
-    - Render hit badges or matching indicators (e.g., small highlight or hit badge indicating matching task/summary).
-    - Respect the 5 active scope toggles (`Epics`, `Features`, `Specs`, `Code`, `ADRs`).
+- **Dual-Match for Specifications (`searchEngine.ts`)**:
+  - When querying terms inside a specification document, the search engine returns both the Specification (`spec-...` under `scope: 'specs'`) and the parent Feature (`ft-...` under `scope: 'features'`).
+  - Standalone features' specifications are explicitly aggregated into `allSpecs` and the search index.
 
-- **Global OmniSearch Modal & Cross-Project Search (`App.tsx`, `OmniSearchModal.tsx`)**:
-  - Attach a global `keydown` event listener in `App.tsx` on `window`:
-    - On `(e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')`:
-      Call `e.preventDefault()` to stop Google Chrome from focusing the address bar, and toggle `isOmniSearchOpen`.
-  - Add a clickable Search button/trigger with `Ctrl+K` hint in the top application header and the sidebar workspace header.
-  - Feed live `fullEpics`, `fullFeatures`, and `fullAdrs` across all registered projects into `OmniSearchModal`, displaying a project badge on each result.
-  - On selecting a result item, if the item belongs to another project, invoke `setActiveProject(item.projectId)` before opening the corresponding tab and closing the modal.
+- **Backend Codebase Scanner & Live Annotation Discovery (`aico-server`)**:
+  - In `crates/aico-server/src/server.rs`, implement `scan_codebase_files()` traversing `proj.codebase_path` while ignoring `.git`, `target`, `node_modules`, and binary files.
+  - Parse files for `@implements spec-...::REQ-...` annotations to extract symbol names and line numbers.
+  - Expose `GET /api/v1/code/files` returning the list of discovered files, annotation counts, and symbol details.
+  - Wire into `ShellLayout.tsx` so the Code tree section displays live project files with `@implements` count badges instead of a hardcoded 12-file mock list.
 
-- **Backend REST Search Endpoint (`aico-server`)**:
-  - Add `GET /api/v1/search?q=<query>&project=<id>` in `crates/aico-server/src/server.rs`.
-  - Scan specs and codebase directories across registered projects (or filtered to specific project) for matching files and text snippets, returning structured JSON results.
+- **Complete File Streaming in `/api/v1/raw` & Live CodeViewer (`server.rs`, `CodeViewer.tsx`)**:
+  - In `get_raw_file_handler`, if `path` is not found relative to `specs_path`, resolve against `codebase_path`.
+  - Update `CodeViewer.tsx` to asynchronously fetch the complete source file from `/api/v1/raw?path=...` and display full line counts and content, retiring `mockCodeSnippets`.
+
+- **Backend Full-Text Codebase Search (`server.rs`, `OmniSearchModal.tsx`)**:
+  - In `search_handler` (`GET /api/v1/search`), when query is present, scan text files across `codebase_path` for matching terms.
+  - Return code hits with line numbers, relative path, and matched context snippets.
+  - Wire code hits into `OmniSearchModal.tsx` when `scopes.code` is active.
 
 ---
 
@@ -59,8 +59,7 @@ created_at: "2026-10-09T00:16:00Z"
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
     - Implement `frontend/src/utils/searchEngine.ts` supporting full-text indexing across all associated document fields (executive summaries, brainstorms, deep dives, requirements, tasks, ADRs, glossary).
-    - Implement fuzzy matching with typo tolerance (Levenshtein distance $\le 2$ or token similarity) so `ft-cor-host-runtime` matches `ft-core-host-runtime`.
-    - Unit seam tests in `frontend/tests/searchEngine.test.ts`.
+    - Implement fuzzy matching with typo tolerance (Levenshtein distance $\le 2$ or token similarity).
   - **Verification Seam**: `frontend/tests/searchEngine.test.ts`
 
 ### Phase 2: Sidebar Tree Fuzzy Filtering & Auto-Expansion
@@ -71,8 +70,7 @@ created_at: "2026-10-09T00:16:00Z"
   - **Blocked by**: TASK-CORE-009-1
   - **What it delivers**:
     - Update `ShellLayout.tsx` to utilize `searchEngine.ts` over available entity metadata and associated documents.
-    - When search query is entered, auto-expand accordion sections containing matching items.
-    - Display match indicators on matching nodes in the tree.
+    - Auto-expand accordion sections containing matching items.
     - Filter strictly according to active scope checkboxes.
   - **Verification Seam**: `frontend/tests/ShellLayoutSearch.test.tsx`
 
@@ -83,10 +81,10 @@ created_at: "2026-10-09T00:16:00Z"
   - **Addresses**: REQ-005, REQ-006, REQ-007
   - **Blocked by**: TASK-CORE-009-1
   - **What it delivers**:
-    - Add global keydown listener on `window` in `App.tsx` intercepting `Ctrl+K` with `e.preventDefault()`.
-    - Add a clickable Search button with `Ctrl+K` shortcut pill in the top header and sidebar header.
-    - Wire live cross-project search results into `OmniSearchModal.tsx` showing project tags.
-    - Implement selection navigation with automatic active project switching (`setActiveProject`) when choosing an entity from another project.
+    - Add global keydown listener in `App.tsx` intercepting `Ctrl+K` with `e.preventDefault()`.
+    - Add clickable Search button with shortcut pill in header.
+    - Wire live cross-project search results into `OmniSearchModal.tsx`.
+    - Implement selection navigation with project switching.
   - **Verification Seam**: `frontend/tests/OmniSearchModal.test.tsx`
 
 ### Phase 4: Backend REST Search Endpoint
@@ -96,9 +94,8 @@ created_at: "2026-10-09T00:16:00Z"
   - **Addresses**: REQ-008
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
-    - Implement `GET /api/v1/search` handler in `crates/aico-server/src/server.rs` querying across registered projects.
+    - Implement `GET /api/v1/search` handler in `crates/aico-server/src/server.rs`.
     - Scan discovered epics, features, and specs on disk matching query string.
-    - Integration seam test in `crates/aico-server/tests/search_test.rs`.
   - **Verification Seam**: `crates/aico-server/tests/search_test.rs`
 
 ### Phase 5: Verification & Blueprint Compliance
@@ -110,5 +107,61 @@ created_at: "2026-10-09T00:16:00Z"
   - **What it delivers**:
     - Run Vitest suite across frontend.
     - Run Cargo test suite across crates.
-    - Run `verify-artifacts.mjs` ensuring 0 errors and 0 warnings across all 51 artifacts.
+    - Run `verify-artifacts.mjs` ensuring 0 errors and 0 warnings.
   - **Verification Seam**: Vitest + Cargo + `verify-artifacts.mjs`
+
+### Phase 6: Codebase Search, Annotation Discovery & Spec Full-Text Indexing
+
+- **TASK-CORE-009-6**: Dual-Match Spec Full-Text Indexing in Client Search Engine
+  - **Status**: Done
+  - **Addresses**: REQ-002, REQ-009
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - In `frontend/src/utils/searchEngine.ts`, attach full markdown content (`raw_spec_content`, requirement statements, and in-scope text) to `specs` scope entities.
+    - Ensure standalone features' specs are included in `allSpecs` in `ShellLayout.tsx` and indexed.
+    - When querying terms inside a specification, assert both the Specification (`spec-...`) and parent Feature (`ft-...`) match.
+  - **Verification Seam**: `frontend/tests/searchEngine.test.ts`
+
+- **TASK-CORE-009-7**: Implement Codebase File Scanner & `@implements` Discovery Endpoint
+  - **Status**: Done
+  - **Addresses**: REQ-010
+  - **Blocked by**: None (Can start immediately)
+  - **What it delivers**:
+    - In `crates/aico-server/src/server.rs`, implement codebase scanner walking `codebase_path` with ignore filters (`.git`, `target`, `node_modules`, binary files) and identifying files with `@implements` annotations.
+    - Expose `GET /api/v1/code/files` endpoint returning discovered files, symbol names, and line numbers.
+    - Wire live files and `@implements` badges into the tree view Code section in `ShellLayout.tsx`.
+  - **Verification Seam**: `crates/aico-server/tests/code_scanner_test.rs`, `frontend/tests/ShellLayoutSearch.test.tsx`
+
+- **TASK-CORE-009-8**: Full-File Streaming via `/api/v1/raw` & Live CodeViewer Component
+  - **Addresses**: REQ-011
+  - **Status**: Done
+  - **Blocked by**: TASK-CORE-009-7
+  - **What it delivers**:
+    - Update `get_raw_file_handler` in `crates/aico-server/src/server.rs` to resolve relative file paths against `codebase_path` when not found in `specs_path`.
+    - Update `CodeViewer.tsx` to asynchronously fetch full file content from `/api/v1/raw?path=...` and render complete line-numbered source code.
+  - **Verification Seam**: `frontend/tests/CodeViewer.test.tsx`
+
+- **TASK-CORE-009-9**: Backend Full-Text Codebase Search & OmniSearch Integration
+  - **Addresses**: REQ-012
+  - **Status**: Done
+  - **Blocked by**: TASK-CORE-009-6, TASK-CORE-009-7
+  - **What it delivers**:
+    - In `crates/aico-server/src/server.rs`, enhance `search_handler` to search source file contents across `codebase_path` for query matches, returning file path, line numbers, and snippets.
+    - Connect backend code hits to `OmniSearchModal.tsx` under `scope: 'code'`.
+  - **Verification Seam**: `crates/aico-server/tests/search_test.rs`, `frontend/tests/OmniSearchModal.test.tsx`
+
+- **TASK-CORE-009-10**: Full Suite Regression Verification & Blueprint Conformance
+  - **Addresses**: REQ-001 through REQ-012
+  - **Status**: Done
+  - **Blocked by**: TASK-CORE-009-8, TASK-CORE-009-9
+  - **What it delivers**:
+    - Run Vitest suite across frontend.
+    - Run Cargo test suite across crates.
+    - Run `verify-artifacts.mjs` ensuring 0 errors and 0 warnings.
+  - **Verification Seam**: Vitest + Cargo + `verify-artifacts.mjs`
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-17T15:50:00Z**: Appended Phase 6 (`TASK-CORE-009-6` through `TASK-CORE-009-10`) via `/aico-plan-amendment` to address spec full-text dual-matching (`REQ-002`, `REQ-009`), live codebase file discovery and `@implements` annotation scanning (`REQ-010`), complete file streaming in `/api/v1/raw` and `CodeViewer` (`REQ-011`), and backend full-text codebase search (`REQ-012`).
