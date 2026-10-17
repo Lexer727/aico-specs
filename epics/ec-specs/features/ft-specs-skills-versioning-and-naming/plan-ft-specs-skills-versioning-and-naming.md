@@ -15,9 +15,10 @@ created_at: "2026-10-07T00:10:00Z"
 
 ## 1. Technical Architecture & Decisions
 
-- **Single Source of Version Truth**: The `aico-skills` version is single-sourced in `aico-skills/VERSION`. Artifact templates must never hardcode version numbers; instead, they declare `{aico_skills_version}`, which is resolved dynamically by agents and tooling at runtime.
+- **Single Source of Version Truth**: The `aico-skills` harness version is single-sourced in `aico-skills/plugin.json` (`"version": "0.1.2"`), retiring the redundant standalone `VERSION` file. Artifact templates declare `{aico_skills_version}`, which is resolved dynamically by agents and tooling at runtime from `plugin.json`.
 - **Terminology Standardization**: "SDD artifacts" is replaced across all documentation, skill instructions, and reports with "AICO artifacts" or "AICO-skill artifacts" to establish consistent branding and platform identity.
-- **Decoupled Platform & Skills Display**: The WebUI Shell cleanly delineates the Platform Version (`v0.1.1` from Cargo workspace) from the Skills Version (`0.1.2` from `VERSION`), updating the settings modal section to "AICO Skills".
+- **Decoupled Platform & Skills Display**: The WebUI Shell cleanly delineates the Platform Version (`v0.1.1` from Cargo workspace) from the Skills Version (`0.1.2` from `plugin.json`), updating the settings modal section to "AICO Skills".
+- **Workspace Manifest Synchronization**: The Rust runtime (`SkillsSynchronizer`) synchronizes `plugin.json` into `.agents/skills/plugin.json` so workspace tooling has local access to the version manifest without depending on git submodules.
 
 ---
 
@@ -56,3 +57,34 @@ created_at: "2026-10-07T00:10:00Z"
   - **Blocked by**: `TASK-SPECS-004-3`
   - **What it delivers**: Implemented `ArtifactToolGate::resolve_skills_version()` in `aico-mcp` to dynamically read from `VERSION` files or environment variables with fallback, and verified clean test passage.
   - **Verification Seam**: `crates/aico-mcp/tests/mcp_gate_test.rs`
+
+---
+
+### Phase 4: Single-Sourced Version in `plugin.json` & Runtime Synchronization
+
+- **TASK-SPECS-004-5**: Consolidate Version into `plugin.json` & Update JS Tooling
+  - **Status**: Done
+  - **Addresses**: `REQ-002`, `REQ-003`
+  - **Blocked by**: `TASK-SPECS-004-4`
+  - **Verification Seam**: `aico-skills/scripts/get-version.mjs`, `aico-verify/scripts/verify-artifacts.mjs`
+  - **What it delivers**:
+    - Updates `aico-skills/scripts/get-version.mjs` to read and parse `"version"` from `plugin.json`.
+    - Updates `aico-skills/aico-verify/scripts/verify-artifacts.mjs` to resolve version from `plugin.json` with fallback.
+    - Retires the standalone `aico-skills/VERSION` file.
+    - Updates skill markdown doc comments and templates referencing `VERSION` to reference `plugin.json`.
+
+- **TASK-SPECS-004-6**: Update Rust Host Runtime (`skills_sync`, `aico-mcp`) & Scanner Tests
+  - **Status**: Done
+  - **Addresses**: `REQ-002`, `REQ-007`
+  - **Blocked by**: `TASK-SPECS-004-5`
+  - **Verification Seam**: `crates/aico-core/tests/scanner_test.rs`, `crates/aico-mcp/tests/mcp_gate_test.rs`
+  - **What it delivers**:
+    - In `crates/aico-core/src/skills_sync.rs`, syncs `plugin.json` into `<root_dir>/.agents/skills/plugin.json`.
+    - In `crates/aico-mcp/src/gate.rs`, updates `resolve_skills_version()` to inspect `plugin.json` candidates first.
+    - Updates `crates/aico-core/tests/scanner_test.rs` to assert `plugin.json` synchronization and content equality.
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-17T01:50:00Z**: Appended Phase 4 (`TASK-SPECS-004-5`, `TASK-SPECS-004-6` for `REQ-002`, `REQ-007`) via `/aico-plan-amendment` to consolidate the skills harness version into `plugin.json` as the single source of truth, retire the redundant `VERSION` file, and synchronize `plugin.json` to `.agents/skills/plugin.json`.
