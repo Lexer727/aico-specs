@@ -26,6 +26,7 @@ created_at: "2026-10-24T01:20:00.000Z"
   - In `GitRepositoriesCard.tsx`, clicking `Commit` directly triggers this AI commit endpoint with spinner feedback without manual text input.
 - **Tag Standardization**: Replace the bulky `Open Epic` button with the interactive `<TagBadge id={epic.id} onClick={() => onOpenEpic(epic.id)} />` in `DashboardView.tsx`.
 - **Workflow Automation in Skills**: Update `aico-implementation`, `aico-review-loop`, and `aico-git` skill definitions to codify automatic staging, commit, and push across decoupled repositories upon successful task verification.
+- **Codebase Repository Resolution Precedence**: In `crates/aico-server/src/server.rs` (`resolve_repo_dir`), inspect `proj.manifest.get_effective_repositories(&proj.specs_path)` first so that repositories sharing the project slug (e.g. codebase repo `aico` inside project `aico`) resolve to their actual codebase path (`codebase/aico`) rather than defaulting to `proj.specs_path` (`aico-specs`). In `GitRepositoriesCard.tsx`, include `path: repo.path` in action request payloads.
 
 ---
 
@@ -38,11 +39,13 @@ flowchart TD
     T3["TASK-CORE-018-3: Re-unify Git Repositories Grid & State-Aware Action Buttons (REQ-002, REQ-003)"]
     T4["TASK-CORE-018-4: Implement One-Click AI Commit in UI & Backend Endpoint (REQ-004)"]
     T5["TASK-CORE-018-5: Codify Auto Commit & Push Workflow in AICO Skills (REQ-005)"]
+    T6["TASK-CORE-018-6: Fix Codebase Repo Resolution Collision & Pass Path Telemetry (REQ-008)"]
 
     T1 --> T2
     T2 --> T3
     T3 --> T4
     T4 --> T5
+    T5 --> T6
 ```
 
 ### Phase 1: Zero-Mock Initialization & Header Cleanup
@@ -117,6 +120,20 @@ flowchart TD
 
 ---
 
+### Phase 6: Codebase Repository Resolution & Submodule Commit Fix
+
+- **TASK-CORE-018-6**: Fix Codebase Repo Resolution Collision & Pass Path Telemetry
+  - **Status**: Done
+  - **Addresses**: `REQ-008`
+  - **Blocked by**: `TASK-CORE-018-5`
+  - **What it delivers**:
+    - Updates `resolve_repo_dir` in `crates/aico-server/src/server.rs` to query effective repositories first, preventing codebase repositories whose id equals `proj.manifest.name` from colliding with specs directory.
+    - Updates `GitRepositoriesCard.tsx` to include `path: repo.path` in `handlePull`, `handlePush`, and `handleAiCommit` requests.
+  - **Verification Seam**: `crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx`
+
+---
+
 ## 3. Amendment Log
 
 - **2026-10-24T01:20:00Z**: Initialized plan for `ft-core-dashboard-and-repo-card-refinement` covering zero-mock defaults, re-unified repositories grid, state-aware git telemetry, one-click AI commit, and skills workflow auto commit/push.
+- **2026-10-24T01:45:00Z**: Appended TASK-CORE-018-6 to resolve repo directory collision when codebase repo ID matches project slug, fixing submodule commit dispatch.

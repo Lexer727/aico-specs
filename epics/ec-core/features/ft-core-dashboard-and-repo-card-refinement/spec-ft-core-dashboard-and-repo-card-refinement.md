@@ -22,6 +22,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 4. **Manual Commit Friction & Lack of Agent Workflow Integration**: Clicking Commit currently opens a manual text box. Furthermore, agents executing tasks do not automatically stage, commit, and push across affected decoupled repositories upon task verification.
 5. **Redundant Open Epic Buttons**: Project Epics cards render an unclickable text tag alongside a bulky `Open Epic` button, rather than using the interactive `TagBadge` component established across the design system.
 6. **Flashing Mock Defaults on Reload**: Initial state in `App.tsx` and `DashboardView.tsx` falls back to hardcoded mock projects (`AICO Core SDD`) and default epics (`ec-core`, `ec-specs`, `10 Formal Specs`), causing false numbers and labels to flash during page reload.
+7. **Repository Resolution Collision When Codebase Shares Project Name**: When a codebase repository has an identifier matching the project name (e.g. `aico`), server-side repository resolution erroneously defaults to the specs directory, causing Git commit/pull/push operations on the codebase (such as updating submodules) to target the specs repository and fail with "Working tree clean".
 
 ---
 
@@ -37,6 +38,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 - Updating AICO skills (`aico-implementation`, `aico-review-loop`, `aico-git`) to automatically stage, commit, and push changes upon task verification.
 - Standardizing Project Epics cards in `DashboardView.tsx` to use clickable `TagBadge` navigation, eliminating the separate `Open Epic` button.
 - Eliminating hardcoded `mockProjects` in `App.tsx` and `defaultEpics` in `DashboardView.tsx`, displaying clean empty/loading states (`0`, `-`, `"No epics found"`).
+- Resolving repository directory lookup order in `server.rs` (`resolve_repo_dir`) to check manifest effective repositories before specs fallbacks, and passing explicit `path` telemetry from `GitRepositoriesCard.tsx`.
 
 ---
 
@@ -59,6 +61,8 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
    - *Independent Test*: Mount `DashboardView` and verify clicking `TagBadge` invokes `onOpenEpic`, while `Open Epic` button is absent.
 5. **US-05** (Priority: P2): As a developer working with autonomous coding agents, I want task implementation workflows in AICO skills to automatically commit and push verified changes across decoupled repositories, so that manual button clicking is not required.
    - *Independent Test*: Inspect `aico-implementation` and `aico-review-loop` skill definitions and verify automatic stage, commit, and push steps are mandated post-verification.
+6. **US-06** (Priority: P1): As a developer committing updates to a codebase repository with submodules whose name matches the project, I want clicking Commit to target the actual codebase directory instead of the specs repository, so that modified submodules commit cleanly.
+   - *Independent Test*: Issue a commit request for codebase repo matching project name; verify it commits in codebase directory.
 
 ---
 
@@ -79,6 +83,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
   - While `repo.is_clean` is true, the Commit button shall be disabled with tooltip `"Working tree clean (nothing to commit)"`.
   - While `repo.is_clean` is false, the Commit button shall be enabled with badge `Commit (${modifiedCount})` and descriptive tooltip.
 - **REQ-005**: While an autonomous agent executes implementation workflows in `aico-implementation`, `aico-review-loop`, or `aico-git`, the system shall automatically stage modified files, generate a conventional commit message, commit, and push across affected decoupled repositories upon verifying red tests turn green and artifacts conform.
+- **REQ-008**: While resolving target repository directories for Git operations (`/pull`, `/push`, `/commit`, `/ai-commit`), the backend server shall search the active project's effective repositories list for matching `repo_id` before checking specs repository fallbacks, and shall accept optional explicit `path` parameters from the client.
 
 ### Event-Driven Requirements
 - **REQ-004**: When a user clicks the enabled `Commit` button on a modified repository, the UI shall trigger an automated AI commit routine (auto-generating a conventional commit message from git status/diff and committing) with progress indicator, without opening an inline manual text input box.
@@ -93,12 +98,14 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
    - Verifies: Absence of hardcoded root path (`REQ-001`), interactive `TagBadge` epic navigation and omission of `Open Epic` button (`REQ-006`), zero-mock empty state (`REQ-007`).
 2. **Repositories Grid & Git Telemetry Seam (`frontend/tests/DashboardGitStatus.test.tsx` & `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx`)**:
    - Signature: `<GitRepositoriesCard statuses={...} />`
-   - Verifies: Re-unified single 3-column grid with Specs first (`REQ-002`), state-aware disabled and count states for Pull, Push, and Commit (`REQ-003`), one-click AI commit action (`REQ-004`).
+   - Verifies: Re-unified single 3-column grid with Specs first (`REQ-002`), state-aware disabled and count states for Pull, Push, and Commit (`REQ-003`), one-click AI commit action (`REQ-004`), transmission of `path` telemetry (`REQ-008`).
 3. **AI Commit Backend Endpoint Seam (`crates/aico-server/tests/server_test.rs`)**:
    - Signature: `POST /api/v1/git/ai-commit`
    - Verifies: Automated conventional commit message generation from git diff/status and execution (`REQ-004`).
 4. **Agent Workflow Automation Seam (`codebase/aico-skills/aico-implementation/SKILL.md` & `codebase/aico-skills/aico-git/SKILL.md`)**:
    - Signature: Autonomous workflow verification and automated Git stage/commit/push gate (`REQ-005`).
+5. **Codebase Repository Resolution Seam (`crates/aico-server/tests/server_test.rs`)**:
+   - Signature: `resolve_repo_dir` when codebase repo ID matches project slug (`REQ-008`).
 
 ---
 
