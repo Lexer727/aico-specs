@@ -1,27 +1,23 @@
 {
-  "name": "aico",
+  "project_name": "aico",
+  "name": "AICO Specs",
+  "id": "aico-specs",
+  "url": "https://github.com/Lexer727/aico-specs",
   "created_at": "2026-10-05T18:45:00Z",
   "repositories": [
     {
       "id": "aico",
-      "name": "AICO Engine & WebUI",
+      "name": "AICO Engine",
       "path": "../codebase/aico",
-      "type": "codebase",
-      "url": "https://github.com/Lexer727/aico"
-    },
-    {
-      "id": "aico-specs",
-      "name": "AICO Specs",
-      "path": ".",
-      "type": "specs",
-      "url": "https://github.com/Lexer727/aico-specs"
+      "url": "https://github.com/Lexer727/aico",
+      "type": "codebase"
     },
     {
       "id": "aico-skills",
-      "name": "AICO Skills Suite",
+      "name": "AICO Skills",
       "path": "../codebase/aico-skills",
-      "type": "skills",
-      "url": "https://github.com/Lexer727/aico-skills"
+      "url": "https://github.com/Lexer727/aico-skills",
+      "type": "skills"
     }
   ]
 }

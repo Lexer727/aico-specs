@@ -110,6 +110,9 @@ This epic decomposes into five vertical child features across two architectural 
 5. **`ft-terminal-ai-quota-monitor`** (`order: 5`):
    - **Scope**: Backend dynamic quota discovery service (`/api/v1/ai/quotas`) and compact 2-line `AiStatusMonitor.tsx` in the sidebar. Displays Gemini Weekly and 5-Hour remaining limits on line 1, Claude/secondary providers on line 2 (only if authenticated), and real-time AI terminal state (`Inactive`, `Waiting for Input`, `Working`).
 
+6. **`ft-terminal-tab-title-status`** (`order: 6`):
+   - **Scope**: Reactive synchronization between active AI terminal sessions and the browser window title (`document.title`). Formats ambient status indicators with animated braille spinners during active work (`working`), green circles (`🟢`) when finished, blue circles (`🔵`) when awaiting user input, and red circles (`🔴`) on error—ordered with Antigravity first and Claude second, collapsing cleanly to `AICO` when no AI CLI terminals are open.
+
 ---
 
 ## 5. Milestone Convergence & Verification Seams
@@ -122,4 +125,6 @@ This epic decomposes into five vertical child features across two architectural 
    - Validates `/api/v1/ai/quotas` endpoint, dynamic CLI credential discovery, and omission of unauthenticated providers.
 4. **AI Status Monitor UI Seam**: `frontend/tests/AiStatusMonitor.test.tsx`
    - Validates compact 2-line layout, circular progress meters, and AI activity badge transitions.
+5. **Terminal Title Status Seam**: `frontend/tests/TerminalTitleStatus.test.tsx`
+   - Validates dynamic `document.title` synchronization with terminal tabs and AI status states, braille spinner animation loop, and cleanup on unmount.
 

@@ -82,9 +82,27 @@ This plan implements real-time AI quota tracking and session status monitoring i
     - Verifies whether the user is logged into Claude Code via `~/.claude/.credentials.json` (`claudeAiOauth.accessToken`) and/or `claude.exe auth status --json` (`"loggedIn": true`), querying Anthropic OAuth usage when a token is available and omitting `Claude` when not logged in.
     - Removes the global session status badge from `AiStatusMonitor.tsx` (relocated to per-tab circle indicators in `TerminalConsole.tsx`).
 
+- **TASK-QUOTA-008**: Implement transient standalone language server probe in QuotaDiscoveryService
+  - **Status**: Done
+  - **Addresses**: REQ-012
+  - **Blocked by**: none
+  - **Verification Seam**: `crates/aico-server/tests/ai_quota_test.rs`
+  - **What it delivers**:
+    - Discovers installed `language_server.exe`, launches it in a transient background child process (`--standalone`, `--subclient_type hub`, `--override_ide_name antigravity`, with stdin closed and a unique CSRF token), parses the assigned HTTP port from stderr, queries `RetrieveUserQuotaSummary` and `GetUserStatus`, parses authentic account and Gemini quota metrics, gracefully terminates the process, and caches the result.
+
+- **TASK-QUOTA-009**: Add automated test seam verifying standalone probe discovery in ai_quota_test.rs
+  - **Status**: Done
+  - **Addresses**: REQ-012
+  - **Blocked by**: TASK-QUOTA-008
+  - **Verification Seam**: `crates/aico-server/tests/ai_quota_test.rs`
+  - **What it delivers**:
+    - Adds tests asserting that when no language server process is running, `QuotaDiscoveryService` probes the installed binary and retrieves live account and quota data without fallback to mock 100%.
+
 ---
 
 ## 3. Amendment History
+
+- **2026-10-23T00:12:00Z**: Added `TASK-QUOTA-008` and `TASK-QUOTA-009` (`REQ-012`) via `/aico-plan-amendment` to implement transient standalone language server probing when Antigravity IDE is not open, delivering real Gemini quota percentages and reset countdowns directly to AICO.
 
 - **2026-10-10T03:05:00Z**: Initial creation of AI quota monitor plan under epic `ec-terminal`.
 - **2026-10-12T17:06:00Z**: Added `TASK-QUOTA-006` to query `RetrieveUserQuotaSummary` for distinct `gemini-weekly` and `gemini-5h` buckets and remove `3p`/Claude tracking from `agy` while preserving standalone multi-CLI tracking.

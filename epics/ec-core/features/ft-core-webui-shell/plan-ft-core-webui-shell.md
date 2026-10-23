@@ -395,9 +395,48 @@ created_at: "2026-10-05T20:00:00Z"
     - Runs full Vitest suite (`npm test`) and Rust backend suite (`cargo test -p aico-server`).
     - Compiles production bundle (`npm run build`) and restarts `aico-server` daemon.
 
+- **TASK-CORE-006-32**: Implement unified isTaskDone helper and integrate across frontend views
+  - **Status**: Done
+  - **Addresses**: `REQ-024`
+  - **Blocked by**: none
+  - **Verification Seam**: `frontend/tests/FeatureViewer.test.tsx`
+  - **What it delivers**:
+    - Exposes `isTaskDone(status: string)` in `frontend/src/features/feature-task-data.ts` treating `Done`, `Completed`, `Rewritten`, and `Skipped/Canceled` as terminal completed states.
+    - Updates `EpicHubView.tsx`, `FeatureViewer.tsx`, `PlanViewer.tsx`, `DashboardView.tsx`, and `computeActiveFrontier` to use `isTaskDone`.
+
+- **TASK-CORE-006-33**: Add Vitest unit test coverage for Rewritten task status progress calculation
+  - **Status**: Done
+  - **Addresses**: `REQ-024`
+  - **Blocked by**: `TASK-CORE-006-32`
+  - **Verification Seam**: `frontend/tests/FeatureViewer.test.tsx`
+  - **What it delivers**:
+    - Adds automated unit tests in `frontend/tests/FeatureViewer.test.tsx` asserting that tasks with status `Rewritten` or `Skipped/Canceled` count toward done progress tallies and unblock dependent tasks in the DAG.
+
+- **TASK-CORE-006-34**: Harmonize EpicHubView child feature task progress, status badges, and blocker resolution with isTaskDone
+  - **Status**: Done
+  - **Addresses**: `REQ-024`
+  - **Blocked by**: `TASK-CORE-006-32`
+  - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
+  - **What it delivers**:
+    - Updates `EpicHubView.tsx` child feature task group calculations to use `isTaskDone(t)` for `featDone` count.
+    - Updates task badge color styling in child feature cards to use `isTaskDone(task.status)`.
+    - Updates blocker resolution checks in `blockedList.every` and dependency badge formatting to use `isTaskDone(blocker)`.
+
+- **TASK-CORE-006-35**: Add Vitest unit test coverage for EpicHubView child feature Rewritten progress and blocker resolution
+  - **Status**: Done
+  - **Addresses**: `REQ-024`
+  - **Blocked by**: `TASK-CORE-006-34`
+  - **Verification Seam**: `frontend/tests/EpicHubView.test.tsx`
+  - **What it delivers**:
+    - Adds automated unit tests in `frontend/tests/EpicHubView.test.tsx` asserting that child features containing `Rewritten` tasks (such as `ft-core-mcp-tools`) display full completion progress (e.g. `4/4 Done (100%)`), display emerald completed badge styling, and resolve dependency blockers.
+
 ---
 
 ## 3. Amendment Log
+
+- **2026-10-23T00:36:00Z**: Appended Phase 15 tasks (`TASK-CORE-006-34`, `TASK-CORE-006-35` for `REQ-024`) via `/aico-plan-amendment` to harmonize child feature task counts, status badge styling, and blocker resolution with `isTaskDone` in `EpicHubView`.
+
+- **2026-10-23T00:12:00Z**: Appended Phase 14 tasks (`TASK-CORE-006-32`, `TASK-CORE-006-33` for `REQ-024`) via `/aico-plan-amendment` to treat `Rewritten` and `Skipped/Canceled` tasks as terminal completed states across all task plan progress roll-ups and active frontier DAG calculations.
 
 - **2026-10-17T00:48:00Z**: Appended Phase 13 tasks (`TASK-CORE-006-30`, `TASK-CORE-006-31` for `REQ-023`) via `/aico-plan-amendment` to position the desktop OmniSearch bar horizontally centered across the entire physical display viewport (`50vw`) using a full-viewport overlay container.
 - **2026-10-17T00:27:00Z**: Appended Phase 12 tasks (`TASK-CORE-006-27`, `TASK-CORE-006-28`, `TASK-CORE-006-29` for `REQ-023`, `REQ-016`) via `/aico-plan-amendment` for desktop top bar 3-column layout with centered OmniSearch and removal of redundant sidebar header reload button.

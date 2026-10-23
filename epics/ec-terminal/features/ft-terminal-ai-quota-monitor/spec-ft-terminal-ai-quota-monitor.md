@@ -81,6 +81,7 @@ This feature implements the backend quota discovery service and replaces `Activi
 ### Unwanted Behavior & Error Handling
 - **REQ-010**: If an AI CLI is not installed or not authenticated, then the AiStatusMonitor shall omit that provider row from the widget without displaying error alerts.
 - **REQ-011**: The HostServer and AiStatusMonitor shall not expose or display hardcoded user email literals.
+- **REQ-012**: While no running language server process is detected on the host during live host discovery, the QuotaDiscoveryService shall launch a transient headless probe using the installed Antigravity language server binary (`language_server.exe` with `--standalone`, `--subclient_type hub`, `--override_ide_name antigravity`, and stdin closed), extract the assigned HTTP port, query `RetrieveUserQuotaSummary` and `GetUserStatus` with CSRF authentication, parse authentic account and Gemini quota metrics, terminate the transient probe process, and cache the result.
 
 ---
 

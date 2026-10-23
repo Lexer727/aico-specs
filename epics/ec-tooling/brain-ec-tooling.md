@@ -65,3 +65,5 @@ Rather than scattering ad-hoc scripts across skill folders, `aico-skills` expose
    - Removal of legacy `gate.rs`, v0.1.2 upgrade of `annotation.rs`, `ears.rs`, and `traceability.rs`, and addition of stateful `query_lineage_graph`, `search_hybrid`, and `find_dangling_requirements` MCP tools backed by `aico-storage`.
 3. **`ft-tooling-skills-integration`** (`order: 3`):
    - Updating `aico-skills` `SKILL.md` workflows to mandate `aico-cli.mjs` and repurposed `aico-mcp` tools, plus verifying workspace synchronization via `SkillsSynchronizer`.
+4. **`ft-tooling-mcp-streamable-http`** (`order: 4`):
+   - Streamable HTTP MCP endpoint on `aico-server` (`POST /mcp` and `GET /mcp`) with JSON-RPC 2.0 dispatch and active workspace `StorageManager` binding for zero-binary-lock MCP tool discovery.
