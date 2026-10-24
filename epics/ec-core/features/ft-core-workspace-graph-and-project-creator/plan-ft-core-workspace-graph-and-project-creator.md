@@ -190,3 +190,15 @@ created_at: "2026-10-23T19:05:21.133Z"
     - Removes the backward traversal branch (`edge.target === current`) to eliminate cross-feature leakage through shared code verification seams.
     - Ensures drilling down into any feature (such as `ft-core-code-navigation-and-search`) renders only that feature, its child tasks, and its verified seams.
   - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
+
+### Phase 9: Multi-Epic Dashboard Graph Focus & Drilldown Isolation
+
+- **TASK-CORE-017-16**: VisualLineageCanvas Epic Focus & Drilldown Isolation
+  - **Status**: Done
+  - **Addresses**: `REQ-025`
+  - **Blocked by**: `TASK-CORE-017-15`
+  - **What it delivers**:
+    - Updates `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` to add `drilledEpicId` state, toggle epic focus on epic node click, compute `drilledEpicNodeIds` (governing ADRs + focused epic + child features + verified seams), and filter visible nodes.
+    - Adds an Epic Focus Selector (`data-testid="epic-focus-select"`) and a `✕ Reset to All Epics` button (`data-testid="reset-epic-focus-btn"`) when multiple epics are detected in `rawNodes`.
+    - Updates status legend to reflect the active epic focus and feature drilldown hierarchy.
+  - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
