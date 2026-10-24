@@ -23,7 +23,7 @@ created_at: "2026-10-05T20:00:00Z"
   - `mcp-core` / JSON-RPC 2.0 parser: Implements the Model Context Protocol over stdio and in-process dispatch.
   - `regex`: Fast extraction of `// @verifies SPEC-ID::REQ-ID` and `// @implements SPEC-ID::REQ-ID` comment annotations.
   - `ears-parser`: Custom AST/regex parser for validating EARS syntax patterns (`While ... the system shall ...`, `When ... the system shall ...`, `Where ... the system shall ...`, `If ... then the system shall ...`, `The system shall ...`).
-  - `kuzu`: Transactional writes of artifact nodes, requirement relationships, and verification edges.
+  - `aico-storage`: Transactional writes of artifact nodes, requirement relationships, and verification edges in `AicoGraphStore`.
 - **Gate Guarantee**: Stateless SDD file scaffolding is delegated to `aico-cli.mjs` (`ft-tooling-sdd-cli`) while `aico-mcp` enforces in-band annotation extraction, EARS validation, task verification, and stateful graph/hybrid queries (`ft-tooling-mcp-repurpose`).
 
 ---
@@ -79,7 +79,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Addresses**: `REQ-006`, `REQ-007`
   - **Blocked by**: `TASK-CORE-005-1`, `TASK-CORE-003-2` (Storage Schema)
   - **What it delivers**:
-    - Writes `VERIFIES` and `IMPLEMENTS` edges between tests, code symbols, and requirements into Kùzu.
+    - Writes `VERIFIES` and `IMPLEMENTS` edges between tests, code symbols, and requirements into AicoGraphStore.
     - Implements `verify_task` gate checking that red behavioral tests were executed and passed before marking an implementation task complete.
     - Exposes graph query checking for dangling requirements (uncovered by tests or unaddressed by tasks).
   - **Verification Seam**: `crates/aico-mcp/tests/mcp_verification_test.rs::test_traceability_and_test_before_code_gate`

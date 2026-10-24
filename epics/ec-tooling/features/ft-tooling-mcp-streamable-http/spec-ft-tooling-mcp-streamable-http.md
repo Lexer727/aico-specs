@@ -16,7 +16,7 @@ created_at: "2026-10-22T20:24:06.575Z"
 
 While `crates/aico-mcp` exposes 6 domain tools via `McpServerManager`, it currently functions only as an in-process Rust library without a network or stdio transport layer. In addition, its graph tools open isolated temporary directories rather than querying the active workspace's embedded storage. Consequently, AI coding agents and CLI environments cannot discover or invoke AICO tools via the Model Context Protocol (`/mcp`), and running a persistent standalone executable on Windows introduces file-locking hazards during self-hosting compilation (`cargo test`).
 
-This specification defines a Streamable HTTP MCP transport mounted directly on `aico-server` at `POST /mcp` and `GET /mcp` with CORS preflight support. When the server is running, Antigravity and other MCP-compliant agents connect via standard HTTP JSON-RPC 2.0 to discover and execute AICO tools against the active project's indexed Kùzu property graph and LanceDB vector store with zero binary locking, and `SkillsSynchronizer` automatically provisions `mcp_config.json` into workspace `.agents/` directories.
+This specification defines a Streamable HTTP MCP transport mounted directly on `aico-server` at `POST /mcp` and `GET /mcp` with CORS preflight support. When the server is running, Antigravity and other MCP-compliant agents connect via standard HTTP JSON-RPC 2.0 to discover and execute AICO tools against the active project's indexed AicoGraphStore property graph and LanceDB vector store with zero binary locking, and `SkillsSynchronizer` automatically provisions `mcp_config.json` into workspace `.agents/` directories.
 
 ---
 

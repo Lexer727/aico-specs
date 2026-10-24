@@ -19,7 +19,7 @@ The initial blueprint in `idea.md` specified a Tauri desktop application with ze
 
 ## Decision Drivers
 - Zero external daemon dependencies (no Docker, JVM, or cloud backend).
-- In-process execution of embedded engines (LanceDB and Kùzu).
+- In-process execution of embedded engines (LanceDB and AicoGraphStore, ratified in [ADR-0011](0011-aico-graph-store-and-lancedb-hybrid-storage.md)).
 - Cross-device accessibility over local LAN without complex network configuration.
 - Native multi-window and multi-session concurrency.
 
@@ -29,7 +29,7 @@ The initial blueprint in `idea.md` specified a Tauri desktop application with ze
 3. **Option C**: Tauri native app embedding a secondary on-demand LAN server.
 
 ## Decision Outcome
-Chosen option: **Option A**, because running an embedded Axum server inside the local `aico` binary allows any browser (desktop or mobile) on the LAN to access the full UI via authenticated HTTP/WebSocket connections, while maintaining embedded in-process LanceDB and Kùzu engine instances. Desktop users can run it directly in their browser of choice without requiring native OS WebView packaging.
+Chosen option: **Option A**, because running an embedded Axum server inside the local `aico` binary allows any browser (desktop or mobile) on the LAN to access the full UI via authenticated HTTP/WebSocket connections, while maintaining embedded in-process LanceDB and AicoGraphStore engine instances. Desktop users can run it directly in their browser of choice without requiring native OS WebView packaging.
 
 ### Positive Consequences
 - True multi-window and multi-device support: multiple desktop tabs and mobile devices can connect concurrently.

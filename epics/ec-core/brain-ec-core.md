@@ -22,7 +22,7 @@ Modern AI-assisted software engineering suffers from:
 3. **Fragile security boundaries**: Agent code execution is either entirely gated (halting autonomous flow) or dangerously unconstrained.
 4. **Poor multi-project ergonomics**: Code and specs are conflated, making multi-repo workspaces messy and brownfield on-ramps difficult.
 
-**AICO (Autonomous Intelligent Code Orchestrator)** solves this by building a zero-daemon, local-first Spec-Driven Development (SDD) environment delivered as a single compiled binary with embedded storage (LanceDB + Kùzu), deterministic MCP tool gates, a built-in Axum Web server hosting a React UI, and a decoupled repository layout.
+**AICO (Autonomous Intelligent Code Orchestrator)** solves this by building a zero-daemon, local-first Spec-Driven Development (SDD) environment delivered as a single compiled binary with embedded storage (LanceDB + AicoGraphStore, ratified in [ADR-0011](../../adr/0011-aico-graph-store-and-lancedb-hybrid-storage.md)), deterministic MCP tool gates, a built-in Axum Web server hosting a React UI, and a decoupled repository layout.
 
 ---
 
@@ -41,16 +41,16 @@ Modern AI-assisted software engineering suffers from:
 
 ### 2.3 3-Tier Security Policy Engine & Auto-Mode (ADR-0003)
 - **Tier 1 (Read-Only & Testing)**: Auto-executed without human prompts.
-- **Tier 2 (Workspace Modification)**: Auto-executed with immediate audit logging to Kùzu.
+- **Tier 2 (Workspace Modification)**: Auto-executed with immediate audit logging to AicoGraphStore.
 - **Tier 3 (System Destructive & Network Egress)**: Hard gated; pauses agent execution and requests interactive human approval over WebSocket.
 
-### 2.4 Dual Embedded Storage Engine (ADR-0006)
+### 2.4 Dual Embedded Storage Engine (ADR-0006, ADR-0011)
 - **LanceDB**: Local-first vector store for semantic search over code chunks, docs, and conversation history.
-- **Kùzu**: Embedded property graph database for AST call graphs, SDD requirement-to-code traceability, and task DAG execution.
+- **AicoGraphStore**: Embedded native property graph database for AST call graphs, SDD requirement-to-code traceability, and task DAG execution.
 
 ### 2.5 Multi-Modal Assets & Human Gate Tasks (ADR-0007)
 - File drop zones across Chat, Sidebar, and Epic Hub.
-- Dropped assets are checksummed, indexed into LanceDB/Kùzu, and made available for multimodal analysis.
+- Dropped assets are checksummed, indexed into LanceDB/AicoGraphStore, and made available for multimodal analysis.
 - Plan DAGs support Human Gate Tasks (`role: user`, `type: asset_delivery`) that block dependent agent tasks until satisfied.
 
 ---
@@ -63,7 +63,7 @@ The `001-aico-core` epic decomposes into 8 specifications:
 |---|---|---|
 | `SPEC-CORE-001` | `specs/01-host-runtime` | Axum HTTP/WS server, LAN pairing, graceful shutdown |
 | `SPEC-CORE-002` | `specs/02-security-auto-mode` | 3-tier policy engine, auto-mode execution, audit trail |
-| `SPEC-CORE-003` | `specs/03-storage-engines` | LanceDB vector store, Kùzu graph DB, tree-sitter AST |
+| `SPEC-CORE-003` | `specs/03-storage-engines` | LanceDB vector store, AicoGraphStore graph DB, tree-sitter AST |
 | `SPEC-CORE-004` | `specs/04-project-discovery` | `.aico-project.json` manifest, multi-project scanning |
 | `SPEC-CORE-005` | `specs/05-mcp-tool-gates` | Deterministic MCP gates, `@verifies`/`@implements` parser |
 | `SPEC-CORE-006` | `specs/06-webui-shell` | Accordion sidebar, bottom/right dock, project tabs |

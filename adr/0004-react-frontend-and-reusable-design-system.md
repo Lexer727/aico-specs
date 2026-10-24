@@ -14,7 +14,7 @@ created_at: "2026-10-05T17:00:00Z"
 ## Context & Problem Statement
 The WebUI requires high-performance rendering for:
 1. Real-time streaming chat with token markdown parsing and interactive tool approval dialogs.
-2. Complex multi-node property graph inspection (Kùzu lineage canvas).
+2. Complex multi-node property graph inspection (AicoGraphStore lineage canvas).
 3. Flexible docking, internal tabs, and collapsible accordion panes.
 4. A reusable visual style guide and component library that can be exported or reused for new applications developed with AICO.
 

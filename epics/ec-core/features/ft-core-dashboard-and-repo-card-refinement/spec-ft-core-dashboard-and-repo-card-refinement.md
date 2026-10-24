@@ -52,7 +52,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 
 - Direct Git merge conflict resolution in the browser.
 - Multi-branch branching and interactive rebase in WebUI.
-- Native C++ Kùzu / LanceDB storage engine migration and mtime graph caching (deferred to dedicated storage epic).
+- Dedicated storage epic (ec-storage) for AicoGraphStore mtime graph caching and persistent LanceDB hybrid search.
 
 ---
 

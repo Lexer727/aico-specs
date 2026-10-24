@@ -18,11 +18,11 @@ During initial AICO bootstrapping, LLM coding agents handled repetitive, determi
 Meanwhile, an early prototype crate (`crates/aico-mcp`) attempted to gate artifact creation in Rust (`gate.rs`), but suffered from three structural problems:
 1. **Bootstrap & Self-Hosting Friction**: Running a persistent compiled Rust MCP binary while actively developing and recompiling AICO on Windows creates binary and database file-locking hazards (`os error 32`) and couples the portable `aico-skills` harness to a platform-specific binary.
 2. **Schema & Blueprint Drift**: Because `aico-mcp` lived in the Rust codebase while SDD templates evolved in `aico-skills`, `gate.rs` remained stuck on legacy v0.1.0 conventions (`epics/<epic>/specs/<spec>/SPEC-<slug>.md` with uppercase IDs), falling behind [ADR-0009](../../adr/0009-sdd-artifact-schema-and-task-lifecycle.md) and [ADR-0010](../../adr/0010-sdd-structural-grammar-standalone-features-and-naming.md).
-3. **Misplaced Responsibilities**: Stateless markdown templating and frontmatter mutations belong alongside the skill definitions in `aico-skills`, whereas `aico-mcp` is uniquely suited for stateful, in-memory queries against the embedded Kùzu property graph and LanceDB vector store (`aico-storage`).
+3. **Misplaced Responsibilities**: Stateless markdown templating and frontmatter mutations belong alongside the skill definitions in `aico-skills`, whereas `aico-mcp` is uniquely suited for stateful, in-memory queries against the embedded AicoGraphStore property graph and LanceDB vector store (`aico-storage`).
 
 This epic establishes a **Hybrid Tooling Architecture**:
 - A **Unified Deterministic Node.js CLI (`scripts/aico-cli.mjs`)** bundled inside `aico-skills` for all stateless filesystem, scaffolding, task lifecycle, DAG frontier, and blueprint verification operations.
-- A **Repurposed Stateful Rust MCP Engine (`crates/aico-mcp`)** stripped of obsolete markdown file-scaffolding gates, upgraded to Blueprint v0.1.2 traceability rules, and wired to `aico-storage` for Kùzu lineage graph traversal and LanceDB hybrid semantic search.
+- A **Repurposed Stateful Rust MCP Engine (`crates/aico-mcp`)** stripped of obsolete markdown file-scaffolding gates, upgraded to Blueprint v0.1.2 traceability rules, and wired to `aico-storage` for AicoGraphStore lineage graph traversal and LanceDB hybrid semantic search.
 
 ---
 
@@ -31,8 +31,8 @@ This epic establishes a **Hybrid Tooling Architecture**:
 | Approach | Summary | Pros | Cons | Verdict |
 | :--- | :--- | :--- | :--- | :--- |
 | **Option A: Pure MCP (`crates/aico-mcp`)** | Expose all 12+ SDD file, task, and graph tools via a compiled Rust MCP server. | Typed JSON-RPC schemas; single Rust codebase. | Locks binaries/DBs on Windows during self-hosting (`cargo test`); breaks portability of `aico-skills`; bloats LLM context window on every turn. | **Rejected** |
-| **Option B: Pure CLI Scripts (`aico-skills/scripts/`)** | Implement all SDD and graph operations as Node.js CLI scripts. | Zero-build portability; no file locking; zero idle context overhead; co-evolves with `SKILL.md`. | Ephemeral JS scripts cannot efficiently hold persistent connections to embedded Kùzu and LanceDB stores. | **Rejected** |
-| **Option C: Hybrid Architecture (CLI Scripts + Stateful MCP)** | Stateless SDD file/task/verification ops in unified `aico-cli.mjs`; stateful Kùzu/LanceDB & AST validators in `aico-mcp`. | Eliminates bootstrap locking; 100% portable skills; keeps Blueprint v0.1.2 rules in `aico-skills`; leverages Rust `aico-storage` for graph/vector queries. | Requires clear boundary definition between `aico-cli.mjs` and `aico-mcp`. | **Chosen** |
+| **Option B: Pure CLI Scripts (`aico-skills/scripts/`)** | Implement all SDD and graph operations as Node.js CLI scripts. | Zero-build portability; no file locking; zero idle context overhead; co-evolves with `SKILL.md`. | Ephemeral JS scripts cannot efficiently hold persistent connections to embedded AicoGraphStore and LanceDB stores. | **Rejected** |
+| **Option C: Hybrid Architecture (CLI Scripts + Stateful MCP)** | Stateless SDD file/task/verification ops in unified `aico-cli.mjs`; stateful AicoGraphStore/LanceDB & AST validators in `aico-mcp`. | Eliminates bootstrap locking; 100% portable skills; keeps Blueprint v0.1.2 rules in `aico-skills`; leverages Rust `aico-storage` for graph/vector queries. | Requires clear boundary definition between `aico-cli.mjs` and `aico-mcp`. | **Chosen** |
 
 ---
 
@@ -53,7 +53,7 @@ Rather than scattering ad-hoc scripts across skill folders, `aico-skills` expose
 ### 3.2 Repurposing `crates/aico-mcp`
 - **Remove**: `crates/aico-mcp/src/gate.rs` (`create_sdd_artifact`), which is superseded by `aico-cli.mjs scaffold-*`.
 - **Update**: Upgrade `AnnotationExtractor`, `EarsValidator`, and `TraceabilityTracker` to Blueprint v0.1.2 conventions (canonical `spec-ft-*` lowercase IDs and prefixed `REQ-*` IDs).
-- **Extend**: Connect `aico-mcp` to `aico-storage` (`KuzuGraphStore` and `HybridQueryEngine`) to expose `query_lineage_graph`, `search_hybrid`, and `find_dangling_requirements`.
+- **Extend**: Connect `aico-mcp` to `aico-storage` (`AicoGraphStore` and `HybridQueryEngine`) to expose `query_lineage_graph`, `search_hybrid`, and `find_dangling_requirements`.
 
 ---
 

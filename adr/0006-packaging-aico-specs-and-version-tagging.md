@@ -12,7 +12,7 @@ created_at: "2026-10-05T17:00:00Z"
 
 
 ## Context & Problem Statement
-AICO must be simple to install and maintain across development machines without requiring external runtime dependencies like Node.js or Docker. Furthermore, as the application evolves over time, both internal embedded database schemas (Kùzu and LanceDB) and generated Spec-Driven Development artifacts must remain strictly version-tracked and backward-compatible.
+AICO must be simple to install and maintain across development machines without requiring external runtime dependencies like Node.js or Docker. Furthermore, as the application evolves over time, both internal embedded database schemas (AicoGraphStore and LanceDB, ratified in [ADR-0011](0011-aico-graph-store-and-lancedb-hybrid-storage.md)) and generated Spec-Driven Development artifacts must remain strictly version-tracked and backward-compatible.
 
 ## Decision Drivers
 - Zero-dependency installation: single binary executable.
@@ -29,7 +29,7 @@ AICO must be simple to install and maintain across development machines without 
 Chosen option: **Option A**.
 
 ### 1. Binary Packaging & Setup
-- Built as a single self-contained binary (`aico.exe` / `aico`) compiling the Axum HTTP/WebSocket server and in-process LanceDB/Kùzu engines.
+- Built as a single self-contained binary (`aico.exe` / `aico`) compiling the Axum HTTP/WebSocket server and in-process LanceDB/AicoGraphStore engines.
 - The compiled React WebUI bundle is embedded directly inside the binary using `rust-embed`.
 - On first launch, `aico init` prompts for:
   - `Codebase Root` (e.g. `d:/dev/codebase/`)
@@ -49,7 +49,7 @@ created_at: "2026-10-05T17:45:00Z"
 This enables backward compatibility detection, automated schema migrations, and provenance tracking across tool updates.
 
 ### 3. Database Schema Migrations
-- The embedded Kùzu graph and LanceDB vector tables maintain an internal `_schema_version` metadata table.
+- The embedded AicoGraphStore graph and LanceDB vector tables maintain an internal `_schema_version` metadata table.
 - When a newer AICO binary boots, it executes idempotent migration scripts before serving API requests.
 
 ### 4. Requirement Immutability

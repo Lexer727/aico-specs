@@ -23,7 +23,7 @@ created_at: "2026-10-23T19:05:21.133Z"
   - Add `CodebaseWizard::scaffold_project_specs(workspace_root, project_name)` in `crates/aico-core/src/wizard.rs` creating `<project-name>-specs/` with `.aico/`, `adr/`, `epics/`, `features/`, `.aico-project.json`, and `glossary.md`, and initializing Git (`git init`).
   - Expose `POST /api/v1/projects` in `crates/aico-server/src/server.rs` and wire `+ New Project` UI in `frontend/src/components/navigation/ProjectSwitcher.tsx`.
 - **Persistent Property Graph & Interactive Lineage Canvas**:
-  - Upgrade `KuzuGraphStore` in `crates/aico-storage/src/graph.rs` to store typed nodes (`id`, `label`, `node_type`, `properties`) and directed edges (`source`, `target`, `relation`), persist them to `.aico/storage/graph/lineage_graph.json`, and evaluate Cypher `CREATE`, `MERGE`, and `MATCH` statements as well as multi-hop BFS traversal.
+  - Upgrade `AicoGraphStore` in `crates/aico-storage/src/graph.rs` to store typed nodes (`id`, `label`, `node_type`, `properties`) and directed edges (`source`, `target`, `relation`), persist them to `.aico/storage/graph/lineage_graph.json`, and evaluate Cypher `CREATE`, `MERGE`, and `MATCH` statements as well as multi-hop BFS traversal.
   - Add `GET /api/v1/graph` in `crates/aico-server/src/server.rs` that constructs and synchronizes the full artifact and code lineage graph (`ADR` -> `Epic` -> `Feature` -> `Spec` / `Plan` -> `Requirement` / `Task` -> `Code`) and returns structured `nodes` and `edges`.
   - Upgrade `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` and `frontend/src/App.tsx` to fetch live graph data for the active epic and render a multi-column SVG-connected DAG with interactive upstream/downstream highlighting and node navigation.
 
@@ -61,9 +61,9 @@ created_at: "2026-10-23T19:05:21.133Z"
     - Adds `+ New Project` button and project name input form in `ProjectSwitcher.tsx` that posts to `/api/v1/projects`, updates the project list, and activates the new project.
   - **Verification Seam**: `frontend/tests/ProjectSwitcher.test.tsx`
 
-### Phase 3: Real Kùzu Graph Engine & Interactive Epic Lineage Graph
+### Phase 3: Pure-Rust AicoGraphStore Engine & Interactive Lineage Graph
 
-- **TASK-CORE-017-4**: Implement Persistent `KuzuGraphStore` & `GET /api/v1/graph` Lineage Builder
+- **TASK-CORE-017-4**: Implement Persistent `AicoGraphStore` & `GET /api/v1/graph` Lineage Builder
   - **Status**: Done
   - **Addresses**: `REQ-004`, `REQ-005`
   - **Blocked by**: None (Can start immediately)

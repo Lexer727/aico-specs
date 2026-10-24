@@ -82,7 +82,7 @@ This specification defines `aico-cli.mjs`, a unified, zero-dependency Node.js CL
 ---
 
 ## Out-of-Scope
-- Direct mutations to embedded Kùzu or LanceDB binary database files from Node.js scripts (handled by `aico-mcp` and `aico-storage`).
+- Direct mutations to embedded AicoGraphStore or LanceDB binary database files from Node.js scripts (handled by `aico-mcp` and `aico-storage`).
 - Automated LLM prose generation inside CLI scripts (scripts generate deterministic structure, metadata, and skeletons).
 - Git commit or branch creation inside scaffolding commands.
 

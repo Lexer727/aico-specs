@@ -37,7 +37,7 @@ created_at: "2026-10-17T21:14:30Z"
 
 ---
 
-### Phase 2: Stateful Kùzu Lineage & LanceDB Hybrid Search MCP Tools
+### Phase 2: Stateful AicoGraphStore Lineage & LanceDB Hybrid Search MCP Tools
 
 - **TASK-TOOL-002-2**: Implement `query_lineage_graph` & `search_hybrid` Backed by `aico-storage`
   - **Status**: Done

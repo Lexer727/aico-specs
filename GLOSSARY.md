@@ -101,10 +101,26 @@ created_at: "2026-10-05T15:00:00Z"
 ---
 
 ### Host Runtime
-- **Definition**: The local-first background engine binary running embedded LanceDB and Kùzu engines, exposing an authenticated HTTP/WebSocket interface for web browsers and mobile devices.
+- **Definition**: The local-first background engine binary running embedded LanceDB and AicoGraphStore engines, exposing an authenticated HTTP/WebSocket interface for web browsers and mobile devices.
 - **Synonyms (Avoid)**: Desktop app, daemon, server, backend.
 - **Example**: The `aico` executable serving `http://localhost:4242` and LAN IP.
-- **Related Terms**: [Epic Hub](#epic-hub).
+- **Related Terms**: [Epic Hub](#epic-hub), [AicoGraphStore](#aicographstore), [LanceDB Vector Store](#lancedb-vector-store).
+
+---
+
+### AicoGraphStore
+- **Definition**: The native, zero-dependency pure-Rust property graph database engine used by AICO to store and traverse SDD artifact lineages (`ADR -> Epic -> Feature -> Spec -> Plan -> Task -> Code`), AST call graphs, and verification seams without C++ bindings.
+- **Synonyms (Avoid)**: Kùzu, Neo4j, external graph db.
+- **Example**: Lineage BFS traversal in `AicoGraphStore` querying upstream dependencies of a requirement.
+- **Related Terms**: [Host Runtime](#host-runtime), [LanceDB Vector Store](#lancedb-vector-store).
+
+---
+
+### LanceDB Vector Store
+- **Definition**: The embedded columnar vector and hybrid search engine backed by the official `lancedb` Rust crate, storing chunked semantic embeddings and BM25 inverted indexes for multi-project code and specification discovery.
+- **Synonyms (Avoid)**: Pinecone, Qdrant, Chroma, cloud vector store.
+- **Example**: Executing hybrid search combining BM25 keyword matching and cosine vector similarity with Reciprocal Rank Fusion (RRF).
+- **Related Terms**: [Host Runtime](#host-runtime), [AicoGraphStore](#aicographstore).
 
 ---
 

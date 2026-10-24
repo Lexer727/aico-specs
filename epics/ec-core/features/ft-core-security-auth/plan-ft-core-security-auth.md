@@ -68,7 +68,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **Blocked by**: `TASK-CORE-002-2`
   - **What it delivers**:
     - Implements `AuditLogger` with structured event schema (`timestamp`, `agent_id`, `command`, `tier`, `status`, `duration_ms`, `diff_hash`).
-    - Emits synchronous audit log events to the event bus and persists records in Kùzu `AuditEvent` nodes.
+    - Emits synchronous audit log events to the event bus and persists records in AicoGraphStore `AuditEvent` nodes.
     - Guarantees Tier 2 workspace mutations cannot proceed without successfully writing the audit record.
   - **Verification Seam**: `tests/security_audit_test.rs::test_audit_trail_logging_and_persistence`
 

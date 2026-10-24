@@ -23,8 +23,8 @@ created_at: "2026-10-05T20:00:00Z"
   - `sha2`: SHA-256 content hashing for asset deduplication.
   - `@xyflow/react` (React Flow) / SVG graph renderer: Interactive, pannable/zoomable visual lineage DAG canvas.
   - `react-dropzone`: Drag-and-drop file upload handling with MIME type filtering and preview generation.
-  - `kuzu`: Tracking `Asset` nodes, `REFERENCES` edges, and `SATISFIES` human gate edges.
-- **Asset Storage**: Stored at `<specs-root>/.aico/assets/<sha256>.<ext>` with metadata recorded in Kùzu and indexed into LanceDB.
+  - `aico-storage`: Tracking `Asset` nodes, `REFERENCES` edges, and `SATISFIES` human gate edges in `AicoGraphStore`.
+- **Asset Storage**: Stored at `<specs-root>/.aico/assets/<sha256>.<ext>` with metadata recorded in AicoGraphStore and indexed into LanceDB.
 
 ---
 
@@ -40,7 +40,7 @@ created_at: "2026-10-05T20:00:00Z"
     - Implements `AssetIngestionService::store_asset(file_bytes, filename, mime_type)`.
     - Computes SHA-256 hash to deduplicate files under `.aico/assets/`.
     - Generates thumbnail previews for images/videos.
-    - Creates `Asset` node in Kùzu and indexes text/metadata into LanceDB vector store.
+    - Creates `Asset` node in AicoGraphStore and indexes text/metadata into LanceDB vector store.
   - **Verification Seam**: `tests/asset_ingestion_test.rs::test_asset_storage_deduplication_and_indexing`
 
 ---

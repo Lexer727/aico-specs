@@ -21,7 +21,7 @@ created_at: "2026-10-05T20:00:00Z"
 - **Crate**: `crates/aico-storage` (part of the AICO Rust Cargo workspace).
 - **Core Dependencies**:
   - `lancedb`: Local-first embedded columnar vector database for semantic search.
-  - `kuzu`: Embedded in-process Cypher property graph database for relational and graph queries.
+  - `aico-storage`: Pure-Rust property graph database (`AicoGraphStore`) for lineage and graph queries.
   - `tree-sitter` & language parsers (`tree-sitter-rust`, `tree-sitter-typescript`, `tree-sitter-python`): Deterministic AST extraction.
   - `fastembed` / local ONNX runtime: Local-first text embedding generation (e.g., `all-MiniLM-L6-v2`) without cloud API dependency.
   - `notify`: Cross-platform filesystem event watcher for incremental re-indexing.
@@ -33,13 +33,13 @@ created_at: "2026-10-05T20:00:00Z"
 
 ### Phase 1: In-Process Storage Drivers & Concurrency (Unblocked Frontier)
 
-- **TASK-CORE-003-1**: Embedded LanceDB & Kùzu In-Process Connection Managers
+- **TASK-CORE-003-1**: Embedded LanceDB & AicoGraphStore In-Process Connection Managers
   - **Status**: Done
   - **Addresses**: `REQ-001`, `REQ-002`, `REQ-003`, `REQ-009`
   - **Blocked by**: None (Can start immediately)
   - **What it delivers**:
     - Implements `LanceVectorStore` wrapping embedded LanceDB under `.aico/storage/vector/`.
-    - Implements `KuzuGraphStore` wrapping embedded Kùzu under `.aico/storage/graph/`.
+    - Implements `AicoGraphStore` managing native property graph under `.aico/storage/graph/`.
     - Implements thread-safe connection pooling and concurrent read/write locks (`tokio::sync::RwLock`).
     - Verifies pure in-process operation without background daemon or socket dependencies.
   - **Verification Seam**: `tests/storage_connection_test.rs::test_embedded_databases_init_and_concurrency`
@@ -53,10 +53,10 @@ created_at: "2026-10-05T20:00:00Z"
   - **Addresses**: `REQ-006`, `REQ-008`
   - **Blocked by**: `TASK-CORE-003-1`
   - **What it delivers**:
-    - Defines Kùzu node tables: `Project`, `Epic`, `Spec`, `Requirement`, `Task`, `Symbol`, `File`, `AuditEvent`.
-    - Defines Kùzu relationship tables: `BELONGS_TO`, `CONTAINS_SPEC`, `HAS_REQUIREMENT`, `ADDRESSES`, `BLOCKS`, `CALLS`, `DEFINES_SYMBOL`.
+    - Defines AicoGraphStore node tables: `Project`, `Epic`, `Spec`, `Requirement`, `Task`, `Symbol`, `File`, `AuditEvent`.
+    - Defines AicoGraphStore relationship tables: `BELONGS_TO`, `CONTAINS_SPEC`, `HAS_REQUIREMENT`, `ADDRESSES`, `BLOCKS`, `CALLS`, `DEFINES_SYMBOL`.
     - Implements migration engine verifying `aico_version` frontmatter compatibility.
-  - **Verification Seam**: `tests/storage_schema_test.rs::test_kuzu_schema_migration_and_traceability`
+  - **Verification Seam**: `tests/storage_schema_test.rs::test_graph_schema_migration_and_traceability`
 
 ---
 
@@ -70,7 +70,7 @@ created_at: "2026-10-05T20:00:00Z"
     - Implements `CodeSymbolParser` using Tree-sitter for Rust, TypeScript, and Python.
     - Extracts symbols (functions, structs, traits, interfaces, classes) with line ranges and doc comments.
     - Extracts call graph edges (`caller -> callee`) and import dependencies.
-    - Batches symbol and relation writes into Kùzu property graph.
+    - Batches symbol and relation writes into AicoGraphStore property graph.
   - **Verification Seam**: `tests/storage_ast_test.rs::test_treesitter_symbol_and_callgraph_ingestion`
 
 ---
@@ -98,7 +98,7 @@ created_at: "2026-10-05T20:00:00Z"
   - **What it delivers**:
     - Implements `StorageWatcher` using `notify` to listen for file create/modify/delete events.
     - Computes content SHA-256 hashes to skip unchanged files.
-    - Updates only modified nodes/edges in Kùzu and vectors in LanceDB incrementally.
+    - Updates only modified nodes/edges in AicoGraphStore and vectors in LanceDB incrementally.
   - **Verification Seam**: `tests/storage_watcher_test.rs::test_incremental_file_reindexing`
 
 ---
@@ -109,6 +109,6 @@ created_at: "2026-10-05T20:00:00Z"
   - **Blocked by**: `TASK-CORE-003-3`, `TASK-CORE-003-4`
   - **What it delivers**:
     - Implements `HybridQueryEngine::search(query_text, filter_params)`.
-    - Combines top-K vector matches from LanceDB with graph neighborhood traversal (callers, callees, specs) from Kùzu.
+    - Combines top-K vector matches from LanceDB with graph neighborhood traversal (callers, callees, specs) from AicoGraphStore.
     - Returns ranked, deduplicated context packets for agent prompt injection.
   - **Verification Seam**: `tests/storage_hybrid_test.rs::test_hybrid_vector_and_graph_query`

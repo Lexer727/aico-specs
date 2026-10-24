@@ -33,7 +33,7 @@ During Epic 001 execution, several friction points and inconsistencies emerged a
    - Standard 6-state task tracking: `Pending`, `In Progress`, `Done`, `Blocked`, `Skipped/Canceled`, `Rewritten` with mandatory `Reason` and `Rewrite Target` fields for canceled/rewritten items.
    - Increment AICO specification version to `0.1.1`.
 2. **Option B**: Keep checkboxes for tasks and add separate change-log tables at the bottom of plan documents.
-3. **Option C**: Store task tracking exclusively in embedded Kùzu database without updating markdown plan files.
+3. **Option C**: Store task tracking exclusively in embedded AicoGraphStore database without updating markdown plan files.
 
 ## Decision Outcome
 Chosen option: **Option A**. Every SDD artifact is self-describing, portable, and versioned. The task graph preserves historical intent by recording reasons and rewrite pointers directly on tasks when requirements change.

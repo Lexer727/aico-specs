@@ -33,7 +33,7 @@ This specification defines the strict decoupling of skills versioning from platf
 
 ## Out-of-Scope
 - Modifying the underlying 6-state task lifecycle state machine.
-- Changing Kùzu or LanceDB database table schemas.
+- Changing AicoGraphStore or LanceDB database table schemas.
 - Altering the platform product version schema (`v0.1.1` in `Cargo.toml`).
 
 ---

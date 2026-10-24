@@ -19,7 +19,7 @@ created_at: "2026-10-05T19:15:00Z"
 
 Working on an engineering capability requires inspecting multiple interdependent artifacts: the initial brainstorm, system blast radius, EARS specifications, task DAGs, reference design assets, and live test execution status. Jumping between disconnected browser tabs causes disorientation and cognitive fatigue. Furthermore, developers need a seamless way to provide non-code context (mockups, audio, guides) that directly unblocks automated tasks.
 
-This specification defines the Epic Hub: a unified single-view workspace presenting all SDD artifacts in clean collapsible accordion sections with pop-out tab capabilities, an interactive Kùzu visual lineage graph canvas, and multi-modal drag-and-drop zones that satisfy Human Gate Tasks in the Plan DAG.
+This specification defines the Epic Hub: a unified single-view workspace presenting all SDD artifacts in clean collapsible accordion sections with pop-out tab capabilities, an interactive AicoGraphStore visual lineage graph canvas, and multi-modal drag-and-drop zones that satisfy Human Gate Tasks in the Plan DAG.
 
 ---
 
@@ -51,7 +51,7 @@ This specification defines the Epic Hub: a unified single-view workspace present
 ### Ubiquitous Requirements
 - **REQ-001**: The EpicHubView shall render a consolidated single-page view for the active epic displaying Overview, Brainstorm, ADRs, Child Specifications, Deep Dive, Task Plan, and Assets.
 - **REQ-002**: The AccordionManager shall render each artifact section as an independently expandable and collapsible card.
-- **REQ-003**: The LineageGraphCanvas shall render Kùzu property graph nodes (Epics, Specs, Requirements, Modules, CodeSymbols, Tests) with interactive pan, zoom, and node selection controls.
+- **REQ-003**: The LineageGraphCanvas shall render AicoGraphStore property graph nodes (Epics, Specs, Requirements, Modules, CodeSymbols, Tests) with interactive pan, zoom, and node selection controls.
 - **REQ-004**: The AssetDropManager shall accept file drag-and-drop events and clipboard paste (`Ctrl+V`) actions across the Chat, Epic Hub assets pane, and Plan task cards.
 
 ### Event-Driven Requirements

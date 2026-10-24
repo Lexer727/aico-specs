@@ -40,7 +40,7 @@ This specification defines the Project Discovery and Manifest Engine: an automat
 3. **US-03** (Priority: P1): As a developer, I want to create a new project with one command or click, so that AICO scaffolds the `<project>-specs` Git repository and links it to the codebase automatically.
    - *Independent Test*: Run `aico project create my-new-app` and verify `<aico-root>/my-new-app-specs/` and `<aico-root>/codebase/my-new-app/` are initialized with Git and manifest.
 4. **US-04** (Priority: P2): As a developer, I want switching projects in the UI to instantly re-scope the active tree, specs, and search index, so that I can transition between tasks cleanly.
-   - *Independent Test*: Dispatch an active project switch event and verify the backend switches active Kùzu and LanceDB handles within 50ms.
+   - *Independent Test*: Dispatch an active project switch event and verify the backend switches active AicoGraphStore and LanceDB handles within 50ms.
 
 ---
 

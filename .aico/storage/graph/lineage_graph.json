@@ -863,6 +863,54 @@
       "epic": "ec-core"
     },
     {
+      "id": "TASK-CORE-018-1",
+      "type": "task",
+      "label": "TASK-CORE-018-1",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-2",
+      "type": "task",
+      "label": "TASK-CORE-018-2",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-3",
+      "type": "task",
+      "label": "TASK-CORE-018-3",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-4",
+      "type": "task",
+      "label": "TASK-CORE-018-4",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-5",
+      "type": "task",
+      "label": "TASK-CORE-018-5",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-6",
+      "type": "task",
+      "label": "TASK-CORE-018-6",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-7",
+      "type": "task",
+      "label": "TASK-CORE-018-7",
+      "epic": "ec-core"
+    },
+    {
+      "id": "TASK-CORE-018-8",
+      "type": "task",
+      "label": "TASK-CORE-018-8",
+      "epic": "ec-core"
+    },
+    {
       "id": "TASK-FAST-TRACE-001",
       "type": "task",
       "label": "TASK-FAST-TRACE-001"
@@ -2124,6 +2172,13 @@
       "epic": "ec-terminal"
     },
     {
+      "id": "code:crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "type": "code",
+      "label": "crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "path": "crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "epic": "ec-core"
+    },
+    {
       "id": "code:crates/aico-server/tests/terminal_bridge_test.rs",
       "type": "code",
       "label": "crates/aico-server/tests/terminal_bridge_test.rs",
@@ -2264,10 +2319,24 @@
       "epic": "ec-git"
     },
     {
+      "id": "code:frontend/tests/DashboardGitStatus.test.tsx` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "type": "code",
+      "label": "frontend/tests/DashboardGitStatus.test.tsx` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "path": "frontend/tests/DashboardGitStatus.test.tsx` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "epic": "ec-core"
+    },
+    {
       "id": "code:frontend/tests/DashboardView.test.tsx",
       "type": "code",
       "label": "frontend/tests/DashboardView.test.tsx",
       "path": "frontend/tests/DashboardView.test.tsx",
+      "epic": "ec-core"
+    },
+    {
+      "id": "code:frontend/tests/DashboardView.test.tsx` and `frontend/tests/EpicHubView.test.tsx",
+      "type": "code",
+      "label": "frontend/tests/DashboardView.test.tsx` and `frontend/tests/EpicHubView.test.tsx",
+      "path": "frontend/tests/DashboardView.test.tsx` and `frontend/tests/EpicHubView.test.tsx",
       "epic": "ec-core"
     },
     {
@@ -2684,6 +2753,13 @@
       "epic": "ec-core"
     },
     {
+      "id": "code:verify-artifacts.mjs",
+      "type": "code",
+      "label": "verify-artifacts.mjs",
+      "path": "verify-artifacts.mjs",
+      "epic": "ec-core"
+    },
+    {
       "id": "code:verify-artifacts.mjs`, `cargo test`, `npm test",
       "type": "code",
       "label": "verify-artifacts.mjs`, `cargo test`, `npm test",
@@ -2751,6 +2827,14 @@
       "type": "feature",
       "label": "Feature ft-core-code-path-simplification-and-omnisearch",
       "path": "epics/ec-core/features/ft-core-code-path-simplification-and-omnisearch",
+      "status": "Active",
+      "epic": "ec-core"
+    },
+    {
+      "id": "ft-core-dashboard-and-repo-card-refinement",
+      "type": "feature",
+      "label": "Feature ft-core-dashboard-and-repo-card-refinement",
+      "path": "epics/ec-core/features/ft-core-dashboard-and-repo-card-refinement",
       "status": "Active",
       "epic": "ec-core"
     },
@@ -3078,6 +3162,14 @@
       "type": "plan",
       "label": "plan-ft-core-code-path-simplification-and-omnisearch: Code Path Simplification & OmniSearch Consistency Plan",
       "path": "epics/ec-core/features/ft-core-code-path-simplification-and-omnisearch/plan-ft-core-code-path-simplification-and-omnisearch.md",
+      "status": "Completed",
+      "epic": "ec-core"
+    },
+    {
+      "id": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "type": "plan",
+      "label": "plan-ft-core-dashboard-and-repo-card-refinement: Dashboard Workspace Refinement, Re-unified Repositories Grid & Workflow Automation Implementation Plan",
+      "path": "epics/ec-core/features/ft-core-dashboard-and-repo-card-refinement/plan-ft-core-dashboard-and-repo-card-refinement.md",
       "status": "Completed",
       "epic": "ec-core"
     },
@@ -3574,6 +3666,80 @@
       "id": "spec-ft-core-code-path-simplification-and-omnisearch::REQ-006",
       "type": "requirement",
       "label": "REQ-006",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "type": "spec",
+      "label": "spec-ft-core-dashboard-and-repo-card-refinement: Dashboard Workspace Refinement, Re-unified Repositories Grid & Workflow Automation",
+      "path": "epics/ec-core/features/ft-core-dashboard-and-repo-card-refinement/spec-ft-core-dashboard-and-repo-card-refinement.md",
+      "status": "Completed",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-001",
+      "type": "requirement",
+      "label": "REQ-001",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-002",
+      "type": "requirement",
+      "label": "REQ-002",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-003",
+      "type": "requirement",
+      "label": "REQ-003",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-004",
+      "type": "requirement",
+      "label": "REQ-004",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-005",
+      "type": "requirement",
+      "label": "REQ-005",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-006",
+      "type": "requirement",
+      "label": "REQ-006",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-007",
+      "type": "requirement",
+      "label": "REQ-007",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-008",
+      "type": "requirement",
+      "label": "REQ-008",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-009",
+      "type": "requirement",
+      "label": "REQ-009",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-010",
+      "type": "requirement",
+      "label": "REQ-010",
+      "epic": "ec-core"
+    },
+    {
+      "id": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-011",
+      "type": "requirement",
+      "label": "REQ-011",
       "epic": "ec-core"
     },
     {
@@ -7289,6 +7455,381 @@
     {
       "source": "ft-core-code-path-simplification-and-omnisearch",
       "target": "code:verify-artifacts.mjs`, `cargo test`, `npm test",
+      "relation": "verifies"
+    },
+    {
+      "source": "ec-core",
+      "target": "ft-core-dashboard-and-repo-card-refinement",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "specifies"
+    },
+    {
+      "source": "brain-ec-core",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "derives_from"
+    },
+    {
+      "source": "ADR-0004",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "derives_from"
+    },
+    {
+      "source": "ADR-0005",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "derives_from"
+    },
+    {
+      "source": "ADR-0008",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "derives_from"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-001",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-001",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-002",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-002",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-006",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-006",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-007",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-007",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-009",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-009",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-010",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-010",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-011",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-011",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-003",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-003",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-005",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-005",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-008",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-008",
+      "relation": "specifies"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-004",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-004",
+      "relation": "specifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "contains"
+    },
+    {
+      "source": "spec-ft-core-dashboard-and-repo-card-refinement",
+      "target": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "relation": "derives_from"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-1",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-1",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-1",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-001",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-1",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-007",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-1",
+      "target": "code:frontend/tests/DashboardView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:frontend/tests/DashboardView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:frontend/tests/DashboardView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-2",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-2",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-2",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-006",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-2",
+      "target": "code:frontend/tests/DashboardView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-3",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-3",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-3",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-002",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-3",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-003",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-3",
+      "target": "code:frontend/tests/DashboardGitStatus.test.tsx` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:frontend/tests/DashboardGitStatus.test.tsx` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:frontend/tests/DashboardGitStatus.test.tsx` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-4",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-4",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-4",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-004",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-4",
+      "target": "code:crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-5",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-5",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-5",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-005",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-5",
+      "target": "code:verify-artifacts.mjs",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:verify-artifacts.mjs",
+      "relation": "verifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:verify-artifacts.mjs",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-6",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-6",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-6",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-008",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-6",
+      "target": "code:crates/aico-server/tests/server_test.rs` and `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-7",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-7",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-7",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-009",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-7",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-010",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-7",
+      "target": "code:frontend/tests/DashboardView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-8",
+      "relation": "contains"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "TASK-CORE-018-8",
+      "relation": "contains"
+    },
+    {
+      "source": "TASK-CORE-018-8",
+      "target": "spec-ft-core-dashboard-and-repo-card-refinement::REQ-011",
+      "relation": "addresses"
+    },
+    {
+      "source": "TASK-CORE-018-8",
+      "target": "code:frontend/tests/DashboardView.test.tsx` and `frontend/tests/EpicHubView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "plan-ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:frontend/tests/DashboardView.test.tsx` and `frontend/tests/EpicHubView.test.tsx",
+      "relation": "verifies"
+    },
+    {
+      "source": "ft-core-dashboard-and-repo-card-refinement",
+      "target": "code:frontend/tests/DashboardView.test.tsx` and `frontend/tests/EpicHubView.test.tsx",
       "relation": "verifies"
     },
     {

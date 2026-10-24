@@ -19,7 +19,7 @@ created_at: "2026-10-05T19:15:00Z"
 
 When LLM coding agents write documentation and modify source code via plain text commands, they frequently hallucinate arbitrary file paths, fabricate non-existent requirement IDs, or miss critical lineage relationships. Without rigid tool interfaces, graph relationships and specification structures rot rapidly.
 
-This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in-band annotation engine. Agents interact with specifications, tasks, and graphs strictly through typed, deterministic MCP tool calls that calculate file paths automatically, inject immutable YAML frontmatter, and sync in-band code annotations (`// @implements` and `// @verifies`) directly into the Kùzu property graph.
+This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in-band annotation engine. Agents interact with specifications, tasks, and graphs strictly through typed, deterministic MCP tool calls that calculate file paths automatically, inject immutable YAML frontmatter, and sync in-band code annotations (`// @implements` and `// @verifies`) directly into the AicoGraphStore property graph.
 
 ---
 
@@ -36,9 +36,9 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 1. **US-01** (Priority: P1): As a developer, I want agents to create specifications strictly through typed MCP tools, so that file naming, frontmatter, and directory placement are 100% consistent.
    - *Independent Test*: Call `create_sdd_artifact` with `artifact_type: "spec"`, `epic: "001-core"`, and `slug: "auth"` and verify the file is created at `<specs>/epics/001-core/specs/auth/spec-auth.md` with complete YAML frontmatter.
 2. **US-02** (Priority: P1): As a developer, I want functions tagged with `// @implements SPEC-ID::REQ-ID` linked to their requirements in the graph on save, so that requirement coverage is tracked automatically.
-   - *Independent Test*: Save a file containing `// @implements SPEC-AUTH-001::REQ-042` and verify Kùzu creates an `(CodeSymbol)-[:IMPLEMENTS]->(Requirement)` edge.
+   - *Independent Test*: Save a file containing `// @implements SPEC-AUTH-001::REQ-042` and verify AicoGraphStore creates an `(CodeSymbol)-[:IMPLEMENTS]->(Requirement)` edge.
 3. **US-03** (Priority: P1): As a developer, I want tests tagged with `// @verifies SPEC-ID::REQ-ID` linked to their requirements in the graph, so that test pass/fail status updates the specification table in real time.
-   - *Independent Test*: Save a test containing `// @verifies SPEC-AUTH-001::REQ-042` and verify Kùzu creates a `(Test)-[:VERIFIES]->(Requirement)` edge.
+   - *Independent Test*: Save a test containing `// @verifies SPEC-AUTH-001::REQ-042` and verify AicoGraphStore creates a `(Test)-[:VERIFIES]->(Requirement)` edge.
 4. **US-04** (Priority: P2): As an agent implementing code, I want to query a 3-hop structural subgraph around my target function via MCP, so that I receive exact caller and contract context without reading unrelated files.
    - *Independent Test*: Call MCP tool `query_lineage_graph` for symbol `validate_token` and verify the returned JSON contains callers, implementing requirements, and parent brainstorms.
 
@@ -53,10 +53,10 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 - **REQ-004**: The AnnotationParser shall extract in-band annotations (`@implements <SPEC-ID>::<REQ-ID>` and `@verifies <SPEC-ID>::<REQ-ID>`) from comment tokens in source and test files.
 
 ### Event-Driven Requirements
-- **REQ-005**: When an agent invokes tool `create_sdd_artifact`, the ArtifactToolGate shall validate parameters, write the file to the deterministically calculated path, and merge document nodes into Kùzu.
-- **REQ-006**: When an agent invokes tool `query_lineage_graph`, the GraphToolGate shall execute a 2-to-4 hop Cypher query in Kùzu and return the structural subgraph as a formatted JSON context payload.
-- **REQ-007**: When source code containing an `@implements` annotation is saved, the AnnotationParser shall create an `[:IMPLEMENTS]` edge in Kùzu connecting the enclosing `CodeSymbol` to the target `Requirement`.
-- **REQ-008**: When test code containing an `@verifies` annotation is saved, the AnnotationParser shall create a `[:VERIFIES]` edge in Kùzu connecting the enclosing `Test` to the target `Requirement`.
+- **REQ-005**: When an agent invokes tool `create_sdd_artifact`, the ArtifactToolGate shall validate parameters, write the file to the deterministically calculated path, and merge document nodes into AicoGraphStore.
+- **REQ-006**: When an agent invokes tool `query_lineage_graph`, the GraphToolGate shall execute a 2-to-4 hop lineage traversal query in AicoGraphStore and return the structural subgraph as a formatted JSON context payload.
+- **REQ-007**: When source code containing an `@implements` annotation is saved, the AnnotationParser shall create an `[:IMPLEMENTS]` edge in AicoGraphStore connecting the enclosing `CodeSymbol` to the target `Requirement`.
+- **REQ-008**: When test code containing an `@verifies` annotation is saved, the AnnotationParser shall create a `[:VERIFIES]` edge in AicoGraphStore connecting the enclosing `Test` to the target `Requirement`.
 - **REQ-009**: When a test runner execution completes, the TestResultSynchronizer shall update the verification status property (`status: "Completed"` or `status: "Completed"`) on all `[:VERIFIES]` edges.
 
 ### State-Driven Requirements
@@ -64,7 +64,7 @@ This specification defines AICO's Model Context Protocol (MCP) Tool Gates and in
 - **REQ-011**: While the project watcher is active, the AnnotationParser shall remove stale `[:IMPLEMENTS]` and `[:VERIFIES]` edges when annotations are deleted from source files.
 
 ### Unwanted Behavior & Error Handling
-- **REQ-012**: If an agent attempts to create a document with an ID that already exists in Kùzu, then the ArtifactToolGate shall reject the request with `ToolError::DuplicateArtifactId`.
+- **REQ-012**: If an agent attempts to create a document with an ID that already exists in AicoGraphStore, then the ArtifactToolGate shall reject the request with `ToolError::DuplicateArtifactId`.
 - **REQ-013**: If an `@implements` annotation references a requirement ID that does not exist in any specification, then the AnnotationParser shall log a lint warning and create a dangling requirement reference node marked `status: "Completed"`.
 
 ### Optional Feature Requirements

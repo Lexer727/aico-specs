@@ -19,7 +19,7 @@ Several core workspace navigation and visualization workflows require refinement
 1. **Sidebar Header Clutter**: The left sidebar header in `ShellLayout.tsx` displays a blinking blue dot next to `AICO WORKSPACE` that conveys no telemetry or state.
 2. **Epic Task Plan Ergonomics**: In `EpicHubView.tsx`, each feature group in the `Task Plan` column includes a separate `View Feature` button and always renders all child tasks expanded, making large epics with completed features noisy to scan. Making the `ft-*` badge itself clickable, making each feature group collapsible, and auto-collapsing features that are 100% implemented significantly improves readability.
 3. **Interactive Project Creation**: `ProjectSwitcher.tsx` only selects existing projects and cannot scaffold a new project. Developers need an integrated `Create New Project` workflow in the top project selector that prompts for a project name, creates `<project-name>-specs` under the workspace root with `.aico`, `adr`, `epics`, `features`, `.aico-project.json`, and `glossary.md`, initializes the Git repository (`git init`), registers the project, and switches to it.
-4. **Live Kùzu Property Graph & Lineage Canvas**: `KuzuGraphStore` in `aico-storage` is currently a stub returning static strings, and `App.tsx` passes hardcoded `mockNodes` and `mockEdges` to `VisualLineageCanvas.tsx`. Developers and MCP tools (`query_lineage_graph`) need a real property graph engine storing and querying artifact and code relationships (`ADR` -> `Epic` / `Brainstorm` -> `Feature` -> `Spec` -> `Requirement` <- `Task` / `Plan` <- `Code`) and rendering a true interactive node-and-edge graph with SVG connections in the Epic Hub.
+4. **Live AicoGraphStore Property Graph & Lineage Canvas**: `AicoGraphStore` (ratified in [ADR-0011](../../../../adr/0011-aico-graph-store-and-lancedb-hybrid-storage.md)) stores and queries artifact and code relationships (`ADR` -> `Epic` / `Brainstorm` -> `Feature` -> `Spec` -> `Requirement` <- `Task` / `Plan` <- `Code`) and renders a true interactive node-and-edge graph with SVG connections in the Epic Hub and Home Dashboard.
 
 ---
 
@@ -29,7 +29,7 @@ Several core workspace navigation and visualization workflows require refinement
 - Removing the `View Feature` button in `EpicHubView.tsx` `Task Plan`, making the `ft-*` feature ID badge clickable (`onOpenFeature`), making each feature group in `Task Plan` collapsible, and auto-collapsing any feature group whose tasks are 100% completed (`featPct === 100 && featTotal > 0` or `status === 'Completed'`).
 - Adding a `+ New Project` action and inline/modal name prompt in `ProjectSwitcher.tsx` connected to `POST /api/v1/projects`.
 - Implementing `POST /api/v1/projects` in `aico-server` and project scaffolding in `aico-core` to create `<workspace-root>/<project-name>-specs` with `.aico/`, `adr/`, `epics/`, `features/`, `.aico-project.json`, and `glossary.md`, plus running `git init`.
-- Replacing the stubbed `KuzuGraphStore` in `crates/aico-storage/src/graph.rs` with a functional persistent property graph supporting Cypher node/edge creation, `MATCH` queries, and multi-hop neighborhood traversal for `query_lineage_graph`.
+- Implementing `AicoGraphStore` in `crates/aico-storage/src/graph.rs` as a functional persistent property graph supporting Cypher node/edge creation, `MATCH` queries, and multi-hop neighborhood traversal for `query_lineage_graph`.
 - Exposing `GET /api/v1/graph` (with optional `?epic=<epic-id>` filter) in `aico-server` that builds and returns the complete artifact and code lineage graph (`nodes` and `edges` across ADRs, Epics, Brainstorms, Features, Specs, Plans, Requirements, Tasks, and annotated Code files).
 - Updating `VisualLineageCanvas.tsx` and `App.tsx` to fetch and render the live Epic lineage graph with layered node layout, SVG directed edges, interactive node selection (highlighting upstream provenance and downstream blast radius), and click-to-open navigation.
 
@@ -50,8 +50,8 @@ Several core workspace navigation and visualization workflows require refinement
    - *Independent Test*: Render `EpicHubView` with a 100% completed feature and an in-progress feature; verify `View Feature` is absent, clicking `ft-*` invokes `onOpenFeature`, the completed feature is collapsed by default, and clicking its header expands its tasks.
 3. **US-03** (Priority: P1): As a developer starting a new initiative, I want to create a new project from the top `ProjectSwitcher` dropdown by entering a project name, so that `<project-name>-specs` is scaffolded with all canonical folders, `.aico-project.json`, `glossary.md`, and an initialized Git repo.
    - *Independent Test*: Call `POST /api/v1/projects` with `{ "name": "demo-app" }` and verify `demo-app-specs` is created with `.aico`, `adr`, `epics`, `features`, `.aico-project.json`, `glossary.md`, and `.git`.
-4. **US-04** (Priority: P1): As a developer or agent inspecting an Epic's lineage graph or calling `query_lineage_graph`, I want Kùzu graph storage and the Epic Hub graph view to reflect real connections between ADRs, Epics, Features, Specs, Plans, Requirements, Tasks, and Code files, so that architectural provenance is accurately visualized.
-   - *Independent Test*: Query `GET /api/v1/graph?epic=ec-core` and `KuzuGraphStore::execute_query`; verify real nodes and directed edges are returned and rendered with SVG connections in `VisualLineageCanvas`.
+4. **US-04** (Priority: P1): As a developer or agent inspecting an Epic's lineage graph or calling `query_lineage_graph`, I want AicoGraphStore storage and the Epic Hub graph view to reflect real connections between ADRs, Epics, Features, Specs, Plans, Requirements, Tasks, and Code files, so that architectural provenance is accurately visualized.
+   - *Independent Test*: Query `GET /api/v1/graph?epic=ec-core` and `AicoGraphStore::execute_query`; verify real nodes and directed edges are returned and rendered with SVG connections in `VisualLineageCanvas`.
 
 ---
 
@@ -61,7 +61,7 @@ Several core workspace navigation and visualization workflows require refinement
 - **REQ-001**: The `ShellLayout` component shall render the `AICO WORKSPACE` sidebar header without a decorative blinking dot indicator.
 - **REQ-002**: The `EpicHubView` component shall render each feature group in the `Task Plan` without a `View Feature` button and shall make the feature's `ft-*` badge clickable to open the corresponding feature tab.
 - **REQ-003**: The `EpicHubView` component shall allow each feature group in the `Task Plan` to be collapsed and expanded independently.
-- **REQ-004**: The `KuzuGraphStore` shall persist nodes and directed relationships in `.aico/storage/graph` and evaluate openCypher `CREATE`, `MERGE`, and `MATCH` queries against the stored graph.
+- **REQ-004**: The `AicoGraphStore` shall persist nodes and directed relationships in `.aico/storage/graph` and evaluate lineage `CREATE`, `MERGE`, and `MATCH` queries against the stored graph.
 - **REQ-005**: The HostServer shall expose `GET /api/v1/graph` returning all discovered lineage nodes and directed edges connecting ADRs, Epics, Brainstorms, Deep-Dives, Features, Specifications, Plans, Requirements, Tasks, and annotated Code files, normalizing ADR and artifact IDs case-insensitively (`ADR-0004`) and emitting direct `Spec -> Plan` and `Plan -> Code` edges alongside task-level edges.
 - **REQ-006**: The `VisualLineageCanvas` component shall render a 6-column layered graph (`ADR` -> `Epic / Brainstorm / Deep-Dive` -> `Feature` -> `Spec` -> `Plan` -> `Code`) with SVG edges connecting linked artifacts, hiding granular `requirement` and `task` nodes by default behind an explicit `"Show Reqs & Tasks"` toggle so the Epic lineage view remains compact and readable.
 
@@ -100,8 +100,8 @@ Several core workspace navigation and visualization workflows require refinement
 2. **Project Creator API & UI Seam (`crates/aico-server/tests/project_api_test.rs` & `frontend/tests/ProjectSwitcher.test.tsx`)**:
    - Signature: `POST /api/v1/projects` and `<ProjectSwitcher projects={...} />`
    - Verifies: New project scaffolding (`.aico`, `adr`, `epics`, `features`, `.aico-project.json`, `glossary.md`, `.git`) and error handling (`REQ-009`, `REQ-010`, `REQ-012`).
-3. **Kùzu Graph Engine & Lineage Canvas Seam (`crates/aico-storage/tests/storage_hybrid_test.rs`, `crates/aico-mcp/tests/mcp_graph_hybrid_test.rs`, `crates/aico-server/tests/server_test.rs` & `frontend/tests/VisualLineageCanvas.test.tsx`)**:
-   - Signature: `KuzuGraphStore::execute_query`, `GET /api/v1/graph`, and `<VisualLineageCanvas />`
+3. **AicoGraphStore Engine & Lineage Canvas Seam (`crates/aico-storage/tests/storage_hybrid_test.rs`, `crates/aico-mcp/tests/mcp_graph_hybrid_test.rs`, `crates/aico-server/tests/server_test.rs` & `frontend/tests/VisualLineageCanvas.test.tsx`)**:
+   - Signature: `AicoGraphStore::execute_query`, `GET /api/v1/graph`, and `<VisualLineageCanvas />`
    - Verifies: Persistent property graph storage/queries (`REQ-004`), lineage graph API (`REQ-005`, `REQ-023`), and SVG node-edge lineage rendering (`REQ-006`, `REQ-011`, `REQ-021`, `REQ-022`, `REQ-024`).
 
 ---

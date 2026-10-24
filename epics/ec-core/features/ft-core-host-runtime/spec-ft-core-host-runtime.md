@@ -84,7 +84,7 @@ This specification defines the core Host Runtime: an embedded Rust Axum HTTP/Web
    - Signature: `pub fn validate_request(&self, peer_ip: IpAddr, headers: &HeaderMap, query_token: Option<&str>) -> AuthResult`
    - Allows unit testing of loopback detection, pairing token verification, and session cookie generation without network overhead.
 3. **HTTP/WS Endpoints Contract**:
-   - `GET /health`: Returns JSON `{ "status": "ok", "version": "0.1.0", "kuzu": "ready", "lancedb": "ready" }`.
+   - `GET /health`: Returns JSON `{ "status": "ok", "version": "0.1.0", "graph": "ready", "lancedb": "ready" }`.
    - `GET /api/session`: Validates current session cookie.
    - `GET /ws`: WebSocket endpoint supporting JSON-RPC 2.0 frames.
 

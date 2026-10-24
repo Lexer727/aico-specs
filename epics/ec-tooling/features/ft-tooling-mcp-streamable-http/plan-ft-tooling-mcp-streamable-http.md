@@ -17,7 +17,7 @@ created_at: "2026-10-22T20:24:06.575Z"
 
 - **Transport**: Standard Model Context Protocol (MCP) Streamable HTTP (`POST /mcp` and `GET /mcp`) served by `aico-server` Axum router.
 - **Protocol Dispatcher**: Zero-overhead JSON-RPC 2.0 parser and tool dispatcher in `crates/aico-mcp/src/protocol.rs` implementing `initialize`, `ping`, `tools/list`, and `tools/call`.
-- **Storage Context**: Thread-safe injection of active project `StorageManager` into `AppState` and MCP handlers, enabling queries directly against Kùzu property graphs and LanceDB embeddings without file locks.
+- **Storage Context**: Thread-safe injection of active project `StorageManager` into `AppState` and MCP handlers, enabling queries directly against AicoGraphStore property graphs and LanceDB embeddings without file locks.
 - **Client Configuration**: Global Antigravity registration via `~/.gemini/config/mcp_config.json`.
 
 ---
@@ -46,7 +46,7 @@ created_at: "2026-10-22T20:24:06.575Z"
   - **Blocked by**: `TASK-TOOL-004-1`
   - **What it delivers**:
     - Updates `GraphToolHandler` and `HybridToolHandler` in `crates/aico-mcp/src/graph_tools.rs` to accept an optional `&StorageManager`.
-    - When `StorageManager` is provided, queries run directly against the active Kùzu and LanceDB instances.
+    - When `StorageManager` is provided, queries run directly against the active AicoGraphStore and LanceDB instances.
     - When storage is not available or not yet initialized, returns an informative diagnostic message rather than failing silently.
   - **Verification Seam**: `crates/aico-mcp/tests/mcp_storage_binding_test.rs::test_storage_binding`
 
