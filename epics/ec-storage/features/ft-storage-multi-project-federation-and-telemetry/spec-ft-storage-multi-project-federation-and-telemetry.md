@@ -51,15 +51,16 @@ This specification implements **Multi-Project Storage Federation**:
 ## 3. Functional Requirements (EARS)
 
 ### Ubiquitous Requirements
-- **REQ-001**: The `StorageFederationManager` shall maintain a thread-safe registry of `(AicoGraphStore, LanceVectorStore)` handles indexed by `project_id`.
-- **REQ-002**: The `StorageFederationManager` shall isolate disk storage for each project to `<specs-dir>/.aico/storage/`, preventing cross-project file contention.
+- **REQ-001**: The `StorageFederationManager` shall maintain a thread-safe registry of per-project `AicoGraphStore` handles indexed by `project_id` alongside a single shared workspace-wide `LanceVectorStore` handle.
+- **REQ-002**: The `StorageFederationManager` shall locate all runtime storage under `<workspace-root>/.aico/storage/`, with the unified LanceDB vector table at `<workspace-root>/.aico/storage/vector/` and per-project lineage graphs at `<workspace-root>/.aico/storage/graph/<project_id>/`.
 - **REQ-003**: The server shall expose `GET /api/v1/storage/stats` returning a JSON telemetry payload containing `project_id`, `graph_nodes_count`, `graph_edges_count`, `vector_chunks_count`, `cache_state`, and `storage_dir_bytes`.
 - **REQ-004**: The `DashboardView.tsx` Host Diagnostics card shall render live metrics: `"AICO Graph: Embedded OK (<count> nodes)"` and `"LanceDB: Embedded OK (<count> vectors)"`.
+- **REQ-011**: The system shall keep `<project>-specs` Git repositories free of `.aico` runtime database directories while preserving Epic and Feature assets inside `<project>-specs/epics/<epic>/assets/` and `<project>-specs/.../features/<feature>/assets/`.
 
 ### Event-Driven Requirements
 - **REQ-005**: When an active project switch event is received via HTTP `POST /api/v1/projects/switch` or WebSocket message, the `StorageFederationManager` shall activate the target project's storage handles within 50 milliseconds.
-- **REQ-006**: When `search_hybrid` is invoked with `scope: "all"`, the `HybridQueryEngine` shall execute parallel searches across all registered project vector tables and fuse the results with global Reciprocal Rank Fusion.
-- **REQ-007**: When a new project is created or registered via `ProjectRegistry`, the `StorageFederationManager` shall provision an empty storage directory and initialize baseline storage handles.
+- **REQ-006**: When `search_hybrid` is invoked with `scope: "all"`, the `HybridQueryEngine` shall query the unified workspace `LanceVectorStore` across all `project_id` partitions and fuse the results with Reciprocal Rank Fusion.
+- **REQ-007**: When a new project is created or registered via `ProjectRegistry`, the `StorageFederationManager` shall provision its per-project graph directory under `<workspace-root>/.aico/storage/graph/<project_id>/` and bind it to the shared workspace `LanceVectorStore`.
 
 ### State-Driven Requirements
 - **REQ-008**: While switching active projects, existing in-flight read operations on other projects shall continue without blocking or deadlocking.

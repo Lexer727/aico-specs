@@ -55,7 +55,7 @@ This specification integrates the official **`lancedb`** Rust crate into `crates
 ## 3. Functional Requirements (EARS)
 
 ### Ubiquitous Requirements
-- **REQ-001**: The `LanceVectorStore` shall manage an embedded columnar table using the official `lancedb` crate persisted on disk at `<specs-root>/.aico/storage/vector/`.
+- **REQ-001**: The `LanceVectorStore` shall manage an embedded columnar table using the official `lancedb` crate persisted on disk at `<workspace-root>/.aico/storage/vector/`.
 - **REQ-002**: The `LanceVectorStore` shall define an Apache Arrow table schema containing fields `id` (string), `content` (string), `file_path` (string), `start_line` (uint32), `end_line` (uint32), `language` (string), `vector` (fixed-size 384-float list), `doc_type` (string), and `project_id` (string).
 - **REQ-003**: The `EmbeddingPipeline` shall produce 384-dimensional dense vectors using a local int8-quantized `bge-small-en-v1.5` model or deterministic fallback vectorizer executing locally on CPU.
 - **REQ-004**: The `HybridQueryEngine` shall calculate Reciprocal Rank Fusion (RRF) scores combining dense vector cosine distance rank and BM25 lexical rank according to the formula:

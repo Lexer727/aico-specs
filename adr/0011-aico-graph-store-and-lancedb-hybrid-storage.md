@@ -48,15 +48,17 @@ AICO requires a coherent, robust, production-grade storage architecture that sca
 
 Chosen option: **Option A**.
 
-### 1. Pure-Rust `AicoGraphStore`
+### 1. Pure-Rust `AicoGraphStore` (Per-Project at Workspace Root)
 - Rename `KuzuGraphStore` $\to$ `AicoGraphStore` across `crates/aico-storage`, `crates/aico-mcp`, `crates/aico-server`, and the frontend (`VisualLineageCanvas`, Host Diagnostics).
 - Maintain node and edge indexing via dual adjacency maps (`HashMap<String, HashSet<EdgeId>>` for incoming and outgoing edges), ensuring $O(1)$ neighbor lookups and sub-millisecond BFS/DFS traversals.
-- Persist snapshots asynchronously or on batch completion, eliminating $O(N^2)$ synchronous disk rewrites on single node insertions.
+- Persist per-project snapshots at `<workspace-root>/.aico/storage/graph/<project_id>/lineage_graph.json` asynchronously or on batch completion, eliminating $O(N^2)$ synchronous disk rewrites and keeping `<project>-specs` Git repositories completely clean of runtime database files.
 - Implement build-once caching: on startup or initial request, `AicoGraphStore` builds the lineage graph from the filesystem, records file `mtime` and `sha256` hashes in a manifest, and only re-indexes modified files on subsequent requests or file watcher events.
 
-### 2. Embedded `LanceDB` Vector & Hybrid Search
+### 2. Single Unified Workspace-Wide `LanceDB` Vector & Hybrid Search
 - Add `lancedb` to `crates/aico-storage/Cargo.toml`.
-- Store vector tables on disk at `<specs-dir>/.aico/storage/vector/`.
+- Maintain a **single unified LanceDB instance** at `<workspace-root>/.aico/storage/vector/` shared across all registered workspace projects, with a `project_id` column in the `chunks` Arrow schema.
+- Support both single-project searches (filtered by `project_id`) and workspace-wide searches (`scope: "all"`) against the single columnar table without multi-database fan-out.
+- Epic and Feature assets remain stored inside `<project>-specs/epics/<epic>/assets/` and `<project>-specs/.../features/<feature>/assets/` so they are versioned and pushed to Git alongside their specifications.
 - Chunk code symbols and SDD requirements via `chunker.rs`, generate 384-dimensional dense embeddings (`bge-small-en-v1.5`), and index lexical keywords for BM25 search.
 - Provide a unified `search_hybrid` interface that calculates Reciprocal Rank Fusion (RRF) scores across dense vector distance and lexical BM25 rank.
 

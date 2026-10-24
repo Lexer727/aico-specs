@@ -16,7 +16,7 @@ created_at: "2026-10-24T17:26:21.517Z"
 ## 1. Technical Architecture & Decisions
 
 - **Crate**: `crates/aico-storage` using the official `lancedb` crate (`cargo add lancedb`).
-- **Disk Path**: Persisted at `<specs-root>/.aico/storage/vector/` inside the active project.
+- **Disk Path**: Persisted as a single unified workspace-wide store at `<workspace-root>/.aico/storage/vector/`.
 - **Apache Arrow Table**: Defined using `arrow-schema` with schema:
   - `id`: Utf8 (SHA-256 chunk hash)
   - `content`: Utf8

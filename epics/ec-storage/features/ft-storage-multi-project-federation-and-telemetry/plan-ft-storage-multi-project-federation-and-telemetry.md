@@ -15,10 +15,12 @@ created_at: "2026-10-24T17:26:21.874Z"
 
 ## 1. Technical Architecture & Decisions
 
-- **Storage Federation Manager**: Implemented in `crates/aico-storage/src/manager.rs` as `StorageFederationManager`, wrapping an `Arc<RwLock<HashMap<String, ProjectStorage>>>`.
-- **Project Isolation**: Each registered project resolves its storage root to `<specs_path>/.aico/storage/` containing its dedicated `lineage_graph.json` and LanceDB directory.
-- **Dynamic Swapping**: When `POST /api/v1/projects/switch` is received, `StorageFederationManager` switches the active pointer with zero file contention.
-- **Federated Search**: `HybridQueryEngine::search_federated` aggregates results from all registered project stores in parallel using `tokio::join!`, normalizing and sorting via global RRF.
+- **Workspace-Root Storage Topology**: All runtime databases live at `<workspace-root>/.aico/storage/` outside of tracked `<project>-specs` Git repositories.
+- **Unified Vector Store**: A single shared `LanceVectorStore` instance at `<workspace-root>/.aico/storage/vector/` serves all registered projects, partitioning records via the `project_id` column in the `chunks` Arrow schema.
+- **Per-Project Graph Store**: Each registered project resolves its lineage graph to `<workspace-root>/.aico/storage/graph/<project_id>/lineage_graph.json`.
+- **Epic & Feature Assets**: Remain inside `<project>-specs/epics/<epic>/assets/` and `<project>-specs/.../features/<feature>/assets/` so they are versioned and pushed to Git alongside their specifications.
+- **Dynamic Swapping**: When `POST /api/v1/projects/switch` is received, `StorageFederationManager` switches the active project pointer with zero file contention.
+- **Federated Search**: `HybridQueryEngine::search_federated` queries the single unified `LanceVectorStore` (filtered by `project_id` for `SearchScope::Active`, or unfiltered across all projects for `SearchScope::All`), ranking via Reciprocal Rank Fusion (RRF).
 - **Telemetry & UI**:
   - Exposes `GET /api/v1/storage/stats` with node count, edge count, vector count, and directory size.
   - Updates `frontend/src/features/dashboard/DashboardView.tsx` Host Diagnostics to display live metrics.
@@ -94,6 +96,22 @@ created_at: "2026-10-24T17:26:21.874Z"
 
 ---
 
+### Phase 6: Workspace-Root `.aico/storage/` Relocation & Unified `LanceVectorStore`
+
+- **TASK-STORAGE-003-6**: Relocate `.aico/storage` to Workspace Root & Unify `LanceVectorStore` Across Projects
+  - **Status**: Done
+  - **Addresses**: `REQ-001`, `REQ-002`, `REQ-006`, `REQ-007`, `REQ-011`
+  - **Blocked by**: `TASK-STORAGE-003-5`
+  - **What it delivers**:
+    - Updates `StorageFederationManager` to resolve runtime storage under `<workspace-root>/.aico/storage/` with a single shared `LanceVectorStore` (`<workspace-root>/.aico/storage/vector/`) and per-project `AicoGraphStore` (`<workspace-root>/.aico/storage/graph/<project_id>/`).
+    - Updates `LanceVectorStore`, `EmbeddingPipeline`, `DifferentialIndexer`, and `HybridQueryEngine` to tag chunks with `project_id` and query the single unified LanceDB table (filtered by `project_id` when `scope == Active`, unfiltered when `scope == All`).
+    - Updates `server.rs` and `main.rs` to initialize storage at `<workspace-root>/.aico/storage/` and removes `.aico` directory creation from `handle_create_project`.
+    - Removes `aico-specs/.aico` from the `aico-specs` Git repository and adds `.aico/` to `.gitignore`.
+  - **Verification Seam**: `crates/aico-storage/tests/storage_connection_test.rs::test_federation_handle_pooling_and_isolation`, `crates/aico-storage/tests/storage_hybrid_test.rs::test_federated_hybrid_search_across_projects`, `crates/aico-server/tests/server_test.rs`
+
+---
+
 ## 3. Amendment Log
 
 - **2026-10-24T17:26:21Z**: Initial task graph established under `ec-storage`.
+- **2026-10-24T19:20:00Z**: Added `TASK-STORAGE-003-6` to relocate `.aico/storage/` to `<workspace-root>/.aico/storage/` and unify `LanceVectorStore` into a single workspace-wide database while keeping `AicoGraphStore` per-project and Epic/Feature assets in `<project>-specs`.

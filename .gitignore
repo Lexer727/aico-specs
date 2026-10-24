@@ -1,0 +1,2 @@
+# Ignore local runtime AICO storage (LanceDB vector store and graph cache snapshots)
+.aico/
