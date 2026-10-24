@@ -68,7 +68,7 @@ This specification integrates the official **`lancedb`** Rust crate into `crates
 - **REQ-007**: When an agent invokes the MCP tool `search_hybrid`, the MCP server shall query `HybridQueryEngine` and return the top-K deduplicated results formatted with file paths, line ranges, and relevance scores.
 
 ### State-Driven Requirements
-- **REQ-008**: While the LanceDB table contains over 1,000 vectors, the `LanceVectorStore` shall maintain an IVF-PQ approximate nearest neighbor index for sub-15ms vector retrieval.
+- **REQ-008**: While the LanceDB table contains over 1,000 vectors, the `LanceVectorStore` shall provide an explicit `create_vector_index` optimization procedure to train and maintain an IVF-PQ approximate nearest neighbor index for sub-15ms vector retrieval, avoiding repeated per-append re-training.
 - **REQ-009**: While executing hybrid queries, the `HybridQueryEngine` shall complete queries across up to 50,000 indexed chunks in under 20 milliseconds.
 
 ### Unwanted Behavior & Error Handling

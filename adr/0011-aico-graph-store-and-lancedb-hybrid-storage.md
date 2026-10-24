@@ -55,7 +55,7 @@ Chosen option: **Option A**.
 - Implement build-once caching: on startup or initial request, `AicoGraphStore` builds the lineage graph from the filesystem, records file `mtime` and `sha256` hashes in a manifest, and only re-indexes modified files on subsequent requests or file watcher events.
 
 ### 2. Single Unified Workspace-Wide `LanceDB` Vector & Hybrid Search
-- Add `lancedb` to `crates/aico-storage/Cargo.toml`.
+- Add `lancedb` to `crates/aico-storage/Cargo.toml` without cloud SaaS client features (`features = ["remote"]` disabled), operating strictly as an in-process local embedded engine.
 - Maintain a **single unified LanceDB instance** at `<workspace-root>/.aico/storage/vector/` shared across all registered workspace projects, with a `project_id` column in the `chunks` Arrow schema.
 - Support both single-project searches (filtered by `project_id`) and workspace-wide searches (`scope: "all"`) against the single columnar table without multi-database fan-out.
 - Epic and Feature assets remain stored inside `<project>-specs/epics/<epic>/assets/` and `<project>-specs/.../features/<feature>/assets/` so they are versioned and pushed to Git alongside their specifications.

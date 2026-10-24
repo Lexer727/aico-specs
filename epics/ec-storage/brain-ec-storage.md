@@ -42,13 +42,14 @@ This epic establishes the unified **Native Storage Engine**:
 
 ## 3. Epic Decomposition (Child Features)
 
-This epic decomposes into 3 sequential vertical tracer-bullet features:
+This epic decomposes into 4 sequential vertical tracer-bullet features:
 
 | Feature Slug | Order | Name | Core Responsibilities |
 | :--- | :--- | :--- | :--- |
 | `ft-storage-aico-graph-and-incremental-cache` | 1 | AicoGraphStore Property Graph & Incremental Cache | Rename `KuzuGraphStore` $\to$ `AicoGraphStore`, remove Kùzu terminology, in-memory indexed adjacency lists, batched persistence, build-once `mtime`/`sha256` graph cache, AST symbol and call-graph ingestion. |
 | `ft-storage-lancedb-hybrid-search` | 2 | LanceDB Persistent Vector & BM25 Hybrid Search Engine | Add `lancedb` crate to `crates/aico-storage`, disk-backed vector tables under `.aico/storage/vector/`, AST chunking, local dense embeddings (`bge-small-en-v1.5`), BM25 lexical indexing, and Reciprocal Rank Fusion (RRF) MCP tool `search_hybrid`. |
 | `ft-storage-multi-project-federation-and-telemetry` | 3 | Multi-Project Storage Federation & Telemetry | Multi-project storage federation across `WorkspaceRegistry`, cross-project search scoping, dynamic cache switching on active project change, live storage telemetry in `/api/v1/stats` and WebUI Host Diagnostics (`"AICO Graph: Embedded OK"`, `"LanceDB: Embedded OK"`). |
+| `ft-storage-workspace-crawler-and-reindexing` | 4 | Workspace Vector Crawler, Graph Rebuild & Settings Maintenance Controls | Canonicalize project ID to `*-specs` (`aico-specs`), workspace crawler for specs and codebase files, `POST /api/v1/storage/reindex`, `POST /api/v1/storage/rebuild-graph`, startup background indexing, and Settings Modal maintenance buttons. |
 
 ---
 
