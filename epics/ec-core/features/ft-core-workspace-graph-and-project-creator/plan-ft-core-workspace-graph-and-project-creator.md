@@ -193,13 +193,13 @@ created_at: "2026-10-23T19:05:21.133Z"
 
 ### Phase 9: Multi-Epic Dashboard Graph Focus & Drilldown Isolation
 
-- **TASK-CORE-017-16**: VisualLineageCanvas Epic Focus & Drilldown Isolation
+- **TASK-CORE-017-16**: VisualLineageCanvas Downstream-Filtered Lineage Isolation
   - **Status**: Done
   - **Addresses**: `REQ-025`
   - **Blocked by**: `TASK-CORE-017-15`
   - **What it delivers**:
-    - Updates `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` so that when `drilledEpicId` is active, `drilledEpicNodeIds` contains strictly the focused epic node and its direct child features (omitting ADRs, other epics, and code seams).
-    - When a child feature within a focused epic is clicked, renders the hierarchical chain `[Focused Epic] -> [Selected Feature] -> [Tasks] -> [Code Seams]`.
-    - Maintains the Epic Focus Selector (`data-testid="epic-focus-select"`) and `✕ Reset to All Epics` button (`data-testid="reset-epic-focus-btn"`).
-    - Updates unit tests in `frontend/tests/VisualLineageCanvas.test.tsx` to verify strict 2-column epic focus and subsequent hierarchical feature drilldown.
+    - Updates `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` so that when an artifact node (Epic or Feature) at tier $C$ is selected, all nodes in upstream tiers and in the same tier (tier <= C) remain visible, while downstream tiers (tier > C) display strictly only nodes connected downstream from the selected node.
+    - Isolates edge rendering to active connections linked to the selected node (upstream provenance and downstream blast-radius).
+    - Enables canvas background click ("clicking nothing") and node toggle click to unselect and restore the full graph overview.
+    - Updates unit tests in `frontend/tests/VisualLineageCanvas.test.tsx` to verify tier <= C retention, tier > C downstream filtering, edge isolation, and canvas background unselect.
   - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
