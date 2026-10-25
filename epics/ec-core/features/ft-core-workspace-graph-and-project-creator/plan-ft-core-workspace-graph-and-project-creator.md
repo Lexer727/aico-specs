@@ -217,3 +217,19 @@ created_at: "2026-10-23T19:05:21.133Z"
     - Disables CSS transform transitions during active panning for immediate 1:1 pointer responsiveness.
     - Adds automated regression tests in `frontend/tests/VisualLineageCanvas.test.tsx` verifying drag pan selection preservation, stationary click deselection, and cursor-centered zoom offsets.
   - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
+
+### Phase 11: Unified Cascading Lineage Selection & Toolbar Streamlining
+
+- **TASK-CORE-017-18**: VisualLineageCanvas Unified Cascading Lineage Selection & Toolbar Streamlining
+  - **Status**: Done
+  - **Addresses**: `REQ-025`
+  - **Blocked by**: `TASK-CORE-017-17`
+  - **What it delivers**:
+    - Replaces disparate drilldown states in `VisualLineageCanvas.tsx` with a unified `selectedPath` (`Map<number, string>`) mapping column tier index to selected node.
+    - Highlights all nodes along the active cascading selection path with `data-selected="true"`.
+    - Progressively filters downstream tiers to nodes connected downstream from each selected tier.
+    - Resets downstream selections when an upstream node is modified.
+    - Toggles off tier and clears downstream selections on re-clicking an active node.
+    - Removes `epic-focus-select` and `feature-drilldown-select` from the canvas toolbar.
+    - Updates `frontend/tests/VisualLineageCanvas.test.tsx` to verify cascading multi-tier selection (`ADR` -> `Epic` -> `Feature` -> `Task` -> `Code`), upstream resets, node toggle-off, and toolbar streamlining.
+  - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
