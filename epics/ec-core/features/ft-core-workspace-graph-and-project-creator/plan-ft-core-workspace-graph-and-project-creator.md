@@ -203,3 +203,17 @@ created_at: "2026-10-23T19:05:21.133Z"
     - Enables canvas background click ("clicking nothing") and node toggle click to unselect and restore the full graph overview.
     - Updates unit tests in `frontend/tests/VisualLineageCanvas.test.tsx` to verify tier <= C retention, tier > C downstream filtering, edge isolation, and canvas background unselect.
   - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
+
+### Phase 10: Canvas Pan Drag vs Click Distinction & Cursor-Centric Zoom
+
+- **TASK-CORE-017-17**: VisualLineageCanvas Pan Drag vs Click Distinction & Cursor-Centric Zoom
+  - **Status**: Done
+  - **Addresses**: `REQ-016`, `REQ-025`
+  - **Blocked by**: `TASK-CORE-017-16`
+  - **What it delivers**:
+    - Updates `VisualLineageCanvas.tsx` with drag displacement threshold tracking ($\Delta > 4\text{px}$) to cleanly separate pan-dragging from stationary clicks, preserving node selection and downstream filtering throughout pan operations.
+    - Implements focal-point zoom around cursor position on wheel scroll, calculating simultaneous scale and pan offsets ($pan' = x_m - (x_m - pan) \cdot (z_{next} / z_{current})$) to keep the world point under the cursor stationary.
+    - Updates toolbar zoom controls to scale around viewport center.
+    - Disables CSS transform transitions during active panning for immediate 1:1 pointer responsiveness.
+    - Adds automated regression tests in `frontend/tests/VisualLineageCanvas.test.tsx` verifying drag pan selection preservation, stationary click deselection, and cursor-centered zoom offsets.
+  - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
