@@ -23,6 +23,8 @@ created_at: "2026-10-10T01:21:00Z"
   - Mirror the identical `GEMINI.md` at the composite workspace root (`d:/aico/GEMINI.md`) so that ongoing Antigravity IDE and CLI sessions immediately discover and enforce the rules during bootstrap operations.
 - **Blueprint Verification**:
   - Ensure all artifacts strictly conform to Blueprint v0.1.2 standards with `verify-artifacts.mjs`.
+- **Interactive Review Gates via ask_question (`REQ-010`)**:
+  - Modernize review gate halts (Phase 2 Spec Sign-Off and Phase 3 Implementation Confirmation) and Socratic trade-off questions by calling `ask_question` with structured options (e.g. `(Recommended) Approve and proceed`, architectural options, `Cancel`) and the default write-in field, replacing unstructured passive text halts.
 
 ---
 
@@ -92,6 +94,18 @@ created_at: "2026-10-10T01:21:00Z"
   - **What it delivers**:
     - Updates `GEMINI.md` and `AGENTS.md` to codify the 4-phase workflow requiring the agent to halt after writing/updating specifications and plans and await explicit confirmation before modifying codebase or test files.
 
+### Phase 5: Interactive Multi-Choice Gate & Clarification Standardization
+
+- **TASK-RULES-009**: Codify Interactive Multi-Choice Review Gates & Clarifications via ask_question
+  - **Status**: Done
+  - **Addresses**: `REQ-010`
+  - **Blocked by**: `TASK-RULES-008`
+  - **What it delivers**:
+    - Updates canonical `GEMINI.md` and `AGENTS.md` across workspace root (`d:/aico`), `aico-specs`, `.agents/rules`, and `codebase/aico-skills/rules` to require calling `ask_question` at Phase 2 and Phase 3 gates and for Socratic trade-off inquiries.
+    - Updates AICO skill definitions (`aico-start`, `aico-feature`, `aico-epic`, `aico-brainstorm`, `aico-spec-creation`) to instruct agents to trigger `ask_question` at all human gates.
+    - Verifies artifact conformance with `verify-artifacts.mjs`.
+  - **Verification Seam**: `verify-artifacts.mjs` and gate audit.
+
 ---
 
 ## 3. Amendment History
@@ -99,3 +113,4 @@ created_at: "2026-10-10T01:21:00Z"
 - **2026-10-10T01:21:00Z**: Created plan for workspace agent rules and mandatory review gate under epic `ec-specs`.
 - **2026-10-10T01:52:00Z**: Appended Phase 4 (TASK-RULES-005, TASK-RULES-006, TASK-RULES-007) to package `rules/GEMINI.md` and `rules/AGENTS.md` directly into the `aico-skills` plugin repository and synchronize with global plugin deployment per REQ-007 and REQ-008.
 - **2026-10-12T17:50:00Z**: Added `TASK-RULES-008` (`REQ-009`) to enforce a mandatory confirmation gate after spec/plan writes before starting implementation.
+- **2026-10-25T19:50:00Z**: Added `TASK-RULES-009` (`REQ-010`) to codify interactive multiple-choice review gates and Socratic clarifications using the native `ask_question` tool across rules and skills.

@@ -28,6 +28,7 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
   2. Present Proposals & Await Spec Sign-Off.
   3. Write Specs/Plans & Halt for Implementation Confirmation.
   4. Implement Only After Post-Spec Confirmation.
+- Interactive multiple-choice review gate execution and Socratic clarifications via `ask_question`.
 - Guaranteed automatic discovery across Antigravity, Google Gemini CLI (`agy`), and future agent environments.
 - Zero premature file modification or spec manipulation prior to explicit user consent.
 
@@ -41,6 +42,8 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
    - *Independent Test*: Inspect `aico-specs` root and confirm presence of valid, well-formed `GEMINI.md`.
 3. **US-03** (Priority: P2): As a developer working in a multi-repo workspace (`d:/aico`), I want root-level workspace discovery to enforce identical approval gates during bootstrap chats.
    - *Independent Test*: Inspect `d:/aico/GEMINI.md` and verify rules match repository standards.
+4. **US-04** (Priority: P1): As a developer interacting with an AI coding agent at approval gates or design decision points, I want the agent to present interactive multiple-choice options (via `ask_question`) with one-click approval, explicit architectural choices, and custom write-in capabilities, so that I don't have to type repetitive text confirmations.
+   - *Independent Test*: Trigger a Phase 2 or Phase 3 gate or Socratic clarification; verify that `ask_question` is called with structured options and blocks until the user selects or writes in an answer.
 
 ---
 
@@ -50,6 +53,7 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
 - **REQ-001**: The WorkspaceAgent shall discover and load `GEMINI.md` from the root of the active specification repository to enforce persistent behavioral guardrails across all turns.
 - **REQ-002**: The WorkspaceAgent shall recognize identical rule constraints in multi-repository workspace roots.
 - **REQ-007**: The PluginHarness shall package canonical `rules/GEMINI.md` and `rules/AGENTS.md` in the `aico-skills` plugin bundle so that newly installed agent environments automatically discover and enforce the mandatory review gate.
+- **REQ-010**: The WorkspaceAgent shall present review gates (Phase 2 Spec Sign-Off Gate and Phase 3 Implementation Confirmation Gate) and design trade-off questions using the interactive `ask_question` tool with structured selectable options (e.g., `(Recommended) Approve and proceed`, candidate architectural approaches, and `Cancel`) and the default write-in option, rather than waiting for unstructured conversational text replies.
 
 ### State-Driven Requirements
 - **REQ-003**: While conducting initial problem exploration, bug diagnosis, or architecture trade-off analysis, the WorkspaceAgent shall restrict tool invocations to read-only inspection operations.
@@ -70,18 +74,18 @@ This feature establishes the canonical workspace rule standard (`GEMINI.md` / `A
 ### Primary Seams:
 1. **Rule File Integrity (`aico_specs::GEMINI.md`)**:
    - Location: `GEMINI.md` at specs root.
-   - Verifies presence of Mandatory Review & Approval Gate and AICO Blueprint Conformance sections.
+   - Verifies presence of Mandatory Review & Approval Gate, Interactive Review Gates (`REQ-010`), and AICO Blueprint Conformance sections.
 2. **Artifact Verification (`aico-verify`)**:
    - Automated conformance check via `scripts/verify-artifacts.mjs` verifying 100% structural compliance.
 3. **Plugin Rules Integrity (`aico_skills::rules/GEMINI.md`)**:
    - Location: `rules/GEMINI.md` and `rules/AGENTS.md` inside `aico-skills` plugin package.
-   - Verifies automatic loading of rules upon plugin installation.
+   - Verifies automatic loading of rules and interactive gate requirements upon plugin installation.
 
 ---
 
 ## Out-of-Scope
 
-- Custom interactive GUI modal dialogs outside of the conversational approval flow.
+- Modifying closed Antigravity client GUI code (native `ask_question` tool modal is leveraged as provided by the platform).
 - Automated token charging or billing limits.
 - Non-markdown agent rule formats.
 
