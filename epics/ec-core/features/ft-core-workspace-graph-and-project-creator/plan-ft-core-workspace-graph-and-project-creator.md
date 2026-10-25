@@ -198,7 +198,8 @@ created_at: "2026-10-23T19:05:21.133Z"
   - **Addresses**: `REQ-025`
   - **Blocked by**: `TASK-CORE-017-15`
   - **What it delivers**:
-    - Updates `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` to add `drilledEpicId` state, toggle epic focus on epic node click, compute `drilledEpicNodeIds` (governing ADRs + focused epic + child features + verified seams), and filter visible nodes.
-    - Adds an Epic Focus Selector (`data-testid="epic-focus-select"`) and a `✕ Reset to All Epics` button (`data-testid="reset-epic-focus-btn"`) when multiple epics are detected in `rawNodes`.
-    - Updates status legend to reflect the active epic focus and feature drilldown hierarchy.
+    - Updates `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` so that when `drilledEpicId` is active, `drilledEpicNodeIds` contains strictly the focused epic node and its direct child features (omitting ADRs, other epics, and code seams).
+    - When a child feature within a focused epic is clicked, renders the hierarchical chain `[Focused Epic] -> [Selected Feature] -> [Tasks] -> [Code Seams]`.
+    - Maintains the Epic Focus Selector (`data-testid="epic-focus-select"`) and `✕ Reset to All Epics` button (`data-testid="reset-epic-focus-btn"`).
+    - Updates unit tests in `frontend/tests/VisualLineageCanvas.test.tsx` to verify strict 2-column epic focus and subsequent hierarchical feature drilldown.
   - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
