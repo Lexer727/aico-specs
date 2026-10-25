@@ -26,6 +26,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 8. **Spec Tag Bloat on Dashboard Epic Cards**: Rendering individual `spec-ft-*` pills at the bottom of each Project Epic card on the Home Dashboard clutters the cards.
 9. **Missing Workspace-Wide Lineage Graph on Home Dashboard**: The interactive lineage graph is only available inside individual Epic views (`?epic=ec-*`), lacking a project-wide view on the Home Dashboard that displays all Epics and their associated nodes together.
 10. **Raw Unformatted Markdown Syntax Across UI Views**: Extracted markdown strings (such as `**bold**`, `*italic*`, and `` `inline code` `` in epic executive summaries, ADR decisions/contexts/consequences, glossary definitions, scope boundaries, EARS requirement statements, seam descriptions, and task deliverables) are rendered as raw text instead of formatted HTML.
+11. **Redundant Expand/Collapse Badges and Verbose Glossary Popout on Dashboard**: In `DashboardView.tsx`, the ADR and Ubiquitous Domain Terminology accordion headers render redundant `Collapse` / `Expand` text badges on the right even though the leading chevron arrow already conveys open/closed state. Additionally, the Ubiquitous Domain Terminology header uses a bulky `Open Full Page` text button rather than the standard `ExternalLink` icon button used elsewhere in the application.
 
 ---
 
@@ -45,6 +46,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 - Removing spec tag pills from Project Epics cards in `DashboardView.tsx`.
 - Embedding the interactive `VisualLineageCanvas` on `DashboardView.tsx` to display all project Epics and their associated nodes (`ADR -> Epic -> Feature -> Task -> Verification Seam / Code`), with full-window tab pop-out support in `App.tsx`.
 - Adding `<InlineMarkdown>` in `MarkdownView.tsx` and rendering inline/block markdown properly across `DashboardView.tsx`, `EpicHubView.tsx`, `FeatureViewer.tsx`, `SpecViewer.tsx`, `PlanViewer.tsx`, `GlossaryViewer.tsx`, and `AdrViewer.tsx`.
+- Omitting redundant expand/collapse text badges (`Collapse` / `Expand`) from the ADR and Ubiquitous Domain Terminology accordion headers in `DashboardView.tsx`, and standardizing the glossary popout to an icon-only button with `<ExternalLink className="w-3.5 h-3.5" />` and `title="Open in separate tab"`.
 
 ---
 
@@ -72,6 +74,8 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
    - *Independent Test*: Issue a commit request for codebase repo matching project name; verify it commits in codebase directory.
 7. **US-07** (Priority: P1): As a developer on the Home Dashboard, I want an interactive lineage graph showing all Epics and their associated nodes across the workspace, and I want all markdown formatting (`**bold**`, `` `code` ``, etc.) rendered cleanly across every view.
    - *Independent Test*: Mount `DashboardView`, `EpicHubView`, `FeatureViewer`, `SpecViewer`, `PlanViewer`, `GlossaryViewer`, and `AdrViewer` with markdown strings (`**bold**`, `` `code` ``); verify formatted elements (`<strong>`, `<code>`) render and `VisualLineageCanvas` is mounted on the Dashboard.
+8. **US-08** (Priority: P2): As a developer inspecting the bottom of the Home Dashboard, I want clean ADR and Ubiquitous Domain Terminology headers without redundant Expand/Collapse tags, and an icon-only popout button for the glossary matching other views, so that header clutter is eliminated.
+   - *Independent Test*: Mount `DashboardView` and verify absence of `Expand`/`Collapse` text badges in ADR and Terminology headers, and verify `open-full-glossary` renders as an icon-only `ExternalLink` button.
 
 ---
 
@@ -85,6 +89,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 - **REQ-009**: The `DashboardView` component shall omit spec `<TagBadge>` pills from the bottom of each Epic card in the `Project Epics` panel to reduce visual bloat.
 - **REQ-010**: The `DashboardView` and `App` components shall render the interactive `VisualLineageCanvas` on the Home Dashboard displaying all project Epics and their associated nodes (`ADR -> Epic -> Feature -> Task -> Verification Seam / Code`), including an `Open Full Window` pop-out button.
 - **REQ-011**: The frontend views (`DashboardView`, `EpicHubView`, `FeatureViewer`, `SpecViewer`, `PlanViewer`, `GlossaryViewer`, and `AdrViewer`) shall render markdown-formatted fields (epic executive summaries, ADR decisions/contexts/consequences, glossary definitions, scope boundaries, EARS requirement statements, seam descriptions, and task deliverables) using `<InlineMarkdown>` or `<MarkdownView>` so that inline syntax (`**bold**`, `*italic*`, `` `code` ``, links) is formatted as HTML rather than raw text.
+- **REQ-012**: The `DashboardView` component shall omit the redundant expand/collapse text tag (`Collapse` / `Expand`) from the headers of both the Architecture Decision Records (ADRs) accordion and the Ubiquitous Domain Terminology accordion, relying on the leading chevron icon for toggle state feedback. When `onOpenGlossary` is provided, the `DashboardView` component shall render an icon-only button with `<ExternalLink className="w-3.5 h-3.5" />` and `title="Open in separate tab"` (`data-testid="open-full-glossary"`), omitting the text label `Open Full Page`.
 
 ### State-Driven Requirements
 - **REQ-003**: The `GitRepositoriesCard` shall render state-aware Git action buttons for cloned repositories:
@@ -107,7 +112,7 @@ Several usability, visual layout, and automation inconsistencies exist on the Ho
 ### Primary Seams:
 1. **Dashboard Overview, Epics, Graph & Markdown Seam (`frontend/tests/DashboardView.test.tsx` & `frontend/tests/EpicHubView.test.tsx`)**:
    - Signature: `<DashboardView onOpenEpic={...} onOpenSpec={...} epics={...} />`
-   - Verifies: Absence of hardcoded root path (`REQ-001`), interactive `TagBadge` epic navigation and omission of `Open Epic` button (`REQ-006`), zero-mock empty state (`REQ-007`), omission of spec tag pills on Epic cards (`REQ-009`), workspace-wide `VisualLineageCanvas` rendering all epics (`REQ-010`), and formatted markdown rendering (`REQ-011`).
+   - Verifies: Absence of hardcoded root path (`REQ-001`), interactive `TagBadge` epic navigation and omission of `Open Epic` button (`REQ-006`), zero-mock empty state (`REQ-007`), omission of spec tag pills on Epic cards (`REQ-009`), workspace-wide `VisualLineageCanvas` rendering all epics (`REQ-010`), formatted markdown rendering (`REQ-011`), and streamlined accordion headers omitting expand/collapse text pills with icon-only glossary popout (`REQ-012`).
 2. **Repositories Grid & Git Telemetry Seam (`frontend/tests/DashboardGitStatus.test.tsx` & `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx`)**:
    - Signature: `<GitRepositoriesCard statuses={...} />`
    - Verifies: Re-unified single 3-column grid with Specs first (`REQ-002`), state-aware disabled and count states for Pull, Push, and Commit (`REQ-003`), one-click AI commit action (`REQ-004`), transmission of `path` telemetry (`REQ-008`).

@@ -29,6 +29,7 @@ created_at: "2026-10-24T01:20:00.000Z"
 - **Codebase Repository Resolution Precedence**: In `crates/aico-server/src/server.rs` (`resolve_repo_dir`), inspect `proj.manifest.get_effective_repositories(&proj.specs_path)` first so that repositories sharing the project slug (e.g. codebase repo `aico` inside project `aico`) resolve to their actual codebase path (`codebase/aico`) rather than defaulting to `proj.specs_path` (`aico-specs`). In `GitRepositoriesCard.tsx`, include `path: repo.path` in action request payloads.
 - **Workspace-Wide Lineage Graph on Home Dashboard**: Render `VisualLineageCanvas` (`epicId={undefined}`) on `DashboardView.tsx` displaying all project Epics and their associated nodes (`ADR -> Epic -> Feature -> Task -> Verification Seam / Code`), with a full-window pop-out button wired in `App.tsx`.
 - **Universal Inline & Block Markdown Formatting**: Introduce `<InlineMarkdown content={...} />` in `MarkdownView.tsx` (using `marked.parseInline`) and format all markdown-bearing fields across `DashboardView.tsx`, `EpicHubView.tsx`, `FeatureViewer.tsx`, `SpecViewer.tsx`, `PlanViewer.tsx`, `GlossaryViewer.tsx`, and `AdrViewer.tsx`.
+- **Dashboard Accordion Header Streamlining**: Remove the redundant `{isAdrsOpen ? 'Collapse' : 'Expand'}` and `{isTerminologyOpen ? 'Collapse' : 'Expand'}` text badges from the ADR and Ubiquitous Domain Terminology headers in `DashboardView.tsx`, since leading chevron icons already convey toggle state. Replace the `Open Full Page` button with the standard `<ExternalLink className="w-3.5 h-3.5" />` pop-out icon button with `title="Open in separate tab"` (`data-testid="open-full-glossary"`), matching `EpicHubView` and `FeatureViewer`.
 
 ---
 
@@ -44,6 +45,7 @@ flowchart TD
     T6["TASK-CORE-018-6: Fix Codebase Repo Resolution Collision & Pass Path Telemetry (REQ-008)"]
     T7["TASK-CORE-018-7: Remove Spec Tags from Dashboard Epics & Add All-Epics Workspace Lineage Graph (REQ-009, REQ-010)"]
     T8["TASK-CORE-018-8: Implement InlineMarkdown & Fix Markdown Formatting Across All Views (REQ-011)"]
+    T9["TASK-CORE-018-9: Streamline Dashboard ADR & Terminology Accordion Headers (REQ-012)"]
 
     T1 --> T2
     T2 --> T3
@@ -52,6 +54,7 @@ flowchart TD
     T5 --> T6
     T6 --> T7
     T6 --> T8
+    T8 --> T9
 ```
 
 ### Phase 1: Zero-Mock Initialization & Header Cleanup
@@ -166,8 +169,25 @@ flowchart TD
 
 ---
 
+### Phase 9: Dashboard Accordion Header Streamlining
+
+- **TASK-CORE-018-9**: Streamline Dashboard ADR & Ubiquitous Domain Terminology Accordion Headers
+  - **Status**: Done
+  - **Addresses**: `REQ-012`
+  - **Blocked by**: `TASK-CORE-018-8`
+  - **What it delivers**:
+    - In `frontend/src/features/dashboard/DashboardView.tsx`, removes `{isAdrsOpen ? 'Collapse' : 'Expand'}` span from the ADR accordion header.
+    - In `frontend/src/features/dashboard/DashboardView.tsx`, removes `{isTerminologyOpen ? 'Collapse' : 'Expand'}` span from the Ubiquitous Domain Terminology accordion header.
+    - In `frontend/src/features/dashboard/DashboardView.tsx`, replaces the text button `Open Full Page` with an icon-only `<button ... title="Open in separate tab"><ExternalLink className="w-3.5 h-3.5" /></button>` (`data-testid="open-full-glossary"`).
+    - Removes unused `ArrowRight` import in `DashboardView.tsx`.
+    - Updates unit tests in `frontend/tests/DashboardView.test.tsx` to assert absence of the text expand/collapse badges and verify the icon-only popout button functionality.
+  - **Verification Seam**: `frontend/tests/DashboardView.test.tsx`
+
+---
+
 ## 3. Amendment Log
 
 - **2026-10-24T01:20:00Z**: Initialized plan for `ft-core-dashboard-and-repo-card-refinement` covering zero-mock defaults, re-unified repositories grid, state-aware git telemetry, one-click AI commit, and skills workflow auto commit/push.
 - **2026-10-24T01:45:00Z**: Appended TASK-CORE-018-6 to resolve repo directory collision when codebase repo ID matches project slug, fixing submodule commit dispatch.
 - **2026-10-24T18:45:00Z**: Appended TASK-CORE-018-7 (`REQ-009`, `REQ-010`) and TASK-CORE-018-8 (`REQ-011`) to remove spec tags on Dashboard Epic cards, embed the all-epics workspace lineage graph on the Dashboard, and format inline/block Markdown across all views.
+- **2026-10-25T19:15:00Z**: Appended TASK-CORE-018-9 (`REQ-012`) to streamline Dashboard ADR and Terminology accordion headers by omitting redundant expand/collapse text pills and replacing the glossary text button with standard `ExternalLink` icon button.
