@@ -432,7 +432,40 @@ created_at: "2026-10-05T20:00:00Z"
 
 ---
 
+### Phase 16: Resizable Left Sidebar, Resizable Dockable Terminals Panel & Single-Line Wrapping Empty-State Launchers (Amended Frontier)
+
+- **TASK-CORE-006-36**: Resizable Desktop Left Sidebar Width with Drag Handle & Persistence
+  - **Status**: Done
+  - **Addresses**: `REQ-025`
+  - **Blocked by**: none
+  - **Verification Seam**: `frontend/tests/ShellLayout.test.tsx`
+  - **What it delivers**:
+    - Adds a right-edge drag-resize handle (`data-testid="left-sidebar-resize-handle"`) to the desktop `<aside data-testid="left-sidebar">` in `frontend/src/components/layout/ShellLayout.tsx`.
+    - Supports dragging to resize sidebar width (default `256px`, clamped between `180px` and `600px`) and persists width in `localStorage` (`aico-left-sidebar-width`).
+
+- **TASK-CORE-006-37**: Resizable DockablePanel Width (Right Mode) & Height (Bottom Horizontal Mode)
+  - **Status**: Done
+  - **Addresses**: `REQ-025`
+  - **Blocked by**: `TASK-CORE-006-36`
+  - **Verification Seam**: `frontend/tests/DockablePanel.test.tsx`
+  - **What it delivers**:
+    - Extends `useDockStore.ts` with `rightWidth` (default `384px`, clamped `240px–900px`), `bottomHeight` (default `256px`, clamped `140px–700px`), `setRightWidth`, and `setBottomHeight`.
+    - Updates `DockablePanel.tsx` to render `data-testid="dockable-panel-resize-handle"` on its left edge when `position === 'right'` (resizing width) and on its top edge when `position === 'bottom'` (resizing height in horizontal mode).
+
+- **TASK-CORE-006-38**: Single-Line Wrapping Empty-State Terminal Launcher Buttons & Shell Ordering
+  - **Status**: Done
+  - **Addresses**: `REQ-026`
+  - **Blocked by**: `TASK-CORE-006-37`
+  - **Verification Seam**: `frontend/tests/TerminalConsole.test.tsx`
+  - **What it delivers**:
+    - Updates the `"No Active Terminals"` empty-state launcher container (`data-testid="empty-terminal-actions"`) in `frontend/src/components/terminal/TerminalConsole.tsx` to use `flex flex-wrap items-center justify-center gap-2` with `whitespace-nowrap shrink-0` on every button so buttons never wrap text into two lines and instead wrap cleanly onto additional rows.
+    - Orders the launcher buttons explicitly as: `Antigravity` (`data-testid="empty-launch-ai"`), `Claude` (`data-testid="empty-launch-claude"`), `PowerShell` (`data-testid="empty-new-terminal"`), `Git Bash` (`data-testid="empty-launch-bash"`), and `Command Prompt` (`data-testid="empty-launch-cmd"`).
+
+---
+
 ## 3. Amendment Log
+
+- **2026-10-29T23:14:00Z**: Appended Phase 16 tasks (`TASK-CORE-006-36`, `TASK-CORE-006-37`, `TASK-CORE-006-38` for `REQ-025` and `REQ-026`) via `/aico-plan-amendment` for resizable left tree view sidebar width, resizable dockable terminals panel width (right mode) and height (bottom horizontal mode), and single-line wrapping empty-state launcher buttons ordered Antigravity, Claude, PowerShell, Git Bash, and Command Prompt.
 
 - **2026-10-23T00:36:00Z**: Appended Phase 15 tasks (`TASK-CORE-006-34`, `TASK-CORE-006-35` for `REQ-024`) via `/aico-plan-amendment` to harmonize child feature task counts, status badge styling, and blocker resolution with `isTaskDone` in `EpicHubView`.
 
