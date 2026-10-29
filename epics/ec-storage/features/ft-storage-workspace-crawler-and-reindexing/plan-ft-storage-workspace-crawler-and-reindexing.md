@@ -90,3 +90,34 @@ This plan delivers automated workspace indexing, graph cache invalidation, and S
     - Moves `create_index` out of `upsert_records` into `create_vector_index()`.
     - Refactors `WorkspaceCrawler::crawl_and_index` to buffer chunks and upsert in bulk Arrow batches (500 chunks per batch), calling `create_vector_index()` once at the end.
   - **Verification Seam**: `crates/aico-storage/tests/storage_connection_test.rs`
+
+---
+
+### Phase 6: Incremental Manifest-Backed Vector Indexing, Compaction & Version Pruning
+
+- **TASK-STORAGE-004-6**: Implement LanceDB Cache Hydration & Post-Write Compaction/Pruning
+  - **Status**: Done
+  - **Addresses**: `REQ-012`, `REQ-014`
+  - **Blocked by**: `TASK-STORAGE-004-5`
+  - **What it delivers**:
+    - Adds `hydrate_from_disk()`, `compact_and_prune()`, `delete_by_project_and_path()`, and `version_count()` to `crates/aico-storage/src/vector.rs`.
+    - Hydrates the in-memory `records` map from persisted LanceDB batches when opening an existing table.
+    - Executes `OptimizeAction::Compact` and `OptimizeAction::Prune` (`older_than: Duration::zero()`, `delete_unverified: true`) to compact fragments and remove old versions from `_versions`, `_transactions`, and `data`.
+  - **Verification Seam**: `crates/aico-storage/tests/storage_vector_test.rs`
+
+- **TASK-STORAGE-004-7**: Implement Manifest-Backed Incremental Startup Crawler & Quiet Lance Logging
+  - **Status**: Done
+  - **Addresses**: `REQ-004`, `REQ-013`, `REQ-015`
+  - **Blocked by**: `TASK-STORAGE-004-6`
+  - **What it delivers**:
+    - Implements `WorkspaceCrawler::crawl_and_index_incremental` in `crates/aico-server/src/crawler.rs` backed by `<workspace-root>/.aico/storage/vector/manifest_<project_id>.json` (`mtime_nanos` and `sha256`), skipping unchanged files (`chunks_upserted == 0`) and updating only modified/deleted files.
+    - Consolidates batch upserts and invokes `compact_and_prune()` after any crawl/reindex mutation (or when stale historical versions exist on disk).
+    - Updates `crates/aico-server/src/main.rs` to call `crawl_and_index_incremental` on startup and configure default `EnvFilter` as `"info,lance=warn,lancedb=warn"`.
+  - **Verification Seam**: `crates/aico-server/tests/server_test.rs`
+
+---
+
+## 3. Amendment Log
+
+- **2026-10-29T22:16:00Z**: Added `TASK-STORAGE-004-6` and `TASK-STORAGE-004-7` to eliminate unbounded LanceDB version/data growth on startup via in-memory cache hydration, `mtime`/`sha256` manifest-backed incremental crawling, immediate fragment compaction and version pruning (`OptimizeAction::Compact` + `OptimizeAction::Prune`), and default `lance=warn,lancedb=warn` log filtering (`REQ-012`..`REQ-015`).
+
