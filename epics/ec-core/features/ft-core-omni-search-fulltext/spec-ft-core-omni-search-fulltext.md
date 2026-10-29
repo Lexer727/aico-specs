@@ -55,6 +55,7 @@ This feature resolves these issues by:
 - **Sidebar Accordion Tree Integration (`ShellLayout.tsx`)**:
   - Auto-expanding tree sections (`Epics`, `Features`, `Specs`, `Code`, `ADRs`) containing matching results.
   - Preserving scope checkbox toggles (`Epics`, `Features`, `Specs`, `Code`, `ADRs`).
+  - Rendering an inline clear (`X`) button inside the `"Search workspace..."` input bar when `searchQuery` is non-empty, clearing the filter on click or `Escape` keydown.
 - **Global Cross-Project OmniSearch Modal Integration (`OmniSearchModal.tsx`, `App.tsx`)**:
   - Intercepting `Ctrl+K` globally with `e.preventDefault()`.
   - Clicking search trigger button in header opens `OmniSearchModal`.
@@ -113,13 +114,14 @@ This feature resolves these issues by:
 - **REQ-010**: The backend server shall expose `GET /api/v1/code/files` scanning `codebase_path` (respecting ignore filters: `.git`, `target`, `node_modules`, binary files) to discover source files with `@implements` annotations and symbol locations, and the tree view Code section shall display these live discovered files with annotation badges.
 - **REQ-011**: When a file path is requested via `GET /api/v1/raw?path=...`, the server shall resolve the path against `codebase_path` when not found in `specs_path`, and the `CodeViewer` component shall asynchronously fetch and render the complete file content.
 - **REQ-012**: When a user searches with the `code` scope enabled, `GET /api/v1/search` shall search source files across `codebase_path` and return matching code files with line numbers and matched snippets to OmniSearch under `scope: 'code'`.
+- **REQ-013**: While `searchQuery` in the workspace sidebar search input (`data-testid="sidebar-search-input"`) is non-empty, `ShellLayout` shall render an inline clear button (`X`, `data-testid="sidebar-search-clear-btn"`, `aria-label="Clear search"`), and when clicked or when `Escape` is pressed inside the input, the component shall reset `searchQuery` to `""` and restore the unfiltered accordion tree.
 
 ---
 
 ## 4. Designated Public Test Seams
 
 - **Search Engine Unit Seam**: `frontend/tests/searchEngine.test.ts` (verifies REQ-001, REQ-002, REQ-009)
-- **Sidebar Tree Fuzzy Seam**: `frontend/tests/ShellLayoutSearch.test.tsx` (verifies REQ-003, REQ-004, REQ-010)
+- **Sidebar Tree Fuzzy Seam**: `frontend/tests/ShellLayoutSearch.test.tsx` (verifies REQ-003, REQ-004, REQ-010, REQ-013)
 - **OmniSearch Shortcut & Interaction Seam**: `frontend/tests/OmniSearchModal.test.tsx` (verifies REQ-005, REQ-006, REQ-007, REQ-012)
 - **CodeViewer Live Seam**: `frontend/tests/CodeViewer.test.tsx` (verifies REQ-011)
 - **Backend Search Route Seam**: `crates/aico-server/tests/search_test.rs` (verifies REQ-008, REQ-012)

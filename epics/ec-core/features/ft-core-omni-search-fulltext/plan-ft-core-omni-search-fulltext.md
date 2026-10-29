@@ -160,8 +160,21 @@ created_at: "2026-10-09T00:16:00Z"
     - Run `verify-artifacts.mjs` ensuring 0 errors and 0 warnings.
   - **Verification Seam**: Vitest + Cargo + `verify-artifacts.mjs`
 
+### Phase 7: Sidebar Search Workspace Bar Clear Control
+
+- **TASK-CORE-009-11**: Add Inline Clear (`X`) Button to Sidebar Workspace Search Bar
+  - **Status**: Done
+  - **Addresses**: `REQ-013`
+  - **Blocked by**: `TASK-CORE-009-10`
+  - **What it delivers**:
+    - Renders an inline clear button (`X`, `data-testid="sidebar-search-clear-btn"`, `aria-label="Clear search"`) inside the `"Search workspace..."` input container in `frontend/src/components/layout/ShellLayout.tsx` when `searchQuery` is non-empty.
+    - Clears `searchQuery` on button click or `Escape` keydown and restores the unfiltered accordion tree.
+    - Adds component tests in `frontend/tests/ShellLayoutSearch.test.tsx` and rebuilds the frontend production bundle.
+  - **Verification Seam**: `frontend/tests/ShellLayoutSearch.test.tsx`
+
 ---
 
 ## 3. Amendment Log
 
 - **2026-10-17T15:50:00Z**: Appended Phase 6 (`TASK-CORE-009-6` through `TASK-CORE-009-10`) via `/aico-plan-amendment` to address spec full-text dual-matching (`REQ-002`, `REQ-009`), live codebase file discovery and `@implements` annotation scanning (`REQ-010`), complete file streaming in `/api/v1/raw` and `CodeViewer` (`REQ-011`), and backend full-text codebase search (`REQ-012`).
+- **2026-10-29T22:28:30Z**: Appended Phase 7 (`TASK-CORE-009-11`) to add an inline clear (`X`) button and `Escape` key reset to the sidebar `"Search workspace..."` input bar (`REQ-013`).
