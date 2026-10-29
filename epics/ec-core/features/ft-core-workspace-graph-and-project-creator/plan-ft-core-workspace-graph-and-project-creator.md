@@ -233,3 +233,44 @@ created_at: "2026-10-23T19:05:21.133Z"
     - Removes `epic-focus-select` and `feature-drilldown-select` from the canvas toolbar.
     - Updates `frontend/tests/VisualLineageCanvas.test.tsx` to verify cascading multi-tier selection (`ADR` -> `Epic` -> `Feature` -> `Task` -> `Code`), upstream resets, node toggle-off, and toolbar streamlining.
   - **Verification Seam**: `frontend/tests/VisualLineageCanvas.test.tsx`
+
+### Phase 12: Multi-Project State Isolation, Display Name Preservation & `.aico-project.json` Configurator Modal
+
+- **TASK-CORE-017-19**: Preserve Manifest Display Name, Add Manifest Read/Update API & Support Optional Repo URLs
+  - **Status**: Done
+  - **Addresses**: `REQ-027`, `REQ-028`, `REQ-029`
+  - **Blocked by**: `TASK-CORE-017-18`
+  - **What it delivers**:
+    - Updates `ProjectManifest` in `crates/aico-core/src/manifest.rs` with `display_name: Option<String>` and `url: Option<String>`, and updates `RootScanner::scan` in `crates/aico-core/src/scanner.rs` so `DiscoveredProject.name` preserves the human-readable `name` (`"AICO Specs"`) while `project_name` remains the canonical slug (`"aico"`).
+    - Extends `POST /api/v1/projects` in `crates/aico-server/src/server.rs` to accept full `.aico-project.json` fields (`name` display name, optional `url`, and `repositories` list with fixed `../codebase/<id>` paths).
+    - Adds `GET /api/v1/projects/manifest` and `PUT /api/v1/projects/manifest` in `crates/aico-server/src/server.rs` to read and update the active project's `.aico-project.json`, refresh `WorkspaceRegistry`, and broadcast `projects_updated`.
+    - Normalizes empty/omitted repository `url` values to `None` in `crates/aico-server/src/git.rs`.
+  - **Verification Seam**: `crates/aico-core/tests/scanner_test.rs` and `crates/aico-server/tests/project_api_test.rs`
+
+- **TASK-CORE-017-20**: Fix Empty-Project `aico-specs` State Leakage & Live Dashboard Refresh on Project Switch
+  - **Status**: Done
+  - **Addresses**: `REQ-026`, `REQ-027`
+  - **Blocked by**: `TASK-CORE-017-19`
+  - **What it delivers**:
+    - Updates `fetchEpics`, `fetchFeatures`, `fetchAdrs`, and `fetchCodeFiles` in `frontend/src/App.tsx` to assign empty arrays (`[]`) when a project has 0 items, and passes `discoveredEpics`, `discoveredFeatures`, `discoveredAdrs`, and `codeFiles` directly to `ShellLayout` without coercing empty arrays to `undefined`.
+    - Updates `ProjectSwitcher.tsx` to `await` `POST /api/v1/projects/active` before firing `onSelectProject`, and keys `<DashboardView key={`${activeProjectId}-${workspaceRefreshKey}`} />` in `App.tsx` so switching projects immediately updates Epics, Specs, Glossary terms, ADRs, Storage stats, Lineage Graph, and Git Repositories without requiring `F5`.
+    - Updates `DashboardView.tsx` so empty glossary/ADR lists from the active project render `0` items instead of falling back to hardcoded `aico-specs` defaults.
+  - **Verification Seam**: `frontend/tests/ShellLayout.test.tsx`
+
+- **TASK-CORE-017-21**: Move New Project Button Outside Dropdown & Build OmniSearch-Style `ProjectConfigModal`
+  - **Status**: Done
+  - **Addresses**: `REQ-027`, `REQ-028`
+  - **Blocked by**: `TASK-CORE-017-19`
+  - **What it delivers**:
+    - Moves the New Project trigger (`data-testid="btn-new-project-trigger"`) out of the `ProjectSwitcher` dropdown menu into a standalone button next to the dropdown.
+    - Creates `frontend/src/components/navigation/ProjectConfigModal.tsx` (`data-testid="project-config-modal"`) styled like `OmniSearchModal` for creating and editing `.aico-project.json`, supporting `project_name` with live `<project_name>-specs` preview, UI display `name`, optional specs `url`, and dynamic `repositories` list (`id`, `name`, `type`, optional `url`, and read-only path `../codebase/<id>`).
+  - **Verification Seam**: `frontend/tests/ProjectSwitcher.test.tsx`
+
+- **TASK-CORE-017-22**: Add Optional Remote URL State & Edit `.aico-project.json` Action to `GitRepositoriesCard`
+  - **Status**: Done
+  - **Addresses**: `REQ-028`, `REQ-029`
+  - **Blocked by**: `TASK-CORE-017-20`, `TASK-CORE-017-21`
+  - **What it delivers**:
+    - Updates `frontend/src/features/dashboard/GitRepositoriesCard.tsx` to render a `"No remote URL set"` badge (`data-testid="git-no-url-<repo.id>"`) when a specs or codebase/skills repository has no remote URL configured, and disables `Clone` / `Pull` / `Push` buttons until a remote URL is set.
+    - Adds an Edit Project Configuration button (`data-testid="edit-project-manifest-btn"` in the card header and `data-testid="git-edit-repo-<repo.id>"` on each repository card) that opens `ProjectConfigModal` in edit mode (`PUT /api/v1/projects/manifest`) and refreshes the Git status and project switcher upon save.
+  - **Verification Seam**: `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx`
