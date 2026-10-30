@@ -26,6 +26,11 @@ created_at: "2026-10-23T19:05:21.133Z"
   - Upgrade `AicoGraphStore` in `crates/aico-storage/src/graph.rs` to store typed nodes (`id`, `label`, `node_type`, `properties`) and directed edges (`source`, `target`, `relation`), persist them to `.aico/storage/graph/lineage_graph.json`, and evaluate Cypher `CREATE`, `MERGE`, and `MATCH` statements as well as multi-hop BFS traversal.
   - Add `GET /api/v1/graph` in `crates/aico-server/src/server.rs` that constructs and synchronizes the full artifact and code lineage graph (`ADR` -> `Epic` -> `Feature` -> `Spec` / `Plan` -> `Requirement` / `Task` -> `Code`) and returns structured `nodes` and `edges`.
   - Upgrade `frontend/src/features/epic-hub/VisualLineageCanvas.tsx` and `frontend/src/App.tsx` to fetch live graph data for the active epic and render a multi-column SVG-connected DAG with interactive upstream/downstream highlighting and node navigation.
+- **Multi-Tab Project State Isolation & Request Resolution**:
+  - Implement an Axum extractor/helper `ProjectContext` in `crates/aico-server/src/server.rs` that resolves the project context from `project` / `project_id` query parameters, then `X-Aico-Project` request header, with fallback to `WorkspaceRegistry.get_active()`.
+  - Wire `ProjectContext` into all workspace REST endpoints (`/api/v1/epics`, `/api/v1/features`, `/api/v1/adrs`, `/api/v1/glossary`, `/api/v1/code/files`, `/api/v1/git/status`, `/api/v1/projects/manifest`).
+  - Update `useTabStore` and `frontend/src/App.tsx` to maintain `activeProjectId` strictly in window-isolated `sessionStorage`, dispatch `X-Aico-Project: activeProjectId` on all workspace requests, and ignore global `active_project_changed` WebSocket broadcasts on desktop windows.
+  - Parse `?project=<project_id>` query parameter on application boot in `App.tsx` and `useTabStore` to enable deep linking and detached window launches.
 
 ---
 
@@ -274,3 +279,41 @@ created_at: "2026-10-23T19:05:21.133Z"
     - Updates `frontend/src/features/dashboard/GitRepositoriesCard.tsx` to render a `"No remote URL set"` badge (`data-testid="git-no-url-<repo.id>"`) when a specs or codebase/skills repository has no remote URL configured, and disables `Clone` / `Pull` / `Push` buttons until a remote URL is set.
     - Adds an Edit Project Configuration button (`data-testid="edit-project-manifest-btn"` in the card header and `data-testid="git-edit-repo-<repo.id>"` on each repository card) that opens `ProjectConfigModal` in edit mode (`PUT /api/v1/projects/manifest`) and refreshes the Git status and project switcher upon save.
   - **Verification Seam**: `frontend/src/features/dashboard/__tests__/GitRepositoriesCard.test.tsx`
+
+### Phase 13: Multi-Tab Project Isolation & Decoupled State Synchronization
+
+- **TASK-CORE-017-23**: Implement Axum `ProjectContext` Extractor & Wire Project-Scoped REST Handlers
+  - **Status**: Done
+  - **Addresses**: `REQ-030`
+  - **Blocked by**: `TASK-CORE-017-22`
+  - **What it delivers**:
+    - Creates an Axum extractor / helper `ProjectContext` in `crates/aico-server/src/server.rs` that resolves the project from query params (`?project=` or `?project_id=`), then `X-Aico-Project` header, with fallback to `registry.get_active()`.
+    - Updates `list_epics_handler`, `get_epic_handler`, `list_features_handler`, `get_feature_handler`, `list_adrs_handler`, `get_adr_handler`, `get_glossary_handler`, `list_code_files_handler`, `get_code_file_handler`, `get_git_status_handler`, and `get_project_manifest_handler` to use the resolved `ProjectContext`.
+  - **Verification Seam**: `crates/aico-server/tests/project_api_test.rs`
+
+- **TASK-CORE-017-24**: Add `X-Aico-Project` Header to Frontend Workspace API Requests & Decouple `active_project_changed` WebSocket
+  - **Status**: Done
+  - **Addresses**: `REQ-031`, `REQ-032`
+  - **Blocked by**: `TASK-CORE-017-23`
+  - **What it delivers**:
+    - Updates `fetchProjects`, `fetchEpics`, `fetchFeatures`, `fetchAdrs`, `fetchCodeFiles`, and `fetchGlossaryTerms` in `frontend/src/App.tsx`, as well as `GitRepositoriesCard.tsx` and `ProjectConfigModal.tsx`, to include `X-Aico-Project: activeProjectId` in HTTP request headers.
+    - Removes desktop window forced switching on `active_project_changed` in `App.tsx` (allowing desktop tabs to retain independent active projects), while preserving targeted project sync for mobile companions with matching `targetWindowId`.
+  - **Verification Seam**: `frontend/tests/ProjectSwitcher.test.tsx` and `frontend/tests/ShellLayout.test.tsx`
+
+- **TASK-CORE-017-25**: Support URL `?project=<id>` Initialization & Fix Detached Window Launcher
+  - **Status**: Done
+  - **Addresses**: `REQ-033`
+  - **Blocked by**: `TASK-CORE-017-24`
+  - **What it delivers**:
+    - Updates `App.tsx` and `useTabStore.ts` initialization logic to inspect `new URLSearchParams(window.location.search).get('project')`. If provided, it overrides `initialProjectId` and persists it to `sessionStorage`.
+    - Ensures `ProjectSwitcher.tsx` "Open in new window" button (`data-testid="detach-window-${project.id}"`) opens with clean URL parameters and initializes the new window with the detached project.
+  - **Verification Seam**: `frontend/tests/ProjectSwitcher.test.tsx`
+
+- **TASK-CORE-017-26**: End-to-End Multi-Tab Project Switching Integration Verification
+  - **Status**: Done
+  - **Addresses**: `REQ-030`, `REQ-031`, `REQ-032`, `REQ-033`
+  - **Blocked by**: `TASK-CORE-017-23`, `TASK-CORE-017-24`, `TASK-CORE-017-25`
+  - **What it delivers**:
+    - Comprehensive unit and integration test coverage verifying that concurrent requests with different `X-Aico-Project` headers return isolated project data without server cross-talk.
+    - Frontend unit tests simulating two independent window sessions verifying project switching in Window 1 does not alter Window 2.
+  - **Verification Seam**: `crates/aico-server/tests/project_api_test.rs` and `frontend/tests/ProjectSwitcher.test.tsx`
