@@ -8,14 +8,14 @@
     {
       "id": "aico",
       "name": "AICO Engine",
-      "path": "../codebase/aico",
+      "path": "../../codebase/aico",
       "url": "https://github.com/Lexer727/aico",
       "type": "codebase"
     },
     {
       "id": "aico-skills",
       "name": "AICO Skills",
-      "path": "../codebase/aico-skills",
+      "path": "../../codebase/aico-skills",
       "url": "https://github.com/Lexer727/aico-skills",
       "type": "skills"
     }
