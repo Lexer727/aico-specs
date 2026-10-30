@@ -154,3 +154,58 @@ created_at: "2026-10-05T15:00:00Z"
 - **Example**: `order: 1` in `spec-core-host-runtime.md`.
 - **Related Terms**: [Specification](#specification), [Plan](#plan).
 
+### AICO Root
+- **Definition**: The top-level workspace directory selected during installation that houses specs/, codebase/, .agents/, and .aico/.
+- **Synonyms (Avoid)**: Install directory, workspace folder.
+- **Example**: `C:\Users\dev\aico or d:/aico`.
+- **Related Terms**: [AICO Home](#aico-home), [Install Bin Directory](#install-bin-directory), [Codebase Root](#codebase-root).
+
+---
+
+### AICO Home
+- **Definition**: The .aico subdirectory inside the AICO Root that stores embedded databases (storage/), server logs (logs/), and installed runtime binaries (bin/).
+- **Synonyms (Avoid)**: Dot-aico folder, runtime folder.
+- **Example**: `<root>/.aico/`.
+- **Related Terms**: [AICO Root](#aico-root), [Install Bin Directory](#install-bin-directory), [User Config Home](#user-config-home).
+
+---
+
+### Install Bin Directory
+- **Definition**: The <root>/.aico/bin directory containing aico-server.exe, bundled skills/, prerequisites.json, manifest.json, and the scoped uninstaller.
+- **Synonyms (Avoid)**: Binary folder, app bin.
+- **Example**: `<root>/.aico/bin/aico-server.exe`.
+- **Related Terms**: [AICO Home](#aico-home), [Release Bundle](#release-bundle).
+
+---
+
+### Release Bundle
+- **Definition**: The versioned zip archive (aico-windows-x64.zip) and companion SHA-256 checksum published to GitHub Releases by the automated release pipeline.
+- **Synonyms (Avoid)**: Release zip, binary package.
+- **Example**: `aico-windows-x64.zip + aico-windows-x64.zip.sha256`.
+- **Related Terms**: [Release Manifest](#release-manifest), [Install Bin Directory](#install-bin-directory).
+
+---
+
+### Release Manifest
+- **Definition**: The manifest.json file inside the Release Bundle and Install Bin Directory recording version, git commit SHA, build timestamp, and per-file SHA-256 hashes.
+- **Synonyms (Avoid)**: Build manifest, version file.
+- **Example**: `<root>/.aico/bin/manifest.json`.
+- **Related Terms**: [Release Bundle](#release-bundle), [Install Bin Directory](#install-bin-directory).
+
+---
+
+### Prerequisite Catalog
+- **Definition**: The declarative prerequisites.json file listing external developer tools (Git, GitHub CLI, Node.js LTS, Claude Code, Antigravity, Codex CLI, Copilot CLI) with detection commands and winget/npm provisioning identifiers.
+- **Synonyms (Avoid)**: Tool list, dependency manifest.
+- **Example**: `<root>/.aico/bin/prerequisites.json`.
+- **Related Terms**: [Install Bin Directory](#install-bin-directory).
+
+---
+
+### User Config Home
+- **Definition**: The per-user ~/.aico directory in the OS user profile used for user-scoped credentials (such as ~/.aico/config.json), strictly distinct from the workspace-scoped AICO Home (<root>/.aico).
+- **Synonyms (Avoid)**: Home dot-aico.
+- **Example**: `%USERPROFILE%\.aico\config.json`.
+- **Related Terms**: [AICO Home](#aico-home).
+
+---
